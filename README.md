@@ -1,19 +1,22 @@
-# T.C.
-# MALTEPE ÜNİVERSİTESİ
-# MESLEK YÜKSEK OKULU
-# Bilgisayar Programcılığı
+### T.C.
+### MALTEPE ÜNİVERSİTESİ
+### MESLEK YÜKSEK OKULU
+### Bilgisayar Programcılığı
 
 
-# 2. Sınıf Bitirme Projesi
+#### 2. Sınıf Bitirme Projesi
 
 
-# "GÜTÜPHANE"
+### "GÜTÜPHANE"
 
 
-# Öğretmen
-# Kadir Erdem
+### Öğretmen
+
+- Kadir Erdem
 
 
-# Hazırlayanlar
-# Halenur Çidem - 200903018
-# Berkay Öner - 200903034
+### Hazırlayanlar
+
+- Halenur Çidem - 200903018
+
+- Berkay Öner - 200903034
