@@ -2,14 +2,11 @@
 ### MALTEPE ÜNİVERSİTESİ
 ### MESLEK YÜKSEK OKULU
 ### Bilgisayar Programcılığı
-
-
+.
 #### 2. Sınıf Bitirme Projesi
-
-
+.
 ### "GÜTÜPHANE"
-
-
+.
 ### Öğretmen
 
 - Kadir Erdem
