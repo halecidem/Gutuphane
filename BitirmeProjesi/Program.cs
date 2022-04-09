@@ -17,7 +17,7 @@ namespace BitirmeProjesi
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BaslangicForm());
+            Application.Run(new AnaForm());
         }
     }
 }

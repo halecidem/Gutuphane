@@ -12,6 +12,7 @@ namespace BitirmeProjesi
 {
     public partial class GirisEkrani : Form
     {
+        GenelIslemler gi = new GenelIslemler();
         public GirisEkrani()
         {
             InitializeComponent();
@@ -20,31 +21,37 @@ namespace BitirmeProjesi
         private void GirisEkrani_Load(object sender, EventArgs e)
         {
             lblHataMesaji.Text = "";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            this.Anchor = AnchorStyles.None;
+            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
+            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 3;
+            this.Location = new Point(x, y);
         }
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            GenelIslemler gi = new GenelIslemler();
             if (kullaniciAdi.Text != "" && sifre.Text != "")
             {
                 switch (gi.Giris(kullaniciAdi.Text, sifre.Text))
                 {
                     case 0:
-                        lblHataMesaji.Text = "Hatalı bir durum oluştu.";
+                        lblHataMesaji.Text = "Sistemsel bir hata oluştu.";
                         break;
                     case 1:
-                        lblHataMesaji.Text = "Böyle bir kullanıcı bulunamadı.";
+                        lblHataMesaji.Text = "Kullanıcı adı ile ilgili bir hata oluştu.";
                         break;
                     case 2:
-                        lblHataMesaji.Text = "Hatalı sifre";
+                        lblHataMesaji.Text = "Şifre ile ilgili bir hata oluştu.";
                         break;
                     case 3:
+                        lblHataMesaji.Text = "Giriş başarılı.";
+                        this.Hide();
                         //Yeni formu yükle
+                        break;
+                    case 4:
+                        lblHataMesaji.Text = "Hatalı sifre.";
+                        break;
+                    case 5:
+                        lblHataMesaji.Text = "Böyle bir kullanıcı bulunamadı.";
                         break;
                 }
             }
@@ -52,6 +59,7 @@ namespace BitirmeProjesi
             {
                 lblHataMesaji.Text = "Kullanıcı adı veya şifre alanı boş bırakılamaz.";
             }
+            sifre.Text = "";
         }
     }
 }
