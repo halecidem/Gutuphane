@@ -16,7 +16,7 @@ namespace BitirmeProjesi
             bool sunucuDurum = false;
             try
             {
-                SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
+                SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
                 baglanti.Open();
                 sunucuDurum = true;
                 baglanti.Close();
