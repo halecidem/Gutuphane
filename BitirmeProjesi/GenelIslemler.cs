@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace BitirmeProjesi
 {
@@ -14,7 +16,7 @@ namespace BitirmeProjesi
             bool sunucuDurum = false;
             try
             {
-                SqlConnection baglanti = new SqlConnection(@"Server=LAPTOP-J2VV6GEA\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
+                SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
                 baglanti.Open();
                 sunucuDurum = true;
                 baglanti.Close();
@@ -28,9 +30,11 @@ namespace BitirmeProjesi
 
         public int Giris(string kullaniciAdi, string sifre)
         {
-            SqlConnection baglanti = new SqlConnection(@"Server=LAPTOP-J2VV6GEA\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
-            SqlCommand cmd1 = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = " + kullaniciAdi, baglanti);
-            SqlCommand cmd2 = new SqlCommand("select Sifre from Kullanicilar where KullaniciAdi = " + kullaniciAdi, baglanti);
+            SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
+            SqlCommand cmd1 = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = @user", baglanti);
+            cmd1.Parameters.AddWithValue("@user", kullaniciAdi);
+            SqlCommand cmd2 = new SqlCommand("select Sifre from Kullanicilar where KullaniciAdi = @user", baglanti);
+            cmd2.Parameters.AddWithValue("@user", kullaniciAdi);
             string kullanici = "", sifresi = "";
 
             try
@@ -61,7 +65,7 @@ namespace BitirmeProjesi
 
                     while (reader2.Read())
                     {
-                        sifre = reader2.GetString(0);
+                        sifresi = reader2.GetString(0);
                     }
 
                     reader2.Close();
@@ -78,8 +82,15 @@ namespace BitirmeProjesi
             {
                 return 3;
             }
+            else if (kullanici == kullaniciAdi && sifresi != sifre)
+            {
+                return 4;
+            }
+            else
+            {
+                return 5;
+            }
             return 0;
         }
-            
     }
 }
