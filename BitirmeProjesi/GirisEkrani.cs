@@ -21,10 +21,11 @@ namespace BitirmeProjesi
         private void GirisEkrani_Load(object sender, EventArgs e)
         {
             lblHataMesaji.Text = "";
-            this.Anchor = AnchorStyles.None;
+            #region Merkeze Konumlandırma
             int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
             int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 3;
             this.Location = new Point(x, y);
+            #endregion
         }
 
         private void btnGiris_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace BitirmeProjesi
             }
             else
             {
-                lblHataMesaji.Text = "Kullanıcı adı veya şifre alanı boş bırakılamaz.";
+                lblHataMesaji.Text = "Kullanıcı adı ve şifre alanı boş bırakılamaz.";
             }
             sifre.Text = "";
         }

@@ -77,3 +77,4 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-window
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\ref\BitirmeProjesi.dll
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.Properties.Resources.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.AnaForm.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.IlkEkran.resources

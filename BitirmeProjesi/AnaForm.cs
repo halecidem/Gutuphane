@@ -14,6 +14,7 @@ namespace BitirmeProjesi
     public partial class AnaForm : Form
     {
         GenelIslemler gi = new GenelIslemler();
+        IlkEkran ilkEkran = new IlkEkran();
         GirisEkrani girisEkrani = new GirisEkrani();
         public AnaForm()
         {
@@ -34,7 +35,8 @@ namespace BitirmeProjesi
 
         private void BaslangicForm_Load(object sender, EventArgs e)
         {
-            
+            ilkEkran.MdiParent = this;
+            girisEkrani.MdiParent = this;
         }
 
         private void BaslangicForm_Shown(object sender, EventArgs e)
@@ -43,12 +45,11 @@ namespace BitirmeProjesi
             if (gi.SQLControl() == true)
             {
                 lblDurum.Text = "Durum: Girişe yönlendiriliyorsunuz...";
-                girisEkrani.MdiParent = this;
-                girisEkrani.Show();
+                ilkEkran.Show();
                 lblDurum.Visible = false;
+                pictureBox1.Visible = false;
                 label1.Visible = false;
                 label2.Visible = false;
-
             }
             else
             {
