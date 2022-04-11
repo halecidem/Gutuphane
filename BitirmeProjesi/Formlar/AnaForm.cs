@@ -15,7 +15,6 @@ namespace BitirmeProjesi
     {
         GenelIslemler gi = new GenelIslemler();
         IlkEkran ilkEkran = new IlkEkran();
-        GirisEkrani girisEkrani = new GirisEkrani();
         public AnaForm()
         {
             InitializeComponent();
@@ -36,7 +35,6 @@ namespace BitirmeProjesi
         private void BaslangicForm_Load(object sender, EventArgs e)
         {
             ilkEkran.MdiParent = this;
-            girisEkrani.MdiParent = this;
         }
 
         private void BaslangicForm_Shown(object sender, EventArgs e)

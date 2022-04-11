@@ -40,10 +40,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(148, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(104, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 54);
+            this.label2.Size = new System.Drawing.Size(158, 37);
             this.label2.TabIndex = 1;
             this.label2.Text = "Gütüphane";
             // 
@@ -51,49 +50,59 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(238, 103);
+            this.label1.Location = new System.Drawing.Point(162, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 25);
+            this.label1.Size = new System.Drawing.Size(29, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Oku";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(157, 198);
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(110, 119);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 53);
+            this.button1.Size = new System.Drawing.Size(133, 32);
             this.button1.TabIndex = 3;
             this.button1.Text = "Giriş Yap";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(130, 336);
+            this.label3.Location = new System.Drawing.Point(99, 199);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 25);
+            this.label3.Size = new System.Drawing.Size(106, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Hesabınız yok mu?";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(297, 336);
+            this.label4.Location = new System.Drawing.Point(209, 199);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 25);
+            this.label4.Size = new System.Drawing.Size(46, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Kayıt ol";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // IlkEkran
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(529, 417);
+            this.ClientSize = new System.Drawing.Size(370, 250);
             this.ControlBox = false;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -101,7 +110,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "IlkEkran";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gütüphane";

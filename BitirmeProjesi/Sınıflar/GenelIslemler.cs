@@ -28,7 +28,7 @@ namespace BitirmeProjesi
             return sunucuDurum;
         }
 
-        public int Giris(string kullaniciAdi, string sifre)
+        public int Giris(string kullaniciAdi, string sifre) //Giriş yapmak için kullanılan algoritma
         {
             SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
             SqlCommand cmd1 = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = @user", baglanti);
@@ -90,6 +90,11 @@ namespace BitirmeProjesi
             {
                 return 5;
             }
+            return 0;
+        }
+
+        public int Kayit(string kullaniciAdi, string sifre)
+        {
             return 0;
         }
     }
