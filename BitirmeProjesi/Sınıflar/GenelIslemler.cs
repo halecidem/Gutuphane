@@ -11,12 +11,12 @@ namespace BitirmeProjesi
 {
     class GenelIslemler
     {
+        SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
         public bool SQLControl() //Sunucunun açık olduğunu kontrol eden fonksiyon
         {
             bool sunucuDurum = false;
             try
             {
-                SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
                 baglanti.Open();
                 sunucuDurum = true;
                 baglanti.Close();
@@ -30,7 +30,6 @@ namespace BitirmeProjesi
 
         public int Giris(string kullaniciAdi, string sifre) //Giriş yapmak için kullanılan algoritma
         {
-            SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
             SqlCommand cmd1 = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = @user", baglanti);
             cmd1.Parameters.AddWithValue("@user", kullaniciAdi);
             SqlCommand cmd2 = new SqlCommand("select Sifre from Kullanicilar where KullaniciAdi = @user", baglanti);
@@ -93,8 +92,34 @@ namespace BitirmeProjesi
             return 0;
         }
 
-        public int Kayit(string kullaniciAdi, string sifre)
+        public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, long telno )
         {
+            int no1, no2;
+            for (int i = 0; i < 6; i++)
+            {
+                no1[i] = telno[i];
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                no1[i] = telno[i + 6];
+            }
+
+            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, E-Posta, Adi, Soyadi, [Dogum Tarihi], NO1, NO2 [Kayit Tarihi], Yetki)" +
+                "values (@ka, @si, @ep, @a, @so, @dt, @no1, @no2, @kt, @yt)", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
+            cmd.Parameters.AddWithValue("@si", sifre);
+            cmd.Parameters.AddWithValue("@ep", eposta);
+            cmd.Parameters.AddWithValue("@a", adi);
+            cmd.Parameters.AddWithValue("@so", soyadi);
+            cmd.Parameters.AddWithValue("@dt", dogumTarihi);
+            cmd.Parameters.AddWithValue("@no1", no1);
+            cmd.Parameters.AddWithValue("@no2", no2);
+            cmd.Parameters.AddWithValue("@kt", DateTime.UtcNow);
+            cmd.Parameters.AddWithValue("@yt", "Kullanici");
+
+            baglanti.Open();
+
+            baglanti.Close();
             return 0;
         }
     }

@@ -107,3 +107,4 @@ C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-wind
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.pdb
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.genruntimeconfig.cache
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.Formlar.KayitEkrani.resources
+C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\net5.0-windows\BitirmeProjesi.Formlar.KayitEkrani.resources
