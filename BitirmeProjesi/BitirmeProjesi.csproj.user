@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="AnaForm.cs">
+    <Compile Update="Formlar\AnaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GirisEkrani.cs">
+    <Compile Update="Formlar\GirisEkrani.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="IlkEkran.cs">
+    <Compile Update="Formlar\IlkEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formlar\KayitEkrani.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
