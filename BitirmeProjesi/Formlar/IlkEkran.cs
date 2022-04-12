@@ -12,8 +12,6 @@ namespace BitirmeProjesi
 {
     public partial class IlkEkran : Form
     {
-        GirisEkrani girisEkrani = new GirisEkrani();
-        Formlar.KayitEkrani kayitEkrani = new Formlar.KayitEkrani();
         public IlkEkran()
         {
             InitializeComponent();
@@ -31,15 +29,17 @@ namespace BitirmeProjesi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            GirisEkrani girisEkrani = new GirisEkrani();
             girisEkrani.MdiParent = this.MdiParent;
+            this.Close();
             girisEkrani.Show();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Formlar.KayitEkrani kayitEkrani = new Formlar.KayitEkrani();
             kayitEkrani.MdiParent = this.MdiParent;
+            this.Close();
             kayitEkrani.Show();
         }
     }

@@ -23,7 +23,7 @@ namespace BitirmeProjesi
             }
             catch
             {
-                //sunucuDurum = false;
+                baglanti.Close();
             }
             return sunucuDurum;
         }
@@ -52,6 +52,8 @@ namespace BitirmeProjesi
             }
             catch
             {
+                cmd1.Dispose();
+                baglanti.Close();
                 return 1;
             }
 
@@ -73,6 +75,8 @@ namespace BitirmeProjesi
                 }
                 catch
                 {
+                    cmd2.Dispose();
+                    baglanti.Close();
                     return 2;
                 }
             }
@@ -89,22 +93,19 @@ namespace BitirmeProjesi
             {
                 return 5;
             }
-            return 0;
         }
 
         public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, long telno )
         {
+            string numara, strNo1, strNo2;
             int no1, no2;
-            for (int i = 0; i < 6; i++)
-            {
-                no1[i] = telno[i];
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                no1[i] = telno[i + 6];
-            }
+            numara = telno.ToString();
+            strNo1 = numara.Substring(0, 6);
+            strNo2 = numara.Substring(7, 3);
+            no1 = Convert.ToInt32(strNo1);
+            no2 = Convert.ToInt32(strNo2);
 
-            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, E-Posta, Adi, Soyadi, [Dogum Tarihi], NO1, NO2 [Kayit Tarihi], Yetki)" +
+            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], NO1, NO2, [Kayit Tarihi], Yetki)" +
                 "values (@ka, @si, @ep, @a, @so, @dt, @no1, @no2, @kt, @yt)", baglanti);
             cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
             cmd.Parameters.AddWithValue("@si", sifre);
@@ -117,10 +118,23 @@ namespace BitirmeProjesi
             cmd.Parameters.AddWithValue("@kt", DateTime.UtcNow);
             cmd.Parameters.AddWithValue("@yt", "Kullanici");
 
-            baglanti.Open();
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
 
-            baglanti.Close();
-            return 0;
+                cmd.Dispose();
+                baglanti.Close();
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
         }
     }
 }
