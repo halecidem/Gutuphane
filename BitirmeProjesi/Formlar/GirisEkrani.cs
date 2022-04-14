@@ -12,7 +12,6 @@ namespace BitirmeProjesi
 {
     public partial class GirisEkrani : Form
     {
-        GenelIslemler gi = new GenelIslemler();
         public GirisEkrani()
         {
             InitializeComponent();
@@ -31,13 +30,12 @@ namespace BitirmeProjesi
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
+            GenelIslemler gi = new GenelIslemler();
+
             if (kullaniciAdi.Text != "" && sifre.Text != "")
             {
                 switch (gi.Giris(kullaniciAdi.Text, sifre.Text))
                 {
-                    case 0:
-                        lblHataMesaji.Text = "Sistemsel bir hata oluştu.";
-                        break;
                     case 1:
                         lblHataMesaji.Text = "Kullanıcı adı ile ilgili bir hata oluştu.";
                         break;
@@ -46,7 +44,8 @@ namespace BitirmeProjesi
                         break;
                     case 3:
                         lblHataMesaji.Text = "Giriş başarılı.";
-                        this.Hide();
+                        //Form ve MdiParent tanımla
+                        this.Close();
                         //Yeni formu yükle
                         break;
                     case 4:
@@ -62,6 +61,14 @@ namespace BitirmeProjesi
                 lblHataMesaji.Text = "Kullanıcı adı ve şifre alanı boş bırakılamaz.";
             }
             sifre.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            IlkEkran ilkEkran = new IlkEkran();
+            ilkEkran.MdiParent = this.MdiParent;
+            this.Close();
+            ilkEkran.Show();
         }
     }
 }

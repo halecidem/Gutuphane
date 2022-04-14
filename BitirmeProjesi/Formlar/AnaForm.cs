@@ -13,8 +13,6 @@ namespace BitirmeProjesi
 {
     public partial class AnaForm : Form
     {
-        GenelIslemler gi = new GenelIslemler();
-        IlkEkran ilkEkran = new IlkEkran();
         public AnaForm()
         {
             InitializeComponent();
@@ -34,20 +32,24 @@ namespace BitirmeProjesi
 
         private void BaslangicForm_Load(object sender, EventArgs e)
         {
-            ilkEkran.MdiParent = this;
+            
         }
 
         private void BaslangicForm_Shown(object sender, EventArgs e)
         {
+            GenelIslemler gi = new GenelIslemler();
             lblDurum.Text = "Durum: Sunucular gontrol ediliyor...";
             if (gi.SQLControl() == true)
             {
-                lblDurum.Text = "Durum: Girişe yönlendiriliyorsunuz...";
-                ilkEkran.Show();
                 lblDurum.Visible = false;
                 pictureBox1.Visible = false;
                 label1.Visible = false;
                 label2.Visible = false;
+
+                lblDurum.Text = "Durum: Girişe yönlendiriliyorsunuz...";
+                IlkEkran ilkEkran = new IlkEkran();
+                ilkEkran.MdiParent = this;
+                ilkEkran.Show();
             }
             else
             {

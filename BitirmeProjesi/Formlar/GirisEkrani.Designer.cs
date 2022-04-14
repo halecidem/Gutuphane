@@ -35,6 +35,7 @@
             this.lblHataMesaji = new System.Windows.Forms.Label();
             this.lblKullaniciAdi = new System.Windows.Forms.Label();
             this.lblSifre = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +114,20 @@
             this.lblSifre.TabIndex = 9;
             this.lblSifre.Text = "Şifre";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(11, 11);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 26);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "<-";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // GirisEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,6 +136,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(370, 250);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.lblSifre);
             this.Controls.Add(this.lblKullaniciAdi);
             this.Controls.Add(this.lblHataMesaji);
@@ -147,5 +163,6 @@
         private System.Windows.Forms.Label lblHataMesaji;
         private System.Windows.Forms.Label lblKullaniciAdi;
         private System.Windows.Forms.Label lblSifre;
+        private System.Windows.Forms.Button button2;
     }
 }

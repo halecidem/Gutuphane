@@ -12,7 +12,6 @@ namespace BitirmeProjesi.Formlar
 {
     public partial class KayitEkrani : Form
     {
-        GenelIslemler gi = new GenelIslemler();
         public KayitEkrani()
         {
             InitializeComponent();
@@ -22,21 +21,32 @@ namespace BitirmeProjesi.Formlar
         {
             #region Merkeze Konumlandırma
             this.Anchor = AnchorStyles.None;
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 10;
-            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 5;
+            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
+            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 4;
             this.Location = new Point(x, y);
             #endregion
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            GenelIslemler gi = new GenelIslemler();
+
             if (txtKullaniciAdi.Text != "" && txtSifre.Text != "" && txtEposta.Text != "" && txtAdi.Text != "" && txtSoyadi.Text != "" && txtTelNo.Text != "")
             {
-                gi.Kayit(txtKullaniciAdi.Text, txtSifre.Text, txtEposta.Text, txtAdi.Text, txtSoyadi.Text, dateTimePicker1.Value, Convert.ToInt64(txtTelNo.Text));
+                switch (gi.Kayit(txtKullaniciAdi.Text, txtSifre.Text, txtEposta.Text, txtAdi.Text, txtSoyadi.Text, dateTimePicker1.Value, Convert.ToInt64(txtTelNo.Text)))
+                {
+                    case 1:
+                        MessageBox.Show("Kayıt Başarılı");
+                        GirisEkrani girisEkrani = new GirisEkrani();
+                        girisEkrani.MdiParent = this.MdiParent;
+                        this.Hide();
+                        girisEkrani.Show();
+                        break;
+                }
             }
             else
             {
-
+                //Forecolor'lar Red ve TextChanged durumunda tekrar White olmalı
             }
 
         }
@@ -47,6 +57,14 @@ namespace BitirmeProjesi.Formlar
             {
                 txtTelNo.Text = txtTelNo.Text.Remove(txtTelNo.Text.Length - 1);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            IlkEkran ilkEkran = new IlkEkran();
+            ilkEkran.MdiParent = this.MdiParent;
+            this.Close();
+            ilkEkran.Show();
         }
     }
 }
