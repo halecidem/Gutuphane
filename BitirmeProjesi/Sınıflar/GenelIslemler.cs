@@ -11,7 +11,7 @@ namespace BitirmeProjesi
 {
     class GenelIslemler
     {
-        SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
+        SqlConnection baglanti = new SqlConnection(@"Server=.;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
         public bool SQLControl() //Sunucunun açık olduğunu kontrol eden fonksiyon
         {
             bool sunucuDurum = false;

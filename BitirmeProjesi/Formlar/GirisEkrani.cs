@@ -22,9 +22,6 @@ namespace BitirmeProjesi
             lblHataMesaji.Text = "";
             #region Merkeze Konumlandırma
             this.Anchor = AnchorStyles.None;
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
-            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 3;
-            this.Location = new Point(x, y);
             #endregion
         }
 
@@ -44,9 +41,10 @@ namespace BitirmeProjesi
                         break;
                     case 3:
                         lblHataMesaji.Text = "Giriş başarılı.";
-                        //Form ve MdiParent tanımla
+                        NavBar navBar = new NavBar();
+                        navBar.MdiParent = this.MdiParent;
                         this.Close();
-                        //Yeni formu yükle
+                        navBar.Show();
                         break;
                     case 4:
                         lblHataMesaji.Text = "Hatalı sifre.";
