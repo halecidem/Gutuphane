@@ -97,13 +97,16 @@ namespace BitirmeProjesi
 
         public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, long telno )
         {
-            string numara, strNo1, strNo2;
+            string numara, strNo1, strNo2, kontrolStr = "";
             int no1, no2;
             numara = telno.ToString();
             strNo1 = numara.Substring(0, 6);
             strNo2 = numara.Substring(7, 3);
             no1 = Convert.ToInt32(strNo1);
             no2 = Convert.ToInt32(strNo2);
+
+            //SqlCommand kontrol = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = @user");
+            //kontrol.Parameters.AddWithValue("@ka", kullaniciAdi);
 
             SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], NO1, NO2, [Kayit Tarihi], Yetki)" +
                 "values (@ka, @si, @ep, @a, @so, @dt, @no1, @no2, @kt, @yt)", baglanti);

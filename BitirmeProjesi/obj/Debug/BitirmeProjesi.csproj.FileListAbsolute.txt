@@ -16,3 +16,5 @@ C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\bin\Debug\Bitir
 C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\bin\Debug\BitirmeProjesi.pdb
 C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GirisEkrani.resources
 C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.NavBar.resources
+C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Formlar.KayitEkrani.resources

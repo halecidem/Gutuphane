@@ -82,6 +82,9 @@
     <EmbeddedResource Include="Formlar\GirisEkrani.resx">
       <DependentUpon>GirisEkrani.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\KayitEkrani.resx">
+      <DependentUpon>KayitEkrani.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formlar\NavBar.resx">
       <DependentUpon>NavBar.cs</DependentUpon>
     </EmbeddedResource>
