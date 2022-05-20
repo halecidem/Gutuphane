@@ -13,10 +13,12 @@ namespace BitirmeProjesi
     public partial class AnaSayfa : Form
     {
         string kullaniciAdi = "";
-        public AnaSayfa(string KullaniciAdi)
+        int durum = 0;
+        public AnaSayfa(string KullaniciAdi, int Durum) //İlk açılan sayfa 0, sonradan açılanlar 1 ile başlatılacak
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
+            this.durum = Durum;
         }
 
         private void AnaSayfa_Load(object sender, EventArgs e)
@@ -30,6 +32,10 @@ namespace BitirmeProjesi
             timer1.Enabled = true;
             GenelIslemler gi = new GenelIslemler();
             btnProfil.Text = gi.AdiNe(kullaniciAdi);
+            if (durum == 0)
+            {
+                btnGeri.Visible = false;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

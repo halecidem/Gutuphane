@@ -30,6 +30,8 @@ namespace BitirmeProjesi
             timer1.Enabled = true;
             GenelIslemler gi = new GenelIslemler();
             gi.ProfilBilgileri(kullaniciAdi, lblAdi, lblSoyadi, lblEposta, lblKayitTarihi);
+            KitapIslemleri ki = new KitapIslemleri();
+            ki.KisininKitaplari(kullaniciAdi, this, groupBox1, lblYok);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

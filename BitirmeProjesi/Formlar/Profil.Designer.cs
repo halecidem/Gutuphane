@@ -40,7 +40,10 @@
             this.lblSoyadi = new System.Windows.Forms.Label();
             this.lblEposta = new System.Windows.Forms.Label();
             this.lblKayitTarihi = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGeri = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblYok = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -148,19 +151,40 @@
             this.lblKayitTarihi.TabIndex = 19;
             this.lblKayitTarihi.Text = "0";
             // 
-            // button2
+            // btnGeri
             // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(11, 11);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(27, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "<-";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnGeri.BackColor = System.Drawing.Color.Black;
+            this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGeri.ForeColor = System.Drawing.Color.White;
+            this.btnGeri.Location = new System.Drawing.Point(11, 11);
+            this.btnGeri.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGeri.Name = "btnGeri";
+            this.btnGeri.Size = new System.Drawing.Size(27, 23);
+            this.btnGeri.TabIndex = 26;
+            this.btnGeri.Text = "<-";
+            this.btnGeri.UseVisualStyleBackColor = false;
+            this.btnGeri.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblYok);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(41, 201);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(525, 55);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Yazdığı Kitaplar";
+            // 
+            // lblYok
+            // 
+            this.lblYok.AutoSize = true;
+            this.lblYok.ForeColor = System.Drawing.Color.White;
+            this.lblYok.Location = new System.Drawing.Point(15, 25);
+            this.lblYok.Name = "lblYok";
+            this.lblYok.Size = new System.Drawing.Size(26, 13);
+            this.lblYok.TabIndex = 0;
+            this.lblYok.Text = "Yok";
             // 
             // Profil
             // 
@@ -170,7 +194,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(620, 529);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.lblKayitTarihi);
             this.Controls.Add(this.lblEposta);
             this.Controls.Add(this.lblSoyadi);
@@ -186,6 +211,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gütüphane";
             this.Load += new System.EventHandler(this.Profil_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +231,8 @@
         private System.Windows.Forms.Label lblSoyadi;
         private System.Windows.Forms.Label lblEposta;
         private System.Windows.Forms.Label lblKayitTarihi;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGeri;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblYok;
     }
 }

@@ -26,7 +26,7 @@ namespace BitirmeProjesi
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
             this.Size = new Size(this.Size.Width, this.MdiParent.Size.Height - 45);
             #endregion
-            AnaSayfa ana = new AnaSayfa(kullaniciAdi);
+            AnaSayfa ana = new AnaSayfa(kullaniciAdi, 0);
             ana.MdiParent = this.MdiParent;
             ana.Show();
             timer1.Enabled = true;
@@ -43,7 +43,7 @@ namespace BitirmeProjesi
 
         private void btnAnaSayfa_Click(object sender, EventArgs e)
         {
-            AnaSayfa ana = new AnaSayfa(kullaniciAdi);
+            AnaSayfa ana = new AnaSayfa(kullaniciAdi, 1);
             ana.MdiParent = this.MdiParent;
             ana.Show();
         }
