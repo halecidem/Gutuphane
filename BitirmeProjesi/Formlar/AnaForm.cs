@@ -13,6 +13,7 @@ namespace BitirmeProjesi
 {
     public partial class AnaForm : Form
     {
+        public int sayfa = 0;
         public AnaForm()
         {
             InitializeComponent();
@@ -55,6 +56,11 @@ namespace BitirmeProjesi
             {
                 lblDurum.Text = "Durum: Sunuculara bağlantı kurulamadı!";
             }
+        }
+
+        private void lblDurum_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

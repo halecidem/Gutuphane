@@ -41,7 +41,7 @@ namespace BitirmeProjesi
                         break;
                     case 3:
                         lblHataMesaji.Text = "Giriş başarılı.";
-                        NavBar navBar = new NavBar();
+                        NavBar navBar = new NavBar(kullaniciAdi.Text);
                         navBar.MdiParent = this.MdiParent;
                         this.Close();
                         navBar.Show();
