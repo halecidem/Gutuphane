@@ -95,6 +95,12 @@
     <Compile Include="Formlar\KitapYaz.Designer.cs">
       <DependentUpon>KitapYaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\Gitap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Gitap.Designer.cs">
+      <DependentUpon>Gitap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sınıflar\GenelIslemler.cs" />
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\KitapYaz.resx">
       <DependentUpon>KitapYaz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Gitap.resx">
+      <DependentUpon>Gitap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

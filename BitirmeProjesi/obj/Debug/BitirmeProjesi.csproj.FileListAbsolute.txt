@@ -35,3 +35,4 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjes
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.AnaForm.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Profil.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.KitapYaz.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Gitap.resources
