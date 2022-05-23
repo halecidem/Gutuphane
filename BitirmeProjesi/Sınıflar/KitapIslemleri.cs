@@ -24,17 +24,19 @@ namespace BitirmeProjesi
             {
                 baglanti.Open();
                 cmd.ExecuteNonQuery();
+                
                 cmd.Dispose();
                 baglanti.Close();
+
+                return 1;
             }
             catch (Exception ex)
             {
                 cmd.Dispose();
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
+                return -1;
             }
-
-            return 0;
         }
 
         public void KisininKitaplari(string KullaniciAdi, Form form, GroupBox Grup, Label yok)

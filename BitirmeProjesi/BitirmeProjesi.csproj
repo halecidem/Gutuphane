@@ -89,17 +89,23 @@
     <Compile Include="Formlar\Profil.Designer.cs">
       <DependentUpon>Profil.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\KitapYaz.cs">
+    <Compile Include="Formlar\GitapYaz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\KitapYaz.Designer.cs">
-      <DependentUpon>KitapYaz.cs</DependentUpon>
+    <Compile Include="Formlar\GitapYaz.Designer.cs">
+      <DependentUpon>GitapYaz.cs</DependentUpon>
     </Compile>
     <Compile Include="Formlar\Gitap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formlar\Gitap.Designer.cs">
       <DependentUpon>Gitap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Gitaplarım.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Gitaplarım.Designer.cs">
+      <DependentUpon>Gitaplarım.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,11 +129,14 @@
     <EmbeddedResource Include="Formlar\Profil.resx">
       <DependentUpon>Profil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\KitapYaz.resx">
-      <DependentUpon>KitapYaz.cs</DependentUpon>
+    <EmbeddedResource Include="Formlar\GitapYaz.resx">
+      <DependentUpon>GitapYaz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\Gitap.resx">
       <DependentUpon>Gitap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Gitaplarım.resx">
+      <DependentUpon>Gitaplarım.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -152,6 +161,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="SpeechLib">
+      <Guid>{C866CA3A-32F7-11D2-9602-00C04F8EE628}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

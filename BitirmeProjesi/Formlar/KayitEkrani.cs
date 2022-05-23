@@ -28,7 +28,7 @@ namespace BitirmeProjesi.Formlar
         {
             GenelIslemler gi = new GenelIslemler();
 
-            if (txtKullaniciAdi.Text != "" && txtSifre.Text != "" && txtEposta.Text != "" && txtAdi.Text != "" && txtSoyadi.Text != "" && txtTelNo.Text != "")
+            if (txtKullaniciAdi.Text != "" && txtSifre.Text != "" && txtEposta.Text != "" && txtAdi.Text != "" && txtSoyadi.Text != "" && txtTelNo.Text != "" && txtTelNo.TextLength == 10)
             {
                 switch (gi.Kayit(txtKullaniciAdi.Text, txtSifre.Text, txtEposta.Text, txtAdi.Text, txtSoyadi.Text, dateTimePicker1.Value, Convert.ToInt64(txtTelNo.Text)))
                 {
@@ -37,7 +37,7 @@ namespace BitirmeProjesi.Formlar
                         txtKullaniciAdi.BackColor = Color.Red;
                         break;
                     case 1:
-                        MessageBox.Show("Kayıt Başarılı");
+                        MessageBox.Show("Kayıt Başarılı", "Tebrikler", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         GirisEkrani girisEkrani = new GirisEkrani();
                         girisEkrani.MdiParent = this.MdiParent;
                         this.Hide();
