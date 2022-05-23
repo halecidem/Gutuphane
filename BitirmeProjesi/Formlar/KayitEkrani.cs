@@ -21,9 +21,6 @@ namespace BitirmeProjesi.Formlar
         {
             #region Merkeze Konumlandırma
             this.Anchor = AnchorStyles.None;
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
-            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 4;
-            this.Location = new Point(x, y);
             #endregion
         }
 
@@ -35,6 +32,10 @@ namespace BitirmeProjesi.Formlar
             {
                 switch (gi.Kayit(txtKullaniciAdi.Text, txtSifre.Text, txtEposta.Text, txtAdi.Text, txtSoyadi.Text, dateTimePicker1.Value, Convert.ToInt64(txtTelNo.Text)))
                 {
+                    case -2:
+                        MessageBox.Show("Bu kullanıcı adı kullanılmakta. Lütfen farklı bir kullanıcı adı deneyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtKullaniciAdi.BackColor = Color.Red;
+                        break;
                     case 1:
                         MessageBox.Show("Kayıt Başarılı");
                         GirisEkrani girisEkrani = new GirisEkrani();
@@ -65,6 +66,11 @@ namespace BitirmeProjesi.Formlar
             ilkEkran.MdiParent = this.MdiParent;
             this.Close();
             ilkEkran.Show();
+        }
+
+        private void txtKullaniciAdi_TextChanged(object sender, EventArgs e)
+        {
+            txtKullaniciAdi.BackColor = Color.Black;
         }
     }
 }

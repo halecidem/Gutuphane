@@ -21,9 +21,6 @@ namespace BitirmeProjesi
         {
             #region Merkeze Konumlandırma
             this.Anchor = AnchorStyles.None;
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 5;
-            int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 3;
-            this.Location = new Point(x, y);
             #endregion
         }
 

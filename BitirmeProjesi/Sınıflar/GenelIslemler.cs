@@ -11,7 +11,7 @@ namespace BitirmeProjesi
 {
     class GenelIslemler
     {
-        SqlConnection baglanti = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;");
+        SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
         public bool SQLControl() //Sunucunun açık olduğunu kontrol eden fonksiyon
         {
             bool sunucuDurum = false;
@@ -97,7 +97,7 @@ namespace BitirmeProjesi
 
         public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, long telno )
         {
-            string numara, strNo1, strNo2;
+            string numara, strNo1, strNo2, kontrolStr = "";
             int no1, no2;
             numara = telno.ToString();
             strNo1 = numara.Substring(0, 6);
@@ -118,22 +118,111 @@ namespace BitirmeProjesi
             cmd.Parameters.AddWithValue("@kt", DateTime.UtcNow);
             cmd.Parameters.AddWithValue("@yt", "Kullanici");
 
+            SqlCommand kullaniciKontrol = new SqlCommand("select KullaniciAdi from Kullanicilar where KullaniciAdi = @ka", baglanti);
+            kullaniciKontrol.Parameters.AddWithValue("@ka", kullaniciAdi);
+
             try
             {
                 baglanti.Open();
-                cmd.ExecuteNonQuery();
+                SqlDataReader reader = kullaniciKontrol.ExecuteReader();
 
-                cmd.Dispose();
+                while(reader.Read())
+                {
+                    kontrolStr = reader.GetString(0);
+                }
+
+                reader.Close();
+                kullaniciKontrol.Dispose();
                 baglanti.Close();
-
-                return 1;
             }
             catch (Exception ex)
             {
                 cmd.Dispose();
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
-                return -1;
+                return 0;
+            }
+
+            if (kontrolStr == "")
+            {
+                try
+                {
+                    baglanti.Open();
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Dispose();
+                    baglanti.Close();
+
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    cmd.Dispose();
+                    baglanti.Close();
+                    MessageBox.Show(ex.Message);
+                    return -1;
+                }
+            }
+            else
+            {
+                return -2;
+            }
+        }
+
+        public string AdiNe(string kullaniciAdi)
+        {
+            string adi = "";
+
+            SqlCommand cmd = new SqlCommand("select * from Kullanicilar where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    adi = reader.GetString(4) + " " + reader.GetString(5);
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return adi;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return "";
+            }
+        }
+
+        public void ProfilBilgileri(string kullaniciAdi, Label lblAdi, Label lblSoyadi, Label lblEposta, Label lblKayitTarihi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Kullanicilar where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lblAdi.Text = reader.GetString(4);
+                    lblSoyadi.Text = reader.GetString(5);
+                    lblEposta.Text = reader.GetString(3);
+                    lblKayitTarihi.Text = reader.GetDateTime(9).ToString();
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
             }
         }
     }

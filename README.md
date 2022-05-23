@@ -9,7 +9,7 @@
 .
 ### Öğretmen
 
-- Kadir Erdem
+- Abdulkadir Erdem
 
 
 ### Hazırlayanlar
