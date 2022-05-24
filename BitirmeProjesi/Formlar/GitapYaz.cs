@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace BitirmeProjesi
 {
     public partial class GitapYaz : Form
     {
         string kullaniciAdi = "";
+        byte[] fotograf;
         public GitapYaz(string KullaniciAdi)
         {
             InitializeComponent();
@@ -42,9 +44,9 @@ namespace BitirmeProjesi
         private void button1_Click(object sender, EventArgs e)
         {
             KitapIslemleri ki = new KitapIslemleri();
-            if (textBox1.Text != "" && textBox2.Text != "")
+            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && txtKitapTuru.Text != "")
             {
-                switch (ki.KitapPaylas(kullaniciAdi, textBox1.Text, textBox2.Text))
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text,txtKitapTuru.Text,txtKitapKonusu.Text))
                 {
                     case 1:
                         MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,7 +74,6 @@ namespace BitirmeProjesi
         {
             OpenFileDialog file = new OpenFileDialog();
             file.Filter = "Resim Dosyası |*.jpg;*.nef;*.png| Tüm Dosyalar |*.*";
-            string fotoKonum = "";
 
             if (file.ShowDialog() == DialogResult.OK)
             {
@@ -80,17 +81,21 @@ namespace BitirmeProjesi
                 if (fi.Exists)
                 {
                     pictureBox1.ImageLocation = file.FileName;
-                    fotoKonum = file.FileName;
+                    try
+                    {
+                        //MemoryStream ms = new MemoryStream();
+                        //pictureBox1.Image.Save(ms, ImageFormat.Jpeg);
+                        //fotograf = ms.GetBuffer();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 else
                 {
                     //Hata
                 }
-            }
-
-            if (textBox1.Text.Length > 0 && textBox2.Text.Length > 0 && textBox3.Text.Length > 0 && fotoKonum.Length > 0)
-            {
-                //Taslağı kaydet kodu
             }
         }
     }

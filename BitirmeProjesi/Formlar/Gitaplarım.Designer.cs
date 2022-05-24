@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gitaplarım));
-            this.lblKullaniciAdi = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAciklama = new System.Windows.Forms.Label();
+            this.lblBaslik = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,28 +42,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblKullaniciAdi
+            // lblAciklama
             // 
-            this.lblKullaniciAdi.AutoSize = true;
-            this.lblKullaniciAdi.ForeColor = System.Drawing.Color.White;
-            this.lblKullaniciAdi.Location = new System.Drawing.Point(385, 92);
-            this.lblKullaniciAdi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblKullaniciAdi.Name = "lblKullaniciAdi";
-            this.lblKullaniciAdi.Size = new System.Drawing.Size(171, 20);
-            this.lblKullaniciAdi.TabIndex = 11;
-            this.lblKullaniciAdi.Text = "Sizin yazdığınız gitaplar";
+            this.lblAciklama.AutoSize = true;
+            this.lblAciklama.ForeColor = System.Drawing.Color.White;
+            this.lblAciklama.Location = new System.Drawing.Point(385, 92);
+            this.lblAciklama.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAciklama.Name = "lblAciklama";
+            this.lblAciklama.Size = new System.Drawing.Size(171, 20);
+            this.lblAciklama.TabIndex = 11;
+            this.lblAciklama.Text = "Sizin yazdığınız gitaplar";
             // 
-            // label1
+            // lblBaslik
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(361, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 54);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Gitaplarım";
+            this.lblBaslik.AutoSize = true;
+            this.lblBaslik.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblBaslik.ForeColor = System.Drawing.Color.White;
+            this.lblBaslik.Location = new System.Drawing.Point(361, 22);
+            this.lblBaslik.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBaslik.Name = "lblBaslik";
+            this.lblBaslik.Size = new System.Drawing.Size(222, 54);
+            this.lblBaslik.TabIndex = 10;
+            this.lblBaslik.Text = "Gitaplarım";
             // 
             // groupBox1
             // 
@@ -127,8 +127,8 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblKullaniciAdi);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAciklama);
+            this.Controls.Add(this.lblBaslik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Gitaplarım";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -144,8 +144,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblKullaniciAdi;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAciklama;
+        private System.Windows.Forms.Label lblBaslik;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

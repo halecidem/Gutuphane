@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtKitapAdi = new System.Windows.Forms.TextBox();
             this.lblKullaniciAdi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtKitapKonusu = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnGeri = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtKitapTuru = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,15 +51,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox1
+            // txtKitapAdi
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(197, 242);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(399, 26);
-            this.textBox1.TabIndex = 0;
+            this.txtKitapAdi.BackColor = System.Drawing.Color.Black;
+            this.txtKitapAdi.ForeColor = System.Drawing.Color.White;
+            this.txtKitapAdi.Location = new System.Drawing.Point(197, 242);
+            this.txtKitapAdi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtKitapAdi.Name = "txtKitapAdi";
+            this.txtKitapAdi.Size = new System.Drawing.Size(399, 26);
+            this.txtKitapAdi.TabIndex = 0;
             // 
             // lblKullaniciAdi
             // 
@@ -106,16 +106,16 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Gitap Konusu:";
             // 
-            // textBox2
+            // txtKitapKonusu
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(197, 373);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(625, 382);
-            this.textBox2.TabIndex = 16;
+            this.txtKitapKonusu.BackColor = System.Drawing.Color.Black;
+            this.txtKitapKonusu.ForeColor = System.Drawing.Color.White;
+            this.txtKitapKonusu.Location = new System.Drawing.Point(197, 373);
+            this.txtKitapKonusu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtKitapKonusu.Multiline = true;
+            this.txtKitapKonusu.Name = "txtKitapKonusu";
+            this.txtKitapKonusu.Size = new System.Drawing.Size(625, 382);
+            this.txtKitapKonusu.TabIndex = 16;
             // 
             // button1
             // 
@@ -180,15 +180,15 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Gitap Türü";
             // 
-            // textBox3
+            // txtKitapTuru
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Black;
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(197, 298);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(399, 26);
-            this.textBox3.TabIndex = 30;
+            this.txtKitapTuru.BackColor = System.Drawing.Color.Black;
+            this.txtKitapTuru.ForeColor = System.Drawing.Color.White;
+            this.txtKitapTuru.Location = new System.Drawing.Point(197, 298);
+            this.txtKitapTuru.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtKitapTuru.Name = "txtKitapTuru";
+            this.txtKitapTuru.Size = new System.Drawing.Size(399, 26);
+            this.txtKitapTuru.TabIndex = 30;
             // 
             // pictureBox1
             // 
@@ -223,17 +223,17 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtKitapTuru);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtKitapKonusu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblKullaniciAdi);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtKitapAdi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GitapYaz";
@@ -249,18 +249,18 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtKitapAdi;
         private System.Windows.Forms.Label lblKullaniciAdi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtKitapKonusu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGeri;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtKitapTuru;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
     }

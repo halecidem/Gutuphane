@@ -13,6 +13,7 @@ namespace BitirmeProjesi
     public partial class Gitaplarım : Form
     {
         string kullaniciAdi = "";
+        int yukseklik = 0;
         public Gitaplarım(string KullaniciAdi)
         {
             InitializeComponent();
@@ -36,14 +37,25 @@ namespace BitirmeProjesi
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;
+            KitapIslemleri ki = new KitapIslemleri();
+            yukseklik = ki.Kitaplarim(kullaniciAdi, groupBox1, this);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             #region Otomatik Boyutlandırma
             NavBar navBar = new NavBar(kullaniciAdi);
-            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            if (yukseklik > this.MdiParent.Size.Height - 45)
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, yukseklik); //Burada kaldık
+            }
+            else
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            }
             #endregion
+            lblBaslik.Location = new Point((this.Size.Width / 2) - (lblBaslik.Size.Width / 2), lblBaslik.Location.Y);
+            lblAciklama.Location = new Point((this.Size.Width / 2) - (lblAciklama.Size.Width / 2), lblAciklama.Location.Y);
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
