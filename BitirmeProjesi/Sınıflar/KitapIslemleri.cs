@@ -40,7 +40,7 @@ namespace BitirmeProjesi
             }
         }
 
-        public void KisininKitaplari(string KullaniciAdi, Form form, GroupBox Grup, Label yok)
+        public void KisininKitaplari(string KullaniciAdi, Form form, GroupBox Grup, Label yok, Label Paylasim)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
@@ -56,6 +56,9 @@ namespace BitirmeProjesi
                     lb.Items.Add(reader.GetString(2));
                 }
 
+                Grup.Text = "Yazdığı Kitaplar";
+                Paylasim.Text = lb.Items.Count.ToString();
+
                 if (lb.Items.Count > 0)
                 {
                     yok.Visible = false;
@@ -65,16 +68,26 @@ namespace BitirmeProjesi
                     {
                         Label label = new Label();
                         label.Location = new Point(Grup.Location.X + yok.Location.X, lblKonum);
-                        lblKonum += 38;
+                        
                         label.ForeColor = Color.White;
                         label.Text = lb.Items[i].ToString();
                         form.Controls.Add(label);
                         label.BringToFront();
 
+                        Button btn = new Button();
+                        btn.FlatStyle = FlatStyle.Flat;
+                        btn.Text = "Görüntüle";
+                        btn.BackColor = Color.Black;
+                        btn.ForeColor = Color.White;
+                        btn.Location = new Point(Grup.Location.X + Grup.Size.Width - label.Size.Width - yok.Location.X, lblKonum);
+                        form.Controls.Add(btn);
+                        btn.BringToFront();
+
+                        lblKonum += 38;
                         string kitap = lb.Items[i].ToString();
 
-                        label.Click += new EventHandler(label_Click);
-                        void label_Click(object sender, EventArgs e)
+                        btn.Click += new EventHandler(btn_Click);
+                        void btn_Click(object sender, EventArgs e)
                         {
                             Gitap gt = new Gitap(KullaniciAdi, kitap);
                             gt.MdiParent = form.MdiParent;
@@ -121,15 +134,11 @@ namespace BitirmeProjesi
                 MessageBox.Show(ex.Message);
             }
         }
-        public int Kitaplarim (string KullaniciAdi, GroupBox groupBox, Form form)
+        public ListBox Kitaplarim (string KullaniciAdi)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             ListBox lb = new ListBox();
-            int aralikX = 55;
-            int aralikY = 55;
-            int konumX = groupBox.Location.X + groupBox.Size.Width + aralikX;
-            int konumY = groupBox.Location.Y;
 
             try
             {
@@ -141,47 +150,40 @@ namespace BitirmeProjesi
                     lb.Items.Add(reader.GetString(2));
                 }
 
-                if (lb.Items.Count > 0)
-                {
-                    for (int i = 0; i < lb.Items.Count; i++)
-                    {
-                        if(konumX+groupBox.Size.Width > form.Size.Width)
-                        {
-                            konumX = groupBox.Location.X;
-                            konumY = groupBox.Location.Y + groupBox.Size.Height + aralikY;
-                        }
-                        
-                        GroupBox gb = new GroupBox();
-                        gb.ForeColor = Color.White;
-                        gb.Text = lb.Items[i].ToString();
-                        gb.Size= new Size(groupBox.Size.Width, groupBox.Size.Height);
-                        gb.Location = new Point(konumX, konumY);
-                        konumX += groupBox.Size.Width + aralikX;
-                        form.Controls.Add(gb);
-
-                        string kitap = lb.Items[i].ToString();
-
-                        gb.Click += new EventHandler(gb_Click);
-                        void gb_Click(object sender, EventArgs e)
-                        {
-                            Gitap gt = new Gitap(KullaniciAdi, kitap);
-                            gt.MdiParent = form.MdiParent;
-                            gt.Show();
-                        }
-                    }
-                }
-
                 cmd.Dispose();
                 reader.Close();
                 baglanti.Close();
-                return konumY + groupBox.Size.Height + (2 * aralikY) + groupBox.Location.Y;
+                //form.Size = new Size()
+                return lb;
             }
             catch (Exception ex)
             {
                 cmd.Dispose();
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
-                return 0;
+                return null;
+            }
+        }
+
+        public void KitabiSil(string KullaniciAdi, string KitapAdi)
+        {
+            SqlCommand cmd = new SqlCommand("delete from Kitaplar where KitapAdi = @ka and KullaniciAdi = @kul", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
             }
         }
     }

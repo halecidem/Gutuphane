@@ -34,6 +34,7 @@
             this.btnAra = new System.Windows.Forms.Button();
             this.btnKitapligim = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             this.btnAra.BackColor = System.Drawing.Color.Black;
             this.btnAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAra.ForeColor = System.Drawing.Color.White;
-            this.btnAra.Location = new System.Drawing.Point(30, 172);
+            this.btnAra.Location = new System.Drawing.Point(30, 226);
             this.btnAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(210, 35);
@@ -81,7 +82,7 @@
             this.btnKitapligim.BackColor = System.Drawing.Color.Black;
             this.btnKitapligim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKitapligim.ForeColor = System.Drawing.Color.White;
-            this.btnKitapligim.Location = new System.Drawing.Point(30, 231);
+            this.btnKitapligim.Location = new System.Drawing.Point(30, 285);
             this.btnKitapligim.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnKitapligim.Name = "btnKitapligim";
             this.btnKitapligim.Size = new System.Drawing.Size(210, 35);
@@ -94,6 +95,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(30, 169);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(210, 35);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Ara";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // NavBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -101,6 +116,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(270, 815);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnKitapligim);
             this.Controls.Add(this.btnAra);
             this.Controls.Add(this.btnAnaSayfa);
@@ -123,5 +139,6 @@
         private System.Windows.Forms.Button btnAra;
         private System.Windows.Forms.Button btnKitapligim;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
     }
 }
