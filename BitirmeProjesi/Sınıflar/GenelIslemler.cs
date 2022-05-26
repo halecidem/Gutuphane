@@ -95,26 +95,19 @@ namespace BitirmeProjesi
             }
         }
 
-        public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, long telno )
+        public int Kayit(string kullaniciAdi, string sifre, string eposta, string adi, string soyadi, DateTime dogumTarihi, Int64 telno )
         {
-            string numara, strNo1, strNo2, kontrolStr = "";
-            int no1, no2;
-            numara = telno.ToString();
-            strNo1 = numara.Substring(0, 6);
-            strNo2 = numara.Substring(7, 3);
-            no1 = Convert.ToInt32(strNo1);
-            no2 = Convert.ToInt32(strNo2);
+            string kontrolStr = "";
 
-            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], NO1, NO2, [Kayit Tarihi], Yetki)" +
-                "values (@ka, @si, @ep, @a, @so, @dt, @no1, @no2, @kt, @yt)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], No, [Kayit Tarihi], Yetki)" +
+                "values (@ka, @si, @ep, @a, @so, @dt, @no, @kt, @yt)", baglanti);
             cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
             cmd.Parameters.AddWithValue("@si", sifre);
             cmd.Parameters.AddWithValue("@ep", eposta);
             cmd.Parameters.AddWithValue("@a", adi);
             cmd.Parameters.AddWithValue("@so", soyadi);
             cmd.Parameters.AddWithValue("@dt", dogumTarihi);
-            cmd.Parameters.AddWithValue("@no1", no1);
-            cmd.Parameters.AddWithValue("@no2", no2);
+            cmd.Parameters.AddWithValue("@no", telno);
             cmd.Parameters.AddWithValue("@kt", DateTime.UtcNow);
             cmd.Parameters.AddWithValue("@yt", "Kullanici");
 
@@ -212,7 +205,7 @@ namespace BitirmeProjesi
                     lblAdi.Text = reader.GetString(4);
                     lblSoyadi.Text = reader.GetString(5);
                     lblEposta.Text = reader.GetString(3);
-                    lblKayitTarihi.Text = reader.GetDateTime(9).ToString();
+                    lblKayitTarihi.Text = reader.GetDateTime(8).ToString();
                 }
                 cmd.Dispose();
                 reader.Close();

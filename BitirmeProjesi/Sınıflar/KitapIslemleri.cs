@@ -13,31 +13,34 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
-        public int KitapPaylas(string KullaniciAdi, string KitapAdi, string Icerik)
+        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik)
         {
-            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapIcerigi) values (@ka, @kit, @ic)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu) values (@ka, @kit, @kt,@kk)", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             cmd.Parameters.AddWithValue("@kit", KitapAdi);
-            cmd.Parameters.AddWithValue("@ic", Icerik);
+            cmd.Parameters.AddWithValue("@kt", KitapTuru);
+            cmd.Parameters.AddWithValue("@kk", Icerik);
 
             try
             {
                 baglanti.Open();
                 cmd.ExecuteNonQuery();
+                
                 cmd.Dispose();
                 baglanti.Close();
+
+                return 1;
             }
             catch (Exception ex)
             {
                 cmd.Dispose();
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
+                return -1;
             }
-
-            return 0;
         }
 
-        public void KisininKitaplari(string KullaniciAdi, Form form, GroupBox Grup, Label yok)
+        public void KisininKitaplari(string KullaniciAdi, Form form, GroupBox Grup, Label yok, Label Paylasim)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
@@ -53,6 +56,9 @@ namespace BitirmeProjesi
                     lb.Items.Add(reader.GetString(2));
                 }
 
+                Grup.Text = "Yazdığı Kitaplar";
+                Paylasim.Text = lb.Items.Count.ToString();
+
                 if (lb.Items.Count > 0)
                 {
                     yok.Visible = false;
@@ -62,16 +68,26 @@ namespace BitirmeProjesi
                     {
                         Label label = new Label();
                         label.Location = new Point(Grup.Location.X + yok.Location.X, lblKonum);
-                        lblKonum += 38;
+                        
                         label.ForeColor = Color.White;
                         label.Text = lb.Items[i].ToString();
                         form.Controls.Add(label);
                         label.BringToFront();
 
+                        Button btn = new Button();
+                        btn.FlatStyle = FlatStyle.Flat;
+                        btn.Text = "Görüntüle";
+                        btn.BackColor = Color.Black;
+                        btn.ForeColor = Color.White;
+                        btn.Location = new Point(Grup.Location.X + Grup.Size.Width - label.Size.Width - yok.Location.X, lblKonum);
+                        form.Controls.Add(btn);
+                        btn.BringToFront();
+
+                        lblKonum += 38;
                         string kitap = lb.Items[i].ToString();
 
-                        label.Click += new EventHandler(label_Click);
-                        void label_Click(object sender, EventArgs e)
+                        btn.Click += new EventHandler(btn_Click);
+                        void btn_Click(object sender, EventArgs e)
                         {
                             Gitap gt = new Gitap(KullaniciAdi, kitap);
                             gt.MdiParent = form.MdiParent;
@@ -118,6 +134,57 @@ namespace BitirmeProjesi
                 MessageBox.Show(ex.Message);
             }
         }
+        public ListBox Kitaplarim (string KullaniciAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            ListBox lb = new ListBox();
 
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lb.Items.Add(reader.GetString(2));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                //form.Size = new Size()
+                return lb;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public void KitabiSil(string KullaniciAdi, string KitapAdi)
+        {
+            SqlCommand cmd = new SqlCommand("delete from Kitaplar where KitapAdi = @ka and KullaniciAdi = @kul", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

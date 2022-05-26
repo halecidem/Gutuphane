@@ -68,5 +68,44 @@ namespace BitirmeProjesi
             this.Close();
             ilkEkran.Show();
         }
+
+        private void sifre_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                GenelIslemler gi = new GenelIslemler();
+
+                if (kullaniciAdi.Text != "" && sifre.Text != "")
+                {
+                    switch (gi.Giris(kullaniciAdi.Text, sifre.Text))
+                    {
+                        case 1:
+                            lblHataMesaji.Text = "Kullanıcı adı ile ilgili bir hata oluştu.";
+                            break;
+                        case 2:
+                            lblHataMesaji.Text = "Şifre ile ilgili bir hata oluştu.";
+                            break;
+                        case 3:
+                            lblHataMesaji.Text = "Giriş başarılı.";
+                            NavBar navBar = new NavBar(kullaniciAdi.Text);
+                            navBar.MdiParent = this.MdiParent;
+                            this.Close();
+                            navBar.Show();
+                            break;
+                        case 4:
+                            lblHataMesaji.Text = "Hatalı sifre.";
+                            break;
+                        case 5:
+                            lblHataMesaji.Text = "Böyle bir kullanıcı bulunamadı.";
+                            break;
+                    }
+                }
+                else
+                {
+                    lblHataMesaji.Text = "Kullanıcı adı ve şifre alanı boş bırakılamaz.";
+                }
+                sifre.Text = "";
+            }
+            }
     }
 }

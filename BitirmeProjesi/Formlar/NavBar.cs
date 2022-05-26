@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace BitirmeProjesi
 {
@@ -50,9 +49,14 @@ namespace BitirmeProjesi
 
         private void btnAra_Click(object sender, EventArgs e)
         {
-            KitapYaz ky = new KitapYaz(kullaniciAdi);
-            ky.MdiParent = this.MdiParent;
-            ky.Show();
+            Gitaplarım git = new Gitaplarım(kullaniciAdi);
+            git.MdiParent = this.MdiParent;
+            git.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

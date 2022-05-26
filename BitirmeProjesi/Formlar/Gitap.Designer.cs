@@ -44,36 +44,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 117);
+            this.label1.Location = new System.Drawing.Point(60, 180);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Gitap Adı:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 154);
+            this.label2.Location = new System.Drawing.Point(40, 237);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Gitap İçeriği:";
             // 
             // lblKitap
             // 
             this.lblKitap.AutoSize = true;
-            this.lblKitap.Location = new System.Drawing.Point(98, 117);
+            this.lblKitap.Location = new System.Drawing.Point(147, 180);
+            this.lblKitap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKitap.Name = "lblKitap";
-            this.lblKitap.Size = new System.Drawing.Size(13, 13);
+            this.lblKitap.Size = new System.Drawing.Size(18, 20);
             this.lblKitap.TabIndex = 2;
             this.lblKitap.Text = "0";
             // 
             // lblIcerik
             // 
             this.lblIcerik.AutoSize = true;
-            this.lblIcerik.Location = new System.Drawing.Point(98, 154);
+            this.lblIcerik.Location = new System.Drawing.Point(147, 237);
+            this.lblIcerik.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIcerik.Name = "lblIcerik";
-            this.lblIcerik.Size = new System.Drawing.Size(13, 13);
+            this.lblIcerik.Size = new System.Drawing.Size(18, 20);
             this.lblIcerik.TabIndex = 3;
             this.lblIcerik.Text = "0";
             // 
@@ -82,10 +86,9 @@
             this.btnGeri.BackColor = System.Drawing.Color.Black;
             this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeri.ForeColor = System.Drawing.Color.White;
-            this.btnGeri.Location = new System.Drawing.Point(11, 11);
-            this.btnGeri.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGeri.Location = new System.Drawing.Point(16, 17);
             this.btnGeri.Name = "btnGeri";
-            this.btnGeri.Size = new System.Drawing.Size(27, 23);
+            this.btnGeri.Size = new System.Drawing.Size(40, 35);
             this.btnGeri.TabIndex = 27;
             this.btnGeri.Text = "<-";
             this.btnGeri.UseVisualStyleBackColor = false;
@@ -93,11 +96,11 @@
             // 
             // Gitap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(620, 529);
+            this.ClientSize = new System.Drawing.Size(930, 814);
             this.ControlBox = false;
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.lblIcerik);
@@ -106,6 +109,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Gitap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gütüphane";
