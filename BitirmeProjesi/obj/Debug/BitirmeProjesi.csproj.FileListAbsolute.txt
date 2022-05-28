@@ -34,7 +34,6 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjes
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.AnaSayfa.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.AnaForm.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Profil.resources
-C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.KitapYaz.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Gitap.resources
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\bin\Debug\BitirmeProjesi.exe.config
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\bin\Debug\BitirmeProjesi.exe
@@ -57,3 +56,7 @@ C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProj
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\Interop.SpeechLib.dll
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.csproj.ResolveComReference.cache
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapYaz.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\Interop.SpeechLib.dll
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.csproj.ResolveComReference.cache
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapYaz.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Gitaplarım.resources
