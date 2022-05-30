@@ -23,6 +23,7 @@ namespace BitirmeProjesi
         GroupBox[] gb = new GroupBox[50];
         Button[] btn = new Button[50];
         Button[] btn2 = new Button[50];
+        Button[] btn3 = new Button[50];
 
         public Gitaplarım(string KullaniciAdi)
         {
@@ -80,11 +81,20 @@ namespace BitirmeProjesi
                         this.Controls.Add(btn2[i]);
                         btn2[i].BringToFront();
 
+                        btn3[i] = new Button();
+                        btn3[i].FlatStyle = FlatStyle.Flat;
+                        btn3[i].Text = "Yaz";
+                        btn3[i].BackColor = Color.Black;
+                        btn3[i].ForeColor = Color.White;
+                        btn3[i].Size = new Size(gb[i].Size.Width / 4, btn[i].Size.Height);
+                        this.Controls.Add(btn3[i]);
+                        btn3[i].BringToFront();
+
                         string kitap = liste.Items[i].ToString();
 
                         void gb_Click(object sendr, EventArgs a)
                         {
-                            Gitap gt = new Gitap(kullaniciAdi, kitap);
+                            Gitap gt = new Gitap(kullaniciAdi, kullaniciAdi, kitap);
                             gt.MdiParent = this.MdiParent;
                             gt.Show();
                         }
@@ -97,9 +107,16 @@ namespace BitirmeProjesi
                             this.Close();
                             gt.Show();
                         }
+                        void btn3_Click(object sendr, EventArgs a)
+                        {
+                            ChapterYaz cy = new ChapterYaz(kullaniciAdi, kitap, kullaniciAdi);
+                            cy.MdiParent = this.MdiParent;
+                            cy.Show();
+                        }
 
                         gb[i].Click += new EventHandler(gb_Click);
                         btn[i].Click += new EventHandler(btn_Click);
+                        btn3[i].Click += new EventHandler(btn3_Click);
                     }
                 }
             }
@@ -133,14 +150,17 @@ namespace BitirmeProjesi
 
                     gb[i].Location = new Point(konumX[i], konumY[i]);
                     btn[i].Location = new Point(konumX[i] + gb[i].Size.Width - btn[i].Size.Width, konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
-                    btn2[i].Location = new Point(konumX[i], konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
+                    btn2[i].Location = new Point(konumX[i] + (gb[i].Size.Width / 2) - (btn2[i].Size.Width / 2), konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
+                    btn3[i].Location = new Point(konumX[i], konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
                 }
             }
 
             NavBar navBar = new NavBar(kullaniciAdi);
             if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
             {
+                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
                 this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
+                
             }
             else
             {

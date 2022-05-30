@@ -89,7 +89,7 @@ namespace BitirmeProjesi
                         btn.Click += new EventHandler(btn_Click);
                         void btn_Click(object sender, EventArgs e)
                         {
-                            Gitap gt = new Gitap(KullaniciAdi, kitap);
+                            Gitap gt = new Gitap(KullaniciAdi, KullaniciAdi, kitap);
                             gt.MdiParent = form.MdiParent;
                             gt.Show();
                         }
@@ -108,10 +108,11 @@ namespace BitirmeProjesi
             }
         }
 
-        public void KitabiGoruntule(string KitapAdi, Label lblKitapAdi, Label lblKitapIcerigi)
+        public void KitabiGoruntule(string KitapAdi, string YazarKullaniciAdi, Label lblKitapAdi, Label lblYazarAdi, Label lblKitapTuru, Label lblKitapKonusu)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            string yazar = "";
 
             try
             {
@@ -119,8 +120,10 @@ namespace BitirmeProjesi
                 SqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
+                    lblYazarAdi.Text = reader.GetString(1);
                     lblKitapAdi.Text = reader.GetString(2);
-                    lblKitapIcerigi.Text = reader.GetString(3);
+                    lblKitapTuru.Text = reader.GetString(3);
+                    lblKitapKonusu.Text = reader.GetString(4);
                 }
 
                 cmd.Dispose();
