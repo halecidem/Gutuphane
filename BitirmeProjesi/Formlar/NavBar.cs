@@ -38,6 +38,7 @@ namespace BitirmeProjesi
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             this.Size = new Size(this.Size.Width, this.MdiParent.Size.Height - 45);
+            this.Location = new Point(0, 0);
         }
 
         private void btnAnaSayfa_Click(object sender, EventArgs e)

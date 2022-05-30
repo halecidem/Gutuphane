@@ -46,10 +46,9 @@
             // 
             this.lblAciklama.AutoSize = true;
             this.lblAciklama.ForeColor = System.Drawing.Color.White;
-            this.lblAciklama.Location = new System.Drawing.Point(385, 92);
-            this.lblAciklama.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAciklama.Location = new System.Drawing.Point(257, 60);
             this.lblAciklama.Name = "lblAciklama";
-            this.lblAciklama.Size = new System.Drawing.Size(171, 20);
+            this.lblAciklama.Size = new System.Drawing.Size(114, 13);
             this.lblAciklama.TabIndex = 11;
             this.lblAciklama.Text = "Sizin yazdığınız gitaplar";
             // 
@@ -58,10 +57,9 @@
             this.lblBaslik.AutoSize = true;
             this.lblBaslik.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblBaslik.ForeColor = System.Drawing.Color.White;
-            this.lblBaslik.Location = new System.Drawing.Point(361, 22);
-            this.lblBaslik.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBaslik.Location = new System.Drawing.Point(241, 14);
             this.lblBaslik.Name = "lblBaslik";
-            this.lblBaslik.Size = new System.Drawing.Size(222, 54);
+            this.lblBaslik.Size = new System.Drawing.Size(154, 37);
             this.lblBaslik.TabIndex = 10;
             this.lblBaslik.Text = "Gitaplarım";
             // 
@@ -70,9 +68,11 @@
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 151);
+            this.groupBox1.Location = new System.Drawing.Point(11, 108);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 306);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(167, 199);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yeni Kitap Yaz";
@@ -81,9 +81,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(110, 76);
+            this.pictureBox2.Location = new System.Drawing.Point(73, 49);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 178);
+            this.pictureBox2.Size = new System.Drawing.Size(20, 116);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -92,9 +93,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(26, 149);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 97);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
@@ -109,9 +111,10 @@
             this.btnGeri.BackColor = System.Drawing.Color.Black;
             this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeri.ForeColor = System.Drawing.Color.White;
-            this.btnGeri.Location = new System.Drawing.Point(12, 12);
+            this.btnGeri.Location = new System.Drawing.Point(11, 11);
+            this.btnGeri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGeri.Name = "btnGeri";
-            this.btnGeri.Size = new System.Drawing.Size(40, 35);
+            this.btnGeri.Size = new System.Drawing.Size(27, 23);
             this.btnGeri.TabIndex = 28;
             this.btnGeri.Text = "<-";
             this.btnGeri.UseVisualStyleBackColor = false;
@@ -119,17 +122,18 @@
             // 
             // Gitaplarım
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(930, 814);
+            this.ClientSize = new System.Drawing.Size(620, 512);
             this.ControlBox = false;
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblAciklama);
             this.Controls.Add(this.lblBaslik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Gitaplarım";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gitaplarım";

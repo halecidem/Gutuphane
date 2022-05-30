@@ -14,9 +14,8 @@ namespace BitirmeProjesi
     {
         string kullaniciAdi = "";
         ListBox liste = new ListBox();
-        string kitapYedek = "";
-        int aralikX = 55;
-        int aralikY = 55;
+        int aralikX = 45;
+        int aralikY = 35;
         int[] konumX = new int[50];
         int konumXYedek = 0;
         int konumYYedek = 0;
@@ -44,91 +43,110 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width, navBar.Location.Y);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
 
             KitapIslemleri ki = new KitapIslemleri();
             liste = ki.Kitaplarim(kullaniciAdi);
-            konumXYedek = groupBox1.Location.X;
-            konumYYedek = groupBox1.Location.Y;
 
             #region Kutular
             if (liste.Items.Count > 0)
             {
                 for (int i = 0; i < liste.Items.Count; i++)
                 {
-                    gb[i] = new GroupBox();
-                    gb[i].ForeColor = Color.White;
-                    gb[i].Text = liste.Items[i].ToString();
-                    kitapYedek = liste.Items[i].ToString();
-                    gb[i].Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
-                    this.Controls.Add(gb[i]);
+                    if (liste.Items[i] != null)
+                    {
+                        gb[i] = new GroupBox();
+                        gb[i].ForeColor = Color.White;
+                        gb[i].Text = liste.Items[i].ToString();
+                        gb[i].Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
+                        this.Controls.Add(gb[i]);
 
-                    string kitap = liste.Items[i].ToString();
+                        btn[i] = new Button();
+                        btn[i].FlatStyle = FlatStyle.Flat;
+                        btn[i].Text = "Sil";
+                        btn[i].BackColor = Color.Black;
+                        btn[i].ForeColor = Color.White;
+                        btn[i].Size = new Size(gb[i].Size.Width / 4, btn[i].Size.Height);
+                        this.Controls.Add(btn[i]);
+                        btn[i].BringToFront();
 
-                    btn[i] = new Button();
-                    btn[i].FlatStyle = FlatStyle.Flat;
-                    btn[i].Text = "Sil";
-                    btn[i].BackColor = Color.Black;
-                    btn[i].ForeColor = Color.White;
-                    btn[i].Size = new Size(gb[i].Size.Width / 4, btn[i].Size.Height);
-                    this.Controls.Add(btn[i]);
-                    btn[i].BringToFront();
+                        btn2[i] = new Button();
+                        btn2[i].FlatStyle = FlatStyle.Flat;
+                        btn2[i].Text = "Düzenle";
+                        btn2[i].BackColor = Color.Black;
+                        btn2[i].ForeColor = Color.White;
+                        this.Controls.Add(btn2[i]);
+                        btn2[i].BringToFront();
 
-                    btn2[i] = new Button();
-                    btn2[i].FlatStyle = FlatStyle.Flat;
-                    btn2[i].Text = "Düzenle";
-                    btn2[i].BackColor = Color.Black;
-                    btn2[i].ForeColor = Color.White;
-                    this.Controls.Add(btn2[i]);
-                    btn2[i].BringToFront();
+                        string kitap = liste.Items[i].ToString();
 
-                    gb[i].Click += new EventHandler(gb_Click);
-                    btn[i].Click += new EventHandler(btn_Click);
+                        void gb_Click(object sendr, EventArgs a)
+                        {
+                            Gitap gt = new Gitap(kullaniciAdi, kitap);
+                            gt.MdiParent = this.MdiParent;
+                            gt.Show();
+                        }
+                        void btn_Click(object sendr, EventArgs a)
+                        {
+                            KitapIslemleri kt = new KitapIslemleri();
+                            kt.KitabiSil(kullaniciAdi, kitap);
+                            Gitaplarım gt = new Gitaplarım(kullaniciAdi);
+                            gt.MdiParent = this.MdiParent;
+                            this.Close();
+                            gt.Show();
+                        }
+
+                        gb[i].Click += new EventHandler(gb_Click);
+                        btn[i].Click += new EventHandler(btn_Click);
+                    }
                 }
             }
             #endregion
-
 
             timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            #region Otomatik Boyutlandırma
-            NavBar navBar = new NavBar(kullaniciAdi);
-            if ((liste.Items.Count * groupBox1.Size.Height) + (liste.Items.Count * aralikY) + groupBox1.Location.Y > this.MdiParent.Size.Height - 45)
-            {
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, (liste.Items.Count * groupBox1.Size.Height) + (liste.Items.Count * aralikY) + groupBox1.Location.Y); //Burada kaldık
-            }
-            else
-            {
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
-            }
-            #endregion
+            
             lblBaslik.Location = new Point((this.Size.Width / 2) - (lblBaslik.Size.Width / 2), lblBaslik.Location.Y);
             lblAciklama.Location = new Point((this.Size.Width / 2) - (lblAciklama.Size.Width / 2), lblAciklama.Location.Y);
 
+            #region Otomatik Boyutlandırma
             konumXYedek = groupBox1.Location.X;
-            //Konum Y ayarla
+            konumYYedek = groupBox1.Location.Y;
 
             for (int i = 0; i < gb.Length; i++)
             {
                 if (gb[i] != null)
                 {
                     konumXYedek += groupBox1.Size.Width + aralikX;
-                    if (konumXYedek >= this.Size.Width)
+                    if (konumXYedek + groupBox1.Size.Width >= this.Size.Width)
                     {
                         konumYYedek += groupBox1.Size.Height + aralikY;
+                        konumXYedek = groupBox1.Location.X;
                     }
                     konumX[i] = konumXYedek;
                     konumY[i] = konumYYedek;
+
                     gb[i].Location = new Point(konumX[i], konumY[i]);
                     btn[i].Location = new Point(konumX[i] + gb[i].Size.Width - btn[i].Size.Width, konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
                     btn2[i].Location = new Point(konumX[i], konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
                 }
             }
+
+            NavBar navBar = new NavBar(kullaniciAdi);
+            if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
+            }
+            else
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            }
+            #endregion
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
@@ -152,16 +170,6 @@ namespace BitirmeProjesi
             ky.Show();
         }
 
-        void gb_Click(object sender, EventArgs e)
-        {
-            Gitap gt = new Gitap(kullaniciAdi, kitapYedek);
-            gt.MdiParent = this.MdiParent;
-            gt.Show();
-        }
-        void btn_Click(object sender, EventArgs e)
-        {
-            KitapIslemleri kt = new KitapIslemleri();
-            kt.KitabiSil(kullaniciAdi, kitapYedek);
-        }
+        
     }
 }

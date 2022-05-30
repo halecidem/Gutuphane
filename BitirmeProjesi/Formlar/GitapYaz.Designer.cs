@@ -115,7 +115,7 @@
             this.txtKitapKonusu.Multiline = true;
             this.txtKitapKonusu.Name = "txtKitapKonusu";
             this.txtKitapKonusu.Size = new System.Drawing.Size(625, 382);
-            this.txtKitapKonusu.TabIndex = 16;
+            this.txtKitapKonusu.TabIndex = 17;
             // 
             // button1
             // 
@@ -126,7 +126,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 35);
-            this.button1.TabIndex = 17;
+            this.button1.TabIndex = 18;
             this.button1.Text = "Taslağı Kaydet";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -188,7 +188,7 @@
             this.txtKitapTuru.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtKitapTuru.Name = "txtKitapTuru";
             this.txtKitapTuru.Size = new System.Drawing.Size(399, 26);
-            this.txtKitapTuru.TabIndex = 30;
+            this.txtKitapTuru.TabIndex = 16;
             // 
             // pictureBox1
             // 
@@ -255,13 +255,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtKitapTuru;
         private System.Windows.Forms.TextBox txtKitapKonusu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGeri;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtKitapTuru;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
     }

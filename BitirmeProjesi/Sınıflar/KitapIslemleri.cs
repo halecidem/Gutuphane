@@ -153,7 +153,6 @@ namespace BitirmeProjesi
                 cmd.Dispose();
                 reader.Close();
                 baglanti.Close();
-                //form.Size = new Size()
                 return lb;
             }
             catch (Exception ex)
