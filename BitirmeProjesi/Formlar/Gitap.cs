@@ -12,13 +12,14 @@ namespace BitirmeProjesi
 {
     public partial class Gitap : Form
     {
-        string kullaniciAdi = "", kitapAdi = "";
+        string kullaniciAdi = "", kitapAdi = "", yazarKullaniciAdi = "";
         int maxSize = 0;
-        public Gitap(string KullaniciAdi, string KitapAdi)
+        public Gitap(string KullaniciAdi, string YazarKullaniciAdi, string KitapAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
             this.kitapAdi = KitapAdi;
+            this.yazarKullaniciAdi = YazarKullaniciAdi;
         }
 
         private void Gitap_Load(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace BitirmeProjesi
             maxSize = lblKitapTuru.Size.Width;
             timer1.Enabled = true;
             KitapIslemleri ki = new KitapIslemleri();
-            ki.KitabiGoruntule(kitapAdi, lblKitap, lblKitapTuru);
+            ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu);
         }
 
         private void btnGeri_Click(object sender, EventArgs e)

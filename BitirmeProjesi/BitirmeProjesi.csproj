@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChapterYaz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChapterYaz.Designer.cs">
+      <DependentUpon>ChapterYaz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formlar\AnaSayfa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sınıflar\GenelIslemler.cs" />
     <Compile Include="Sınıflar\KitapIslemleri.cs" />
+    <EmbeddedResource Include="ChapterYaz.resx">
+      <DependentUpon>ChapterYaz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formlar\AnaForm.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
     </EmbeddedResource>

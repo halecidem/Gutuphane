@@ -13,6 +13,7 @@ namespace BitirmeProjesi
     public partial class Profil : Form
     {
         string kullaniciAdi = "", hedefKullaniciAdi = "";
+        int KitapSayisi = 0;
         public Profil(string KullaniciAdi, string HedefKullaniciAdi)
         {
             InitializeComponent();
@@ -31,16 +32,23 @@ namespace BitirmeProjesi
             timer1.Enabled = true;
             GenelIslemler gi = new GenelIslemler();
             gi.ProfilBilgileri(kullaniciAdi, lblAdi, lblSoyadi, lblEposta, lblKayitTarihi);
-            KitapIslemleri ki = new KitapIslemleri();
-            ki.KisininKitaplari(kullaniciAdi, this, groupBox1, lblYok, lblPaylasim);
             lblKullaniciAdi.Text = hedefKullaniciAdi;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             #region Otomatik Boyutlandırma
-            NavBar navBar = new NavBar(kullaniciAdi);
-            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            KitapIslemleri ki = new KitapIslemleri();
+            KitapSayisi = ki.KisininKitaplari(kullaniciAdi, this, groupBox1, lblYok, lblPaylasim);
+            if (KitapSayisi > 0)
+            {
+                this.Size = new Size(this.Size.Width, groupBox1.Location.Y + groupBox1.Size.Height + (KitapSayisi * 38) + 40);
+            }
+            else
+            {
+                NavBar navBar = new NavBar(kullaniciAdi);
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            }
             #endregion
         }
 

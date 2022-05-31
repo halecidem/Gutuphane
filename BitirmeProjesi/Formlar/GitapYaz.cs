@@ -59,6 +59,10 @@ namespace BitirmeProjesi
                         break;
                 }
             }
+            else
+            {
+                MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,6 +99,31 @@ namespace BitirmeProjesi
                 {
                     //Hata
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            KitapIslemleri ki = new KitapIslemleri();
+            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && txtKitapTuru.Text != "")
+            {
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text, txtKitapTuru.Text, txtKitapKonusu.Text))
+                {
+                    case 1:
+                        MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ChapterYaz cy = new ChapterYaz(kullaniciAdi, txtKitapAdi.Text, kullaniciAdi);
+                        cy.MdiParent = this.MdiParent;
+                        this.Close();
+                        cy.Show();
+                        break;
+                    case -1:
+                        MessageBox.Show("Kitap kaydedilemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

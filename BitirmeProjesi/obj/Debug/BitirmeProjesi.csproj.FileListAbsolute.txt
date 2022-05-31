@@ -60,3 +60,4 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\Interop.Speec
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.csproj.ResolveComReference.cache
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapYaz.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Gitaplarım.resources
+C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.ChapterYaz.resources
