@@ -13,6 +13,7 @@ namespace BitirmeProjesi
     public partial class ChapterYaz : Form
     {
         string kullaniciAdi = "", kitapAdi = "", yazarAdi = "";
+        int ChapterSayisi = 0;
         public ChapterYaz(string KullaniciAdi, string KitapAdi, string YazarAdi)
         {
             InitializeComponent();
@@ -34,6 +35,33 @@ namespace BitirmeProjesi
             #endregion
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            KitapIslemleri ki = new KitapIslemleri();
+            if (txtChapterAdi != null && txtChapter != null)
+            {
+                switch (ki.ChapterKaydet(yazarAdi, kitapAdi, ChapterSayisi, txtChapterAdi, txtChapter))
+                {
+                    case 1:
+                        MessageBox.Show("Chapter başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Gitaplarım git = new Gitaplarım(kullaniciAdi);
+                        git.MdiParent = this.MdiParent;
+                        this.Close();
+                        git.Show();
+                        break;
+                    case -1:
+                        MessageBox.Show("Chapter kaydedilemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnGeri_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -48,6 +76,10 @@ namespace BitirmeProjesi
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;
+            KitapIslemleri ki = new KitapIslemleri();
+            ChapterSayisi = ki.ChapterSayisi(yazarAdi, kitapAdi);
+            lblChapter.Text = ChapterSayisi.ToString();
+            lblKitap.Text = kitapAdi;
         }
     }
 }

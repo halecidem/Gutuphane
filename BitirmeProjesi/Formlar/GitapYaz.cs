@@ -59,6 +59,10 @@ namespace BitirmeProjesi
                         break;
                 }
             }
+            else
+            {
+                MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -116,6 +120,10 @@ namespace BitirmeProjesi
                         MessageBox.Show("Kitap kaydedilemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -174,13 +174,14 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(756, 14);
+            this.button1.Location = new System.Drawing.Point(817, 14);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 35);
+            this.button1.Size = new System.Drawing.Size(78, 35);
             this.button1.TabIndex = 44;
-            this.button1.Text = "Taslağı Kaydet";
+            this.button1.Text = "Paylaş";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnGeri
             // 
