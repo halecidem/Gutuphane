@@ -25,7 +25,7 @@ namespace BitirmeProjesi
                 MdiClient client = control as MdiClient;
                 if (!(client == null))
                 {
-                    client.BackColor = Color.FromArgb(20, 20, 20);
+                    client.BackColor = Color.FromArgb(30, 30, 30);
                     break;
                 }
             }

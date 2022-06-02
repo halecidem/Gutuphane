@@ -248,5 +248,66 @@ namespace BitirmeProjesi
                 return -1;
             }
         }
+        public int OkuSayfasi (string yazaradi , string kitapadi, ListBox lbChapterAdi, ListBox lbBolum)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kitapadi);
+            cmd.Parameters.AddWithValue("@ya", yazaradi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lbChapterAdi.Items.Add(reader.GetString(4));
+                    lbBolum.Items.Add(reader.GetString(5));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public int ChapterAdlari(string yazaradi, string kitapadi, ListBox lbChapterAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kitapadi);
+            cmd.Parameters.AddWithValue("@ya", yazaradi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lbChapterAdi.Items.Add(reader.GetString(4));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
     }
+    
 }

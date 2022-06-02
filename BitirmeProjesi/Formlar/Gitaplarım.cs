@@ -158,13 +158,13 @@ namespace BitirmeProjesi
             NavBar navBar = new NavBar(kullaniciAdi);
             if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
             {
-                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
+                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
                 
             }
             else
             {
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             }
             #endregion
         }
