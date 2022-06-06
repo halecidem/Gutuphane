@@ -107,6 +107,12 @@ namespace BitirmeProjesi
                             this.Close();
                             gt.Show();
                         }
+                        void btn2_Click(object sendr, EventArgs a)
+                        {
+                            GitapDuzenle gd = new GitapDuzenle(kullaniciAdi, kitap, kullaniciAdi);
+                            gd.MdiParent = this.MdiParent;
+                            gd.Show();
+                        }
                         void btn3_Click(object sendr, EventArgs a)
                         {
                             ChapterYaz cy = new ChapterYaz(kullaniciAdi, kitap, kullaniciAdi);
@@ -116,6 +122,7 @@ namespace BitirmeProjesi
 
                         gb[i].Click += new EventHandler(gb_Click);
                         btn[i].Click += new EventHandler(btn_Click);
+                        btn2[i].Click += new EventHandler(btn2_Click);
                         btn3[i].Click += new EventHandler(btn3_Click);
                     }
                 }

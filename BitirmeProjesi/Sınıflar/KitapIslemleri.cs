@@ -13,13 +13,14 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
-        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik)
+        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik, string Etiketler)
         {
-            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu) values (@ka, @kit, @kt,@kk)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler) values (@ka, @kit, @kt,@kk, @et)", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             cmd.Parameters.AddWithValue("@kit", KitapAdi);
             cmd.Parameters.AddWithValue("@kt", KitapTuru);
             cmd.Parameters.AddWithValue("@kk", Icerik);
+            cmd.Parameters.AddWithValue("@et", Etiketler);
 
             try
             {

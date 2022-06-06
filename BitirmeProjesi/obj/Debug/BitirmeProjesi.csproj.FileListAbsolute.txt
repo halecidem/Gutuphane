@@ -63,3 +63,5 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjes
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.ChapterYaz.resources
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.IlkEkran.resources
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Oku.resources
+C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Ara.resources
+C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapDuzenle.resources

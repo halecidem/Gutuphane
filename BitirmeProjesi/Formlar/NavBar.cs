@@ -57,7 +57,9 @@ namespace BitirmeProjesi
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Ara a = new Ara(kullaniciAdi);
+            a.MdiParent = this.MdiParent;
+            a.Show();
         }
     }
 }
