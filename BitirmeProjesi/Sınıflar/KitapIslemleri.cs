@@ -309,6 +309,39 @@ namespace BitirmeProjesi
                 return -1;
             }
         }
+
+        public int KacinciChapter(string YazarAdi, string KitapAdi, string ChapterAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka and Baslik = @ba", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@ba", ChapterAdi);
+
+            int HangiChapter = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    HangiChapter = reader.GetInt32(3);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return HangiChapter;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
     }
     
 }

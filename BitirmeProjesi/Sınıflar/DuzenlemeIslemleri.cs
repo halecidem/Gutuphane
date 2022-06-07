@@ -44,5 +44,123 @@ namespace BitirmeProjesi
                 baglanti.Close();
             }
         }
+
+        public int DuzenlemeleriKaydet(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler)
+        {
+            SqlCommand cmd = new SqlCommand("update Kitaplar set KitapAdi = @txtKitapAdi, KitapTuru = @kt, KitapKonusu = @kk, Etiketler = @et where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@txtKitapAdi", txtKitapAdi.Text);
+            cmd.Parameters.AddWithValue("@kt", txtKitapTuru.Text);
+            cmd.Parameters.AddWithValue("@kk", txtKitapKonusu.Text);
+            cmd.Parameters.AddWithValue("@et", txtEtiketler.Text);
+
+            SqlCommand cmd2 = new SqlCommand("update Chapterlar set KitapAdi = @yenika where KitapAdi = @ka and Yazar = @ya", baglanti);
+            cmd2.Parameters.AddWithValue("@yenika", txtKitapAdi.Text);
+            cmd2.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd2.Parameters.AddWithValue("@ya", YazarAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+
+                cmd.Dispose();
+                cmd2.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                cmd2.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
+
+        public void BolumDuzenleBilgileri(string KitapAdi, string YazarAdi, string ChapterAdi, TextBox txtBaslik, TextBox txtIcerik, Label lblKitapAdi, Label lblChapterSayisi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where KitapAdi = @ka and Yazar = @ya and Baslik = @ba", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@ba", ChapterAdi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lblKitapAdi.Text = reader.GetString(2);
+                    txtBaslik.Text = reader.GetString(4);
+                    txtIcerik.Text = reader.GetString(5);
+                    lblChapterSayisi.Text = reader.GetString(3);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+            }
+        }
+
+        public int BolumDuzenlemeleriKaydet(string KitapAdi, string YazarAdi, string BolumAdi, TextBox txtBaslik, TextBox txtIcerik)
+        {
+            SqlCommand cmd = new SqlCommand("update Chapterlar set Baslik = @ba, Chapter = @ca where KitapAdi = @ka and Yazar = @ya and Baslik = @bol", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@ba", txtBaslik.Text);
+            cmd.Parameters.AddWithValue("@ca", txtIcerik.Text);
+            cmd.Parameters.AddWithValue("@bol", BolumAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
+
+        public int BolumSil(string KitapAdi, string YazarAdi, string BolumAdi)
+        {
+            SqlCommand cmd = new SqlCommand("delete from Chapterlar where KitapAdi = @ka and Yazar = @ya and Baslik = @bol", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@bol", BolumAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
     }
 }

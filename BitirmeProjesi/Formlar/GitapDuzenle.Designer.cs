@@ -54,12 +54,12 @@
             // 
             this.lblKullaniciAdi.AutoSize = true;
             this.lblKullaniciAdi.ForeColor = System.Drawing.Color.White;
-            this.lblKullaniciAdi.Location = new System.Drawing.Point(356, 83);
+            this.lblKullaniciAdi.Location = new System.Drawing.Point(247, 90);
             this.lblKullaniciAdi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKullaniciAdi.Name = "lblKullaniciAdi";
-            this.lblKullaniciAdi.Size = new System.Drawing.Size(240, 20);
+            this.lblKullaniciAdi.Size = new System.Drawing.Size(468, 20);
             this.lblKullaniciAdi.TabIndex = 15;
-            this.lblKullaniciAdi.Text = "Kendi kitabınızda değişiklik yapın.";
+            this.lblKullaniciAdi.Text = "Chapter düzenlemelerinden sonra sayfayı yenilemeyi unutmayınız.";
             // 
             // label1
             // 
@@ -183,6 +183,7 @@
             this.button1.TabIndex = 41;
             this.button1.Text = "Taslağı Kaydet";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtKitapKonusu
             // 
@@ -236,6 +237,7 @@
             this.cbBolumler.Name = "cbBolumler";
             this.cbBolumler.Size = new System.Drawing.Size(625, 28);
             this.cbBolumler.TabIndex = 51;
+            this.cbBolumler.SelectedIndexChanged += new System.EventHandler(this.cbBolumler_SelectedIndexChanged);
             // 
             // label7
             // 

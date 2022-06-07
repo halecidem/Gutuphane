@@ -32,6 +32,39 @@ namespace BitirmeProjesi
             timer1.Enabled = true;
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
             di.DuzenleBilgileri(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket);
+            KitapIslemleri ki = new KitapIslemleri();
+            ListBox lb = new ListBox();
+            ki.ChapterAdlari(yazarAdi, kitapAdi, lb);
+            for (int i = 0; i < lb.Items.Count; i++)
+            {
+                cbBolumler.Items.Add(lb.Items[i]);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DuzenlemeIslemleri di = new DuzenlemeIslemleri();
+            switch (di.DuzenlemeleriKaydet(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket))
+            {
+                case 1:
+                    MessageBox.Show("Kitap başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Gitaplarım git = new Gitaplarım(kullaniciAdi);
+                    git.MdiParent = this.MdiParent;
+                    this.Close();
+                    git.Show();
+                    break;
+                case -1:
+                    MessageBox.Show("Kitap güncellenemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+
+        }
+
+        private void cbBolumler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChapterDuzenle cd = new ChapterDuzenle(yazarAdi, kitapAdi, cbBolumler.Text);
+            cd.MdiParent = this.MdiParent;
+            cd.Show();
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
