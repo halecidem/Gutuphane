@@ -99,6 +99,13 @@ namespace BitirmeProjesi
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GenelIslemler gi = new GenelIslemler();
+            gi.SesliOku(lblBaslik);
+            gi.SesliOku(lblBolum);
+        }
+
         private void btnGeri_Click(object sender, EventArgs e)
         {
             this.Close();

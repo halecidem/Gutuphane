@@ -35,7 +35,7 @@ namespace BitirmeProjesi
         private void BaslangicForm_Load(object sender, EventArgs e)
         {
             SpVoice oku = new SpVoice();
-            oku.Speak("Bismillahirrahmanirrahim", SpeechVoiceSpeakFlags.SVSFDefault);
+            //oku.Speak("Bismillahirrahmanirrahim", SpeechVoiceSpeakFlags.SVSFDefault);
         }
 
         private void BaslangicForm_Shown(object sender, EventArgs e)

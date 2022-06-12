@@ -116,7 +116,6 @@ namespace BitirmeProjesi
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
-            string yazar = "";
 
             try
             {
@@ -375,6 +374,8 @@ namespace BitirmeProjesi
                 return null;
             }
         }
+
+        
     }
     
 }

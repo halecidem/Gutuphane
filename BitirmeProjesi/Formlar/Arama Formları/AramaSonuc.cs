@@ -57,7 +57,7 @@ namespace BitirmeProjesi
             }
             else if (aramaTuru == 2)
             {
-                
+                ai.YazarAra(arama, lbKitapAdi, lbYazarAdi);
             }
             #region Kutular
             if (lbKitapAdi.Items.Count > 0)
@@ -118,7 +118,8 @@ namespace BitirmeProjesi
                     konumY[i] = konumYYedek;
 
                     gb[i].Location = new Point(konumX[i], konumY[i]);
-                    lblYazar[i].Location = new Point(gb[i].Location.X + (gb[i].Size.Width / 2) - (lblYazar[i].Size.Width / 4), gb[i].Location.Y + gb[i].Size.Height - (lblYazar[i].Size.Height / 2));
+                    lblYazar[i].Size = new Size(lblYazar[i].Text.Length * 10, lblYazar[i].Size.Height);
+                    lblYazar[i].Location = new Point(gb[i].Location.X + (gb[i].Size.Width / 2) - (lblYazar[i].Size.Width / 2), gb[i].Location.Y + gb[i].Size.Height - (lblYazar[i].Size.Height / 2));
                     konumXYedek += groupBox1.Size.Width + aralikX;
                 }
             }

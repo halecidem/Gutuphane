@@ -62,7 +62,7 @@ namespace BitirmeProjesi
                 reader.Close();
                 baglanti.Close();
             }
-            catch (Exception ex)
+            catch
             {
                 cmd.Dispose();
                 baglanti.Close();
@@ -128,7 +128,7 @@ namespace BitirmeProjesi
                 reader.Close();
                 baglanti.Close();
             }
-            catch (Exception ex)
+            catch
             {
                 cmd.Dispose();
                 baglanti.Close();
