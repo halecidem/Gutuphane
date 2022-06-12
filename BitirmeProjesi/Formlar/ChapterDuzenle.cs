@@ -46,7 +46,10 @@ namespace BitirmeProjesi
             {
                 case 1:
                     MessageBox.Show("Bölüm başarıyla silindi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GitapDuzenle gd = new GitapDuzenle(kullaniciAdi, kitapAdi, kullaniciAdi);
+                    gd.MdiParent = this.MdiParent;
                     this.Close();
+                    gd.Show();
                     break;
                 case -1:
                     MessageBox.Show("Bölüm silinemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);

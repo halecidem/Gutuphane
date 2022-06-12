@@ -127,7 +127,7 @@ namespace BitirmeProjesi
             {
                 btnOnceki.Enabled = false;
             }
-            if (chapter >= (ki.ChapterSayisi(yazar, kitapAdi) - 1))
+            if (chapter >= (ki.ChapterSayisi(yazar, kitapAdi) - 2))
             {
                 btnSonraki.Enabled = false;
             }

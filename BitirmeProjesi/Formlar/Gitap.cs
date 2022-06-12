@@ -36,6 +36,7 @@ namespace BitirmeProjesi
             KitapIslemleri ki = new KitapIslemleri();
             ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu);
             lblbolumsayisi.Text = (ki.ChapterSayisi(yazarKullaniciAdi, kitapAdi) - 1).ToString();
+            lblDurum.Text = ki.KitapDurum(yazarKullaniciAdi, kitapAdi);
             ki.ChapterAdlari(yazarKullaniciAdi, kitapAdi, lbChapterAdlari);
             for (int i = 0; i < lbChapterAdlari.Items.Count; i++)
             {

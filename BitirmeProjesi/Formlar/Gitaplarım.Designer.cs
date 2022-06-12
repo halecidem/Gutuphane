@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gitaplarım));
-            this.lblAciklama = new System.Windows.Forms.Label();
+            this.lblSayfaAciklama = new System.Windows.Forms.Label();
             this.lblBaslik = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -44,13 +44,13 @@
             // 
             // lblAciklama
             // 
-            this.lblAciklama.AutoSize = true;
-            this.lblAciklama.ForeColor = System.Drawing.Color.White;
-            this.lblAciklama.Location = new System.Drawing.Point(257, 60);
-            this.lblAciklama.Name = "lblAciklama";
-            this.lblAciklama.Size = new System.Drawing.Size(114, 13);
-            this.lblAciklama.TabIndex = 11;
-            this.lblAciklama.Text = "Sizin yazdığınız gitaplar";
+            this.lblSayfaAciklama.AutoSize = true;
+            this.lblSayfaAciklama.ForeColor = System.Drawing.Color.White;
+            this.lblSayfaAciklama.Location = new System.Drawing.Point(257, 60);
+            this.lblSayfaAciklama.Name = "lblAciklama";
+            this.lblSayfaAciklama.Size = new System.Drawing.Size(114, 13);
+            this.lblSayfaAciklama.TabIndex = 11;
+            this.lblSayfaAciklama.Text = "Sizin yazdığınız gitaplar";
             // 
             // lblBaslik
             // 
@@ -130,7 +130,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblAciklama);
+            this.Controls.Add(this.lblSayfaAciklama);
             this.Controls.Add(this.lblBaslik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -148,7 +148,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblAciklama;
+        private System.Windows.Forms.Label lblSayfaAciklama;
         private System.Windows.Forms.Label lblBaslik;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

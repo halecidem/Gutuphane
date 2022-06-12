@@ -58,6 +58,8 @@ namespace BitirmeProjesi
                 {
                     if (liste.Items[i] != null)
                     {
+                        string kitap = liste.Items[i].ToString();
+
                         gb[i] = new GroupBox();
                         gb[i].ForeColor = Color.White;
                         gb[i].Text = liste.Items[i].ToString();
@@ -78,8 +80,6 @@ namespace BitirmeProjesi
                         btn2[i].Text = "Düzenle";
                         btn2[i].BackColor = Color.Black;
                         btn2[i].ForeColor = Color.White;
-                        this.Controls.Add(btn2[i]);
-                        btn2[i].BringToFront();
 
                         btn3[i] = new Button();
                         btn3[i].FlatStyle = FlatStyle.Flat;
@@ -87,10 +87,14 @@ namespace BitirmeProjesi
                         btn3[i].BackColor = Color.Black;
                         btn3[i].ForeColor = Color.White;
                         btn3[i].Size = new Size(gb[i].Size.Width / 4, btn[i].Size.Height);
-                        this.Controls.Add(btn3[i]);
-                        btn3[i].BringToFront();
 
-                        string kitap = liste.Items[i].ToString();
+                        if (ki.KitapDurum(kullaniciAdi, kitap) == "Devam Ediyor")
+                        {
+                            this.Controls.Add(btn2[i]);
+                            btn2[i].BringToFront();
+                            this.Controls.Add(btn3[i]);
+                            btn3[i].BringToFront();
+                        }
 
                         void gb_Click(object sendr, EventArgs a)
                         {
@@ -136,7 +140,7 @@ namespace BitirmeProjesi
         {
             
             lblBaslik.Location = new Point((this.Size.Width / 2) - (lblBaslik.Size.Width / 2), lblBaslik.Location.Y);
-            lblAciklama.Location = new Point((this.Size.Width / 2) - (lblAciklama.Size.Width / 2), lblAciklama.Location.Y);
+            lblSayfaAciklama.Location = new Point((this.Size.Width / 2) - (lblSayfaAciklama.Size.Width / 2), lblSayfaAciklama.Location.Y);
 
             #region Otomatik Boyutlandırma
             konumXYedek = groupBox1.Location.X;

@@ -12,6 +12,30 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
+        public int KitabiTamamla(string KitapAdi, string YazarAdi)
+        {
+            SqlCommand cmd = new SqlCommand("update Kitaplar set Durum = 'Tamamlandı' where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
+
         public void DuzenleBilgileri(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);

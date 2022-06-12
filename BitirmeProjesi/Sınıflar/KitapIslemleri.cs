@@ -15,12 +15,13 @@ namespace BitirmeProjesi
 
         public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik, string Etiketler)
         {
-            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler) values (@ka, @kit, @kt,@kk, @et)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler, Durum) values (@ka, @kit, @kt,@kk, @et, @dr)", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             cmd.Parameters.AddWithValue("@kit", KitapAdi);
             cmd.Parameters.AddWithValue("@kt", KitapTuru);
             cmd.Parameters.AddWithValue("@kk", Icerik);
             cmd.Parameters.AddWithValue("@et", Etiketler);
+            cmd.Parameters.AddWithValue("@dr", "Devam Ediyor");
 
             try
             {
@@ -340,6 +341,38 @@ namespace BitirmeProjesi
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
                 return -1;
+            }
+        }
+
+        public string KitapDurum(string YazarAdi, string KitapAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            string Durum = "";
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Durum = reader.GetString(7);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return Durum;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
     }

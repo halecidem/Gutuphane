@@ -46,6 +46,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDurum = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(337, 205);
+            this.label2.Location = new System.Drawing.Point(338, 176);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 20);
@@ -89,7 +91,7 @@
             // 
             this.lblKitapTuru.AutoSize = true;
             this.lblKitapTuru.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblKitapTuru.Location = new System.Drawing.Point(446, 205);
+            this.lblKitapTuru.Location = new System.Drawing.Point(447, 176);
             this.lblKitapTuru.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKitapTuru.Name = "lblKitapTuru";
             this.lblKitapTuru.Size = new System.Drawing.Size(19, 20);
@@ -134,7 +136,7 @@
             // 
             this.lblYazar.AutoSize = true;
             this.lblYazar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblYazar.Location = new System.Drawing.Point(444, 142);
+            this.lblYazar.Location = new System.Drawing.Point(446, 128);
             this.lblYazar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblYazar.Name = "lblYazar";
             this.lblYazar.Size = new System.Drawing.Size(19, 20);
@@ -144,7 +146,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 142);
+            this.label6.Location = new System.Drawing.Point(343, 128);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 20);
@@ -178,7 +180,7 @@
             // 
             this.lblbolumsayisi.AutoSize = true;
             this.lblbolumsayisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblbolumsayisi.Location = new System.Drawing.Point(446, 271);
+            this.lblbolumsayisi.Location = new System.Drawing.Point(446, 221);
             this.lblbolumsayisi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblbolumsayisi.Name = "lblbolumsayisi";
             this.lblbolumsayisi.Size = new System.Drawing.Size(19, 20);
@@ -188,7 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(337, 271);
+            this.label5.Location = new System.Drawing.Point(323, 221);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 20);
@@ -227,6 +229,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bölümler";
             // 
+            // lblDurum
+            // 
+            this.lblDurum.AutoSize = true;
+            this.lblDurum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblDurum.Location = new System.Drawing.Point(446, 268);
+            this.lblDurum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDurum.Name = "lblDurum";
+            this.lblDurum.Size = new System.Drawing.Size(19, 20);
+            this.lblDurum.TabIndex = 47;
+            this.lblDurum.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(368, 268);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 20);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Durum";
+            // 
             // Gitap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -235,6 +258,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(930, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.lblDurum);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblbolumsayisi);
@@ -283,5 +308,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblDurum;
+        private System.Windows.Forms.Label label7;
     }
 }
