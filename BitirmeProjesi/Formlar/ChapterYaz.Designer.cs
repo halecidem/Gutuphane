@@ -43,6 +43,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnGeri = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(296, 174);
+            this.label1.Location = new System.Drawing.Point(296, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 20);
@@ -82,7 +83,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(296, 233);
+            this.label2.Location = new System.Drawing.Point(296, 190);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 40);
@@ -138,7 +139,7 @@
             this.lblHarf.AutoSize = true;
             this.lblHarf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblHarf.ForeColor = System.Drawing.Color.White;
-            this.lblHarf.Location = new System.Drawing.Point(419, 233);
+            this.lblHarf.Location = new System.Drawing.Point(419, 190);
             this.lblHarf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHarf.Name = "lblHarf";
             this.lblHarf.Size = new System.Drawing.Size(19, 20);
@@ -150,7 +151,7 @@
             this.lblChapter.AutoSize = true;
             this.lblChapter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblChapter.ForeColor = System.Drawing.Color.White;
-            this.lblChapter.Location = new System.Drawing.Point(419, 174);
+            this.lblChapter.Location = new System.Drawing.Point(419, 151);
             this.lblChapter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChapter.Name = "lblChapter";
             this.lblChapter.Size = new System.Drawing.Size(19, 20);
@@ -200,6 +201,17 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(300, 249);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 24);
+            this.checkBox1.TabIndex = 46;
+            this.checkBox1.Text = "Tamamlandı";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // ChapterYaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -207,6 +219,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(908, 903);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnGeri);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblHarf);
@@ -247,5 +260,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGeri;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

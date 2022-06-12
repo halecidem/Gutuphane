@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace BitirmeProjesi
 {
-    public partial class AnaSayfa : Form
+    public partial class Ara : Form
     {
         string kullaniciAdi = "";
-        int durum = 0;
-        public AnaSayfa(string KullaniciAdi, int Durum) //İlk açılan sayfa 0, sonradan açılanlar 1 ile başlatılacak
+        public Ara(string KullaniciAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
-            this.durum = Durum;
         }
 
-        private void AnaSayfa_Load(object sender, EventArgs e)
+        private void Ara_Load(object sender, EventArgs e)
         {
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
@@ -30,12 +28,12 @@ namespace BitirmeProjesi
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;
-            GenelIslemler gi = new GenelIslemler();
-            btnProfil.Text = gi.AdiNe(kullaniciAdi);
-            if (durum == 0)
-            {
-                btnGeri.Visible = false;
-            }
+            radioButton1.Checked = true;
+        }
+
+        private void btnGeri_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -46,21 +44,23 @@ namespace BitirmeProjesi
             #endregion
         }
 
-        private void btnProfil_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            Profil pr = new Profil(kullaniciAdi, kullaniciAdi);
-            pr.MdiParent = this.MdiParent;
-            pr.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
+            if (txtAra.Text != null)
+            {
+                if (radioButton1.Checked == true)
+                {
+                    AramaSonuc ara = new AramaSonuc(kullaniciAdi, 1, txtAra.Text);
+                    ara.MdiParent = this.MdiParent;
+                    ara.Show();
+                }
+                else if (radioButton3.Checked == true)
+                {
+                    AramaSonuc ara = new AramaSonuc(kullaniciAdi, 2, txtAra.Text);
+                    ara.MdiParent = this.MdiParent;
+                    ara.Show();
+                }
+            }
         }
     }
 }

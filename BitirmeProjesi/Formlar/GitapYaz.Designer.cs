@@ -41,9 +41,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtKitapTuru = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.cbKitapTuru = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtEtiket = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +67,7 @@
             // 
             this.lblKullaniciAdi.AutoSize = true;
             this.lblKullaniciAdi.ForeColor = System.Drawing.Color.White;
-            this.lblKullaniciAdi.Location = new System.Drawing.Point(374, 106);
+            this.lblKullaniciAdi.Location = new System.Drawing.Point(377, 100);
             this.lblKullaniciAdi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKullaniciAdi.Name = "lblKullaniciAdi";
             this.lblKullaniciAdi.Size = new System.Drawing.Size(169, 20);
@@ -99,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(71, 376);
+            this.label3.Location = new System.Drawing.Point(62, 370);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 20);
@@ -110,11 +112,11 @@
             // 
             this.txtKitapKonusu.BackColor = System.Drawing.Color.Black;
             this.txtKitapKonusu.ForeColor = System.Drawing.Color.White;
-            this.txtKitapKonusu.Location = new System.Drawing.Point(197, 373);
+            this.txtKitapKonusu.Location = new System.Drawing.Point(197, 370);
             this.txtKitapKonusu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtKitapKonusu.Multiline = true;
             this.txtKitapKonusu.Name = "txtKitapKonusu";
-            this.txtKitapKonusu.Size = new System.Drawing.Size(625, 382);
+            this.txtKitapKonusu.Size = new System.Drawing.Size(625, 331);
             this.txtKitapKonusu.TabIndex = 17;
             // 
             // button1
@@ -180,16 +182,6 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Gitap Türü";
             // 
-            // txtKitapTuru
-            // 
-            this.txtKitapTuru.BackColor = System.Drawing.Color.Black;
-            this.txtKitapTuru.ForeColor = System.Drawing.Color.White;
-            this.txtKitapTuru.Location = new System.Drawing.Point(197, 298);
-            this.txtKitapTuru.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtKitapTuru.Name = "txtKitapTuru";
-            this.txtKitapTuru.Size = new System.Drawing.Size(399, 26);
-            this.txtKitapTuru.TabIndex = 16;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -214,6 +206,46 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // cbKitapTuru
+            // 
+            this.cbKitapTuru.BackColor = System.Drawing.Color.Black;
+            this.cbKitapTuru.ForeColor = System.Drawing.Color.White;
+            this.cbKitapTuru.FormattingEnabled = true;
+            this.cbKitapTuru.Items.AddRange(new object[] {
+            "Bilim Kurgu",
+            "Dram",
+            "Fantastik",
+            "Komedi",
+            "Korku",
+            "Macera",
+            "Romantizm",
+            "Suç ve Gizem"});
+            this.cbKitapTuru.Location = new System.Drawing.Point(197, 304);
+            this.cbKitapTuru.Name = "cbKitapTuru";
+            this.cbKitapTuru.Size = new System.Drawing.Size(399, 28);
+            this.cbKitapTuru.TabIndex = 34;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(71, 714);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 40);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "Etiketler:\r\n(; ile ayırınız)";
+            // 
+            // txtEtiket
+            // 
+            this.txtEtiket.BackColor = System.Drawing.Color.Black;
+            this.txtEtiket.ForeColor = System.Drawing.Color.White;
+            this.txtEtiket.Location = new System.Drawing.Point(197, 714);
+            this.txtEtiket.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEtiket.Name = "txtEtiket";
+            this.txtEtiket.Size = new System.Drawing.Size(625, 26);
+            this.txtEtiket.TabIndex = 35;
+            // 
             // GitapYaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -222,10 +254,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(930, 814);
             this.ControlBox = false;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtEtiket);
+            this.Controls.Add(this.cbKitapTuru);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtKitapTuru);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnGeri);
@@ -256,7 +290,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtKitapTuru;
         private System.Windows.Forms.TextBox txtKitapKonusu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGeri;
@@ -265,5 +298,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbKitapTuru;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtEtiket;
     }
 }

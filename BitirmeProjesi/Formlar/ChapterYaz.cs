@@ -31,14 +31,16 @@ namespace BitirmeProjesi
         {
             #region Otomatik Boyutlandırma
             NavBar navBar = new NavBar(kullaniciAdi);
-            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             #endregion
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             KitapIslemleri ki = new KitapIslemleri();
-            if (txtChapterAdi != null && txtChapter != null)
+            DuzenlemeIslemleri di = new DuzenlemeIslemleri();
+
+            if (txtChapterAdi != null && txtChapter != null && checkBox1.Checked == false)
             {
                 switch (ki.ChapterKaydet(yazarAdi, kitapAdi, ChapterSayisi, txtChapterAdi, txtChapter))
                 {
@@ -53,8 +55,30 @@ namespace BitirmeProjesi
                         MessageBox.Show("Chapter kaydedilemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
-                
-                
+            }
+            else if (txtChapterAdi != null && txtChapter != null && checkBox1.Checked == true)
+            {
+                switch (ki.ChapterKaydet(yazarAdi, kitapAdi, ChapterSayisi, txtChapterAdi, txtChapter))
+                {
+                    case 1:
+                        switch (di.KitabiTamamla(kitapAdi, yazarAdi))
+                        {
+                            case 1:
+                                MessageBox.Show("Gitap başarıyla tamamlandı.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Gitaplarım git = new Gitaplarım(kullaniciAdi);
+                                git.MdiParent = this.MdiParent;
+                                this.Close();
+                                git.Show();
+                                break;
+                            case -1:
+                                break;
+                        }
+                        break;
+
+                    case -1:
+                        MessageBox.Show("Gitap tamamlanamadı.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
             else
             {

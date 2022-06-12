@@ -58,6 +58,8 @@ namespace BitirmeProjesi
                 {
                     if (liste.Items[i] != null)
                     {
+                        string kitap = liste.Items[i].ToString();
+
                         gb[i] = new GroupBox();
                         gb[i].ForeColor = Color.White;
                         gb[i].Text = liste.Items[i].ToString();
@@ -78,8 +80,6 @@ namespace BitirmeProjesi
                         btn2[i].Text = "Düzenle";
                         btn2[i].BackColor = Color.Black;
                         btn2[i].ForeColor = Color.White;
-                        this.Controls.Add(btn2[i]);
-                        btn2[i].BringToFront();
 
                         btn3[i] = new Button();
                         btn3[i].FlatStyle = FlatStyle.Flat;
@@ -87,10 +87,14 @@ namespace BitirmeProjesi
                         btn3[i].BackColor = Color.Black;
                         btn3[i].ForeColor = Color.White;
                         btn3[i].Size = new Size(gb[i].Size.Width / 4, btn[i].Size.Height);
-                        this.Controls.Add(btn3[i]);
-                        btn3[i].BringToFront();
 
-                        string kitap = liste.Items[i].ToString();
+                        if (ki.KitapDurum(kullaniciAdi, kitap) == "Devam Ediyor")
+                        {
+                            this.Controls.Add(btn2[i]);
+                            btn2[i].BringToFront();
+                            this.Controls.Add(btn3[i]);
+                            btn3[i].BringToFront();
+                        }
 
                         void gb_Click(object sendr, EventArgs a)
                         {
@@ -107,6 +111,12 @@ namespace BitirmeProjesi
                             this.Close();
                             gt.Show();
                         }
+                        void btn2_Click(object sendr, EventArgs a)
+                        {
+                            GitapDuzenle gd = new GitapDuzenle(kullaniciAdi, kitap, kullaniciAdi);
+                            gd.MdiParent = this.MdiParent;
+                            gd.Show();
+                        }
                         void btn3_Click(object sendr, EventArgs a)
                         {
                             ChapterYaz cy = new ChapterYaz(kullaniciAdi, kitap, kullaniciAdi);
@@ -116,6 +126,7 @@ namespace BitirmeProjesi
 
                         gb[i].Click += new EventHandler(gb_Click);
                         btn[i].Click += new EventHandler(btn_Click);
+                        btn2[i].Click += new EventHandler(btn2_Click);
                         btn3[i].Click += new EventHandler(btn3_Click);
                     }
                 }
@@ -129,7 +140,7 @@ namespace BitirmeProjesi
         {
             
             lblBaslik.Location = new Point((this.Size.Width / 2) - (lblBaslik.Size.Width / 2), lblBaslik.Location.Y);
-            lblAciklama.Location = new Point((this.Size.Width / 2) - (lblAciklama.Size.Width / 2), lblAciklama.Location.Y);
+            lblSayfaAciklama.Location = new Point((this.Size.Width / 2) - (lblSayfaAciklama.Size.Width / 2), lblSayfaAciklama.Location.Y);
 
             #region Otomatik Boyutlandırma
             konumXYedek = groupBox1.Location.X;
@@ -158,13 +169,13 @@ namespace BitirmeProjesi
             NavBar navBar = new NavBar(kullaniciAdi);
             if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
             {
-                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, konumYYedek + groupBox1.Size.Height + aralikY);
+                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
                 
             }
             else
             {
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             }
             #endregion
         }

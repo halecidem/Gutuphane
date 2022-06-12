@@ -53,9 +53,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(90, 16);
+            this.label2.Location = new System.Drawing.Point(135, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 37);
+            this.label2.Size = new System.Drawing.Size(232, 54);
             this.label2.TabIndex = 2;
             this.label2.Text = "Gütüphane";
             // 
@@ -64,9 +65,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(51, 53);
+            this.label1.Location = new System.Drawing.Point(76, 82);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 19);
+            this.label1.Size = new System.Drawing.Size(299, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "Yıldızlı (*) alanlar boş bırakılamaz";
             // 
@@ -75,10 +77,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(17, 84);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(26, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 19);
+            this.label3.Size = new System.Drawing.Size(140, 28);
             this.label3.TabIndex = 4;
             this.label3.Text = "Kullanıcı Adı(*)";
             // 
@@ -87,10 +88,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(37, 104);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(56, 160);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 19);
+            this.label4.Size = new System.Drawing.Size(71, 28);
             this.label4.TabIndex = 5;
             this.label4.Text = "Şifre(*)";
             // 
@@ -99,10 +99,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(34, 125);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(51, 192);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 19);
+            this.label5.Size = new System.Drawing.Size(97, 28);
             this.label5.TabIndex = 6;
             this.label5.Text = "E-Posta(*)";
             // 
@@ -111,10 +110,9 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(43, 146);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(64, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 19);
+            this.label6.Size = new System.Drawing.Size(62, 28);
             this.label6.TabIndex = 7;
             this.label6.Text = "Adı(*)";
             // 
@@ -123,10 +121,9 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(34, 167);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(51, 257);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 19);
+            this.label7.Size = new System.Drawing.Size(92, 28);
             this.label7.TabIndex = 8;
             this.label7.Text = "Soyadı(*)";
             // 
@@ -135,10 +132,9 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(11, 190);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(16, 292);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 19);
+            this.label8.Size = new System.Drawing.Size(149, 28);
             this.label8.TabIndex = 9;
             this.label8.Text = "Doğum Tarihi(*)";
             // 
@@ -147,10 +143,9 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(25, 210);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(38, 323);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 19);
+            this.label9.Size = new System.Drawing.Size(126, 28);
             this.label9.TabIndex = 10;
             this.label9.Text = "Telefon No(*)";
             // 
@@ -159,10 +154,9 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(117, 242);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(176, 372);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 23);
+            this.button1.Size = new System.Drawing.Size(100, 35);
             this.button1.TabIndex = 11;
             this.button1.Text = "Kayıt Ol";
             this.button1.UseVisualStyleBackColor = false;
@@ -172,10 +166,9 @@
             // 
             this.txtKullaniciAdi.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtKullaniciAdi.ForeColor = System.Drawing.Color.White;
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(110, 84);
-            this.txtKullaniciAdi.Margin = new System.Windows.Forms.Padding(2);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(165, 129);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(181, 20);
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(270, 26);
             this.txtKullaniciAdi.TabIndex = 12;
             this.txtKullaniciAdi.TextChanged += new System.EventHandler(this.txtKullaniciAdi_TextChanged);
             // 
@@ -186,12 +179,11 @@
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Gray;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.White;
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.Black;
-            this.dateTimePicker1.Location = new System.Drawing.Point(110, 189);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(165, 291);
             this.dateTimePicker1.MaxDate = new System.DateTime(2004, 5, 1, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(181, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(270, 26);
             this.dateTimePicker1.TabIndex = 19;
             this.dateTimePicker1.Value = new System.DateTime(2004, 5, 1, 0, 0, 0, 0);
             // 
@@ -199,51 +191,46 @@
             // 
             this.txtSifre.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtSifre.ForeColor = System.Drawing.Color.White;
-            this.txtSifre.Location = new System.Drawing.Point(110, 104);
-            this.txtSifre.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSifre.Location = new System.Drawing.Point(165, 160);
             this.txtSifre.Name = "txtSifre";
-            this.txtSifre.Size = new System.Drawing.Size(181, 20);
+            this.txtSifre.Size = new System.Drawing.Size(270, 26);
             this.txtSifre.TabIndex = 20;
             // 
             // txtEposta
             // 
             this.txtEposta.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtEposta.ForeColor = System.Drawing.Color.White;
-            this.txtEposta.Location = new System.Drawing.Point(110, 125);
-            this.txtEposta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEposta.Location = new System.Drawing.Point(165, 192);
             this.txtEposta.Name = "txtEposta";
-            this.txtEposta.Size = new System.Drawing.Size(181, 20);
+            this.txtEposta.Size = new System.Drawing.Size(270, 26);
             this.txtEposta.TabIndex = 21;
             // 
             // txtAdi
             // 
             this.txtAdi.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtAdi.ForeColor = System.Drawing.Color.White;
-            this.txtAdi.Location = new System.Drawing.Point(110, 146);
-            this.txtAdi.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAdi.Location = new System.Drawing.Point(165, 225);
             this.txtAdi.Name = "txtAdi";
-            this.txtAdi.Size = new System.Drawing.Size(181, 20);
+            this.txtAdi.Size = new System.Drawing.Size(270, 26);
             this.txtAdi.TabIndex = 22;
             // 
             // txtSoyadi
             // 
             this.txtSoyadi.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtSoyadi.ForeColor = System.Drawing.Color.White;
-            this.txtSoyadi.Location = new System.Drawing.Point(110, 167);
-            this.txtSoyadi.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSoyadi.Location = new System.Drawing.Point(165, 257);
             this.txtSoyadi.Name = "txtSoyadi";
-            this.txtSoyadi.Size = new System.Drawing.Size(181, 20);
+            this.txtSoyadi.Size = new System.Drawing.Size(270, 26);
             this.txtSoyadi.TabIndex = 23;
             // 
             // txtTelNo
             // 
             this.txtTelNo.BackColor = System.Drawing.SystemColors.WindowText;
             this.txtTelNo.ForeColor = System.Drawing.Color.White;
-            this.txtTelNo.Location = new System.Drawing.Point(110, 210);
-            this.txtTelNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelNo.Location = new System.Drawing.Point(165, 323);
             this.txtTelNo.MaxLength = 11;
             this.txtTelNo.Name = "txtTelNo";
-            this.txtTelNo.Size = new System.Drawing.Size(181, 20);
+            this.txtTelNo.Size = new System.Drawing.Size(270, 26);
             this.txtTelNo.TabIndex = 24;
             this.txtTelNo.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
@@ -252,10 +239,9 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(9, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(14, 15);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(27, 23);
+            this.button2.Size = new System.Drawing.Size(40, 35);
             this.button2.TabIndex = 25;
             this.button2.Text = "<-";
             this.button2.UseVisualStyleBackColor = false;
@@ -263,11 +249,11 @@
             // 
             // KayitEkrani
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(317, 283);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.ClientSize = new System.Drawing.Size(476, 435);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtTelNo);
             this.Controls.Add(this.txtSoyadi);
@@ -288,6 +274,7 @@
             this.Controls.Add(this.label2);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "KayitEkrani";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gütüphane";

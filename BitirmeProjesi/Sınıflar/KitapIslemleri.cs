@@ -13,13 +13,15 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
-        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik)
+        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik, string Etiketler)
         {
-            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu) values (@ka, @kit, @kt,@kk)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler, Durum) values (@ka, @kit, @kt,@kk, @et, @dr)", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             cmd.Parameters.AddWithValue("@kit", KitapAdi);
             cmd.Parameters.AddWithValue("@kt", KitapTuru);
             cmd.Parameters.AddWithValue("@kk", Icerik);
+            cmd.Parameters.AddWithValue("@et", Etiketler);
+            cmd.Parameters.AddWithValue("@dr", "Devam Ediyor");
 
             try
             {
@@ -248,5 +250,131 @@ namespace BitirmeProjesi
                 return -1;
             }
         }
+        public int OkuSayfasi (string yazaradi , string kitapadi, ListBox lbChapterAdi, ListBox lbBolum)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kitapadi);
+            cmd.Parameters.AddWithValue("@ya", yazaradi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lbChapterAdi.Items.Add(reader.GetString(4));
+                    lbBolum.Items.Add(reader.GetString(5));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public int ChapterAdlari(string yazaradi, string kitapadi, ListBox lbChapterAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", kitapadi);
+            cmd.Parameters.AddWithValue("@ya", yazaradi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lbChapterAdi.Items.Add(reader.GetString(4));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public int KacinciChapter(string YazarAdi, string KitapAdi, string ChapterAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Chapterlar where Yazar = @ya and KitapAdi = @ka and Baslik = @ba", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+            cmd.Parameters.AddWithValue("@ba", ChapterAdi);
+
+            int HangiChapter = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    HangiChapter = reader.GetInt32(3);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return HangiChapter;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public string KitapDurum(string YazarAdi, string KitapAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            string Durum = "";
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Durum = reader.GetString(7);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return Durum;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
     }
+    
 }

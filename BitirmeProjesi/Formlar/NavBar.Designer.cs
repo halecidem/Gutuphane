@@ -87,7 +87,7 @@
             this.btnKitapligim.Name = "btnKitapligim";
             this.btnKitapligim.Size = new System.Drawing.Size(210, 35);
             this.btnKitapligim.TabIndex = 9;
-            this.btnKitapligim.Text = "Gütüphanem";
+            this.btnKitapligim.Text = "Gitaplığım";
             this.btnKitapligim.UseVisualStyleBackColor = false;
             this.btnKitapligim.Click += new System.EventHandler(this.btnKitapligim_Click);
             // 

@@ -25,7 +25,7 @@ namespace BitirmeProjesi
         {
             #region Otomatik Boyutlandırma
             NavBar navBar = new NavBar(kullaniciAdi);
-            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
+            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             #endregion
         }
 
@@ -43,9 +43,9 @@ namespace BitirmeProjesi
         private void button1_Click(object sender, EventArgs e)
         {
             KitapIslemleri ki = new KitapIslemleri();
-            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && txtKitapTuru.Text != "")
+            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && cbKitapTuru.Text != "")
             {
-                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text,txtKitapTuru.Text,txtKitapKonusu.Text))
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text,cbKitapTuru.Text,txtKitapKonusu.Text, txtEtiket.Text))
                 {
                     case 1:
                         MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,9 +105,9 @@ namespace BitirmeProjesi
         private void button3_Click(object sender, EventArgs e)
         {
             KitapIslemleri ki = new KitapIslemleri();
-            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && txtKitapTuru.Text != "")
+            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && cbKitapTuru.Text != "")
             {
-                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text, txtKitapTuru.Text, txtKitapKonusu.Text))
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text, cbKitapTuru.Text, txtKitapKonusu.Text, txtEtiket.Text))
                 {
                     case 1:
                         MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
