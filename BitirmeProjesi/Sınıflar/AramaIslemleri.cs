@@ -98,13 +98,12 @@ namespace BitirmeProjesi
             }
         }
 
-        public void TüreGöreAra(string YazarAdi, ListBox LbKitapAdi, ListBox LbYazarAdi)
+        public void TureGoreAra(string KitapTürü, ListBox LbKitapAdi, ListBox LbYazarAdi)
         {
-            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi like @ka", baglanti);
-            cmd.Parameters.AddWithValue("@ka", "%" + YazarAdi + "%");
+            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapTuru = @kt", baglanti);
+            cmd.Parameters.AddWithValue("@kt", KitapTürü);
             ListBox lbKitapAdi = new ListBox();
             ListBox lbYazarAdi = new ListBox();
-
 
             try
             {

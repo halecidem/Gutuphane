@@ -14,7 +14,7 @@ namespace BitirmeProjesi
     {
         string kullaniciAdi = "";
         ListBox liste = new ListBox();
-        int aralikX = 45;
+        int aralikX = 40;
         int aralikY = 35;
         int[] konumX = new int[50];
         int konumXYedek = 0;

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgoritmikIslemler.cs" />
     <Compile Include="Formlar\Arama Formları\AramaSonuc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,10 +56,10 @@
       <DependentUpon>AramaSonuc.cs</DependentUpon>
     </Compile>
     <Compile Include="Sınıflar\AramaIslemleri.cs" />
-    <Compile Include="Formlar\ChapterDuzenle.cs">
+    <Compile Include="Formlar\Kitap Formları\ChapterDuzenle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\ChapterDuzenle.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\ChapterDuzenle.Designer.cs">
       <DependentUpon>ChapterDuzenle.cs</DependentUpon>
     </Compile>
     <Compile Include="Sınıflar\DuzenlemeIslemleri.cs" />
@@ -68,10 +69,10 @@
     <Compile Include="Formlar\Arama Formları\Ara.Designer.cs">
       <DependentUpon>Ara.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\ChapterYaz.cs">
+    <Compile Include="Formlar\Kitap Formları\ChapterYaz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\ChapterYaz.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\ChapterYaz.Designer.cs">
       <DependentUpon>ChapterYaz.cs</DependentUpon>
     </Compile>
     <Compile Include="Formlar\AnaSayfa.cs">
@@ -116,34 +117,34 @@
     <Compile Include="Formlar\Profil.Designer.cs">
       <DependentUpon>Profil.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\GitapYaz.cs">
+    <Compile Include="Formlar\Kitap Formları\GitapYaz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\GitapYaz.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\GitapYaz.Designer.cs">
       <DependentUpon>GitapYaz.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\Gitap.cs">
+    <Compile Include="Formlar\Kitap Formları\Gitap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\Gitap.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\Gitap.Designer.cs">
       <DependentUpon>Gitap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\Gitaplarım.cs">
+    <Compile Include="Formlar\Kitap Formları\Gitaplarım.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\Gitaplarım.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\Gitaplarım.Designer.cs">
       <DependentUpon>Gitaplarım.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\Oku.cs">
+    <Compile Include="Formlar\Kitap Formları\Oku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\Oku.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\Oku.Designer.cs">
       <DependentUpon>Oku.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\GitapDuzenle.cs">
+    <Compile Include="Formlar\Kitap Formları\GitapDuzenle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\GitapDuzenle.Designer.cs">
+    <Compile Include="Formlar\Kitap Formları\GitapDuzenle.Designer.cs">
       <DependentUpon>GitapDuzenle.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -153,13 +154,13 @@
     <EmbeddedResource Include="Formlar\Arama Formları\AramaSonuc.resx">
       <DependentUpon>AramaSonuc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\ChapterDuzenle.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\ChapterDuzenle.resx">
       <DependentUpon>ChapterDuzenle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\Arama Formları\Ara.resx">
       <DependentUpon>Ara.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\ChapterYaz.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\ChapterYaz.resx">
       <DependentUpon>ChapterYaz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\AnaForm.resx">
@@ -183,19 +184,19 @@
     <EmbeddedResource Include="Formlar\Profil.resx">
       <DependentUpon>Profil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\GitapYaz.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\GitapYaz.resx">
       <DependentUpon>GitapYaz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\Gitap.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\Gitap.resx">
       <DependentUpon>Gitap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\Gitaplarım.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\Gitaplarım.resx">
       <DependentUpon>Gitaplarım.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\Oku.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\Oku.resx">
       <DependentUpon>Oku.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\GitapDuzenle.resx">
+    <EmbeddedResource Include="Formlar\Kitap Formları\GitapDuzenle.resx">
       <DependentUpon>GitapDuzenle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

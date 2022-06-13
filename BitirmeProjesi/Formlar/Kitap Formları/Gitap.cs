@@ -34,7 +34,7 @@ namespace BitirmeProjesi
             maxSize = lblKitapTuru.Size.Width;
             timer1.Enabled = true;
             KitapIslemleri ki = new KitapIslemleri();
-            ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu);
+            ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu, lblEtiketler);
             lblbolumsayisi.Text = (ki.ChapterSayisi(yazarKullaniciAdi, kitapAdi) - 1).ToString();
             lblDurum.Text = ki.KitapDurum(yazarKullaniciAdi, kitapAdi);
             ki.ChapterAdlari(yazarKullaniciAdi, kitapAdi, lbChapterAdlari);
@@ -49,6 +49,7 @@ namespace BitirmeProjesi
             KitapIslemleri ki = new KitapIslemleri();
             if (ki.ChapterSayisi(yazarKullaniciAdi, kitapAdi) > 1)
             {
+                ki.EtiketleriKaydet(kullaniciAdi, yazarKullaniciAdi, lblKitapTuru.Text, lblEtiketler.Text);
                 Oku o = new Oku(kullaniciAdi, kitapAdi, yazarKullaniciAdi, 0);
                 o.MdiParent = this.MdiParent;
                 o.Show();

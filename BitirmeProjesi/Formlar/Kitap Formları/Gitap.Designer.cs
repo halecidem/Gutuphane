@@ -48,7 +48,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDurum = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblEtiketler = new System.Windows.Forms.Label();
+            this.lblYorum = new System.Windows.Forms.Label();
+            this.lblBeğeni = new System.Windows.Forms.Label();
+            this.lblOkunma = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblFiyat = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -210,10 +220,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblFiyat);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.lblYorum);
+            this.groupBox1.Controls.Add(this.lblBeğeni);
+            this.groupBox1.Controls.Add(this.lblOkunma);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(98, 321);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(709, 100);
+            this.groupBox1.Size = new System.Drawing.Size(709, 123);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Etkileşimler";
@@ -222,7 +240,7 @@
             // 
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(98, 427);
+            this.groupBox2.Location = new System.Drawing.Point(98, 450);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(709, 100);
             this.groupBox2.TabIndex = 45;
@@ -243,12 +261,116 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(368, 268);
+            this.label7.Location = new System.Drawing.Point(364, 268);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 20);
+            this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 46;
-            this.label7.Text = "Durum";
+            this.label7.Text = "Durum:";
+            // 
+            // lblEtiketler
+            // 
+            this.lblEtiketler.AutoSize = true;
+            this.lblEtiketler.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblEtiketler.Location = new System.Drawing.Point(323, 298);
+            this.lblEtiketler.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEtiketler.Name = "lblEtiketler";
+            this.lblEtiketler.Size = new System.Drawing.Size(19, 20);
+            this.lblEtiketler.TabIndex = 48;
+            this.lblEtiketler.Text = "0";
+            this.lblEtiketler.Visible = false;
+            // 
+            // lblYorum
+            // 
+            this.lblYorum.AutoSize = true;
+            this.lblYorum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblYorum.ForeColor = System.Drawing.Color.White;
+            this.lblYorum.Location = new System.Drawing.Point(418, 69);
+            this.lblYorum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblYorum.Name = "lblYorum";
+            this.lblYorum.Size = new System.Drawing.Size(33, 36);
+            this.lblYorum.TabIndex = 39;
+            this.lblYorum.Text = "0";
+            // 
+            // lblBeğeni
+            // 
+            this.lblBeğeni.AutoSize = true;
+            this.lblBeğeni.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBeğeni.ForeColor = System.Drawing.Color.White;
+            this.lblBeğeni.Location = new System.Drawing.Point(242, 69);
+            this.lblBeğeni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBeğeni.Name = "lblBeğeni";
+            this.lblBeğeni.Size = new System.Drawing.Size(33, 36);
+            this.lblBeğeni.TabIndex = 38;
+            this.lblBeğeni.Text = "0";
+            // 
+            // lblOkunma
+            // 
+            this.lblOkunma.AutoSize = true;
+            this.lblOkunma.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblOkunma.ForeColor = System.Drawing.Color.White;
+            this.lblOkunma.Location = new System.Drawing.Point(87, 69);
+            this.lblOkunma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOkunma.Name = "lblOkunma";
+            this.lblOkunma.Size = new System.Drawing.Size(33, 36);
+            this.lblOkunma.TabIndex = 37;
+            this.lblOkunma.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(406, 32);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 20);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Yorum";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(225, 32);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Beğeni";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(70, 32);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 20);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Okunma";
+            // 
+            // lblFiyat
+            // 
+            this.lblFiyat.AutoSize = true;
+            this.lblFiyat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblFiyat.ForeColor = System.Drawing.Color.White;
+            this.lblFiyat.Location = new System.Drawing.Point(578, 69);
+            this.lblFiyat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFiyat.Name = "lblFiyat";
+            this.lblFiyat.Size = new System.Drawing.Size(33, 36);
+            this.lblFiyat.TabIndex = 41;
+            this.lblFiyat.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(568, 32);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 20);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "Fiyat";
             // 
             // Gitap
             // 
@@ -258,6 +380,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(930, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.lblEtiketler);
             this.Controls.Add(this.lblDurum);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
@@ -283,6 +406,8 @@
             this.Text = "Gütüphane";
             this.Load += new System.EventHandler(this.Gitap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -310,5 +435,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblDurum;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblEtiketler;
+        private System.Windows.Forms.Label lblFiyat;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblYorum;
+        private System.Windows.Forms.Label lblBeğeni;
+        private System.Windows.Forms.Label lblOkunma;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label9;
     }
 }

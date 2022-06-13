@@ -112,7 +112,7 @@ namespace BitirmeProjesi
             }
         }
 
-        public void KitabiGoruntule(string KitapAdi, string YazarKullaniciAdi, Label lblKitapAdi, Label lblYazarAdi, Label lblKitapTuru, Label lblKitapKonusu)
+        public void KitabiGoruntule(string KitapAdi, string YazarKullaniciAdi, Label lblKitapAdi, Label lblYazarAdi, Label lblKitapTuru, Label lblKitapKonusu, Label lblEtiketler)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
@@ -127,6 +127,7 @@ namespace BitirmeProjesi
                     lblKitapAdi.Text = reader.GetString(2);
                     lblKitapTuru.Text = reader.GetString(3);
                     lblKitapKonusu.Text = reader.GetString(4);
+                    lblEtiketler.Text = reader.GetString(6);
                 }
 
                 cmd.Dispose();
@@ -375,7 +376,57 @@ namespace BitirmeProjesi
             }
         }
 
-        
+        public void EtiketleriKaydet(string KullaniciAdi, string YazarAdi, string KitapTuru, string Etiketler)
+        {
+            SqlCommand sil = new SqlCommand("delete from Etiketler where KullaniciAdi = @ka and YazarAdi = @ya and KitapTuru = @kt", baglanti);
+            sil.Parameters.AddWithValue("@ka", KullaniciAdi);
+            sil.Parameters.AddWithValue("@ya", YazarAdi);
+            sil.Parameters.AddWithValue("@kt", KitapTuru);
+
+            SqlCommand cmd = new SqlCommand("insert into Etiketler (KullaniciAdi, YazarAdi, KitapTuru, Etiketler) values (@ka, @ya, @kt, @et)", baglanti);
+            
+
+            try
+            {
+                baglanti.Open();
+                sil.ExecuteNonQuery();
+
+                sil.Dispose();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                sil.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+
+            string[] Etk = Etiketler.Split(';');
+
+            for (int i = 0; i < Etk.Length; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+                cmd.Parameters.AddWithValue("@ya", YazarAdi);
+                cmd.Parameters.AddWithValue("@kt", KitapTuru);
+                cmd.Parameters.AddWithValue("@et", Etk[i]);
+                try
+                {
+                    baglanti.Open();
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Dispose();
+                    baglanti.Close();
+                }
+                catch (Exception ex)
+                {
+                    cmd.Dispose();
+                    baglanti.Close();
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
     
 }
