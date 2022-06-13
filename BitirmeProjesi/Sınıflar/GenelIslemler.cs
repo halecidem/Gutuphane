@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing;
+using SpeechLib;
 
 namespace BitirmeProjesi
 {
@@ -217,6 +218,12 @@ namespace BitirmeProjesi
                 cmd.Dispose();
                 baglanti.Close();
             }
+        }
+
+        public void SesliOku(Label OkunacakTextBox)
+        {
+            SpVoice oku = new SpVoice();
+            oku.Speak(OkunacakTextBox.Text, SpeechVoiceSpeakFlags.SVSFDefault);
         }
     }
 }
