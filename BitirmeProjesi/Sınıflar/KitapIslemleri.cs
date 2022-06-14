@@ -13,15 +13,16 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
-        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik, string Etiketler)
+        public int TaslagiKaydet(string KullaniciAdi, string KitapAdi,string KitapTuru, string Icerik, string Etiketler, double Fiyat)
         {
-            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler, Durum) values (@ka, @kit, @kt,@kk, @et, @dr)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kitaplar (KullaniciAdi, KitapAdi, KitapTuru, KitapKonusu, Etiketler, Durum, OkunmaSayisi, Fiyat) values (@ka, @kit, @kt,@kk, @et, @dr, 0, @fi)", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
             cmd.Parameters.AddWithValue("@kit", KitapAdi);
             cmd.Parameters.AddWithValue("@kt", KitapTuru);
             cmd.Parameters.AddWithValue("@kk", Icerik);
             cmd.Parameters.AddWithValue("@et", Etiketler);
             cmd.Parameters.AddWithValue("@dr", "Devam Ediyor");
+            cmd.Parameters.AddWithValue("@fi", Fiyat);
 
             try
             {
@@ -112,7 +113,7 @@ namespace BitirmeProjesi
             }
         }
 
-        public void KitabiGoruntule(string KitapAdi, string YazarKullaniciAdi, Label lblKitapAdi, Label lblYazarAdi, Label lblKitapTuru, Label lblKitapKonusu, Label lblEtiketler)
+        public void KitabiGoruntule(string KitapAdi, string YazarKullaniciAdi, Label lblKitapAdi, Label lblYazarAdi, Label lblKitapTuru, Label lblKitapKonusu, Label lblEtiketler, Label lblOkunmaSayisi)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
@@ -128,6 +129,7 @@ namespace BitirmeProjesi
                     lblKitapTuru.Text = reader.GetString(3);
                     lblKitapKonusu.Text = reader.GetString(4);
                     lblEtiketler.Text = reader.GetString(6);
+                    lblOkunmaSayisi.Text = reader.GetInt64(8).ToString();
                 }
 
                 cmd.Dispose();
@@ -256,9 +258,13 @@ namespace BitirmeProjesi
             cmd.Parameters.AddWithValue("@ka", kitapadi);
             cmd.Parameters.AddWithValue("@ya", yazaradi);
 
+            SqlCommand cmd2 = new SqlCommand("update Kitaplar set OkunmaSayisi = OkunmaSayisi + 1 where KitapAdi = @ka", baglanti);
+            cmd2.Parameters.AddWithValue("@ka", kitapadi);
+
             try
             {
                 baglanti.Open();
+                cmd2.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -268,6 +274,7 @@ namespace BitirmeProjesi
                 }
 
                 cmd.Dispose();
+                cmd2.Dispose();
                 reader.Close();
                 baglanti.Close();
                 return 1;
@@ -275,6 +282,7 @@ namespace BitirmeProjesi
             catch (Exception ex)
             {
                 cmd.Dispose();
+                cmd2.Dispose();
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
                 return -1;
@@ -425,6 +433,86 @@ namespace BitirmeProjesi
                     baglanti.Close();
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        public void FiyatKontrol(string KullaniciAdi, string YazarAdi, string KitapAdi, Label lblFiyat, Button btnOku)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Kitaplar where KullaniciAdi = @ya and KitapAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            double Fiyat = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Fiyat = reader.GetSqlMoney(9).ToDouble();
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+            if (Fiyat == 0)
+            {
+                btnOku.Text = "Oku";
+                lblFiyat.Text = "Ücretsiz";
+            }
+            else if (Fiyat > 0)
+            {
+                btnOku.Text = "Satın Al";
+                lblFiyat.Text = Fiyat.ToString() + " TL";
+                 
+                SqlCommand cmd2 = new SqlCommand("select * from AlinanKitaplar where KullaniciAdi = @kul and Yazar = @ya and KitapAdi = @ka", baglanti);
+                cmd2.Parameters.AddWithValue("@kul", KullaniciAdi);
+                cmd2.Parameters.AddWithValue("@ka", KitapAdi);
+                cmd2.Parameters.AddWithValue("@ya", YazarAdi);
+
+                bool varMi = false;
+
+                try
+                {
+                    baglanti.Open();
+                    SqlDataReader reader2 = cmd2.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        if (reader2.GetInt32(0) != null)
+                        {
+                            varMi = true;
+                        }
+                    }
+
+                    cmd.Dispose();
+                    reader2.Close();
+                    baglanti.Close();
+                }
+                catch (Exception ex)
+                {
+                    cmd.Dispose();
+                    baglanti.Close();
+                    MessageBox.Show(ex.Message);
+                }
+                if (varMi == true)
+                {
+                    btnOku.Text = "Oku";
+                }
+            }
+            else
+            {
+                btnOku.Text = "Seyretme Dana!";
             }
         }
     }

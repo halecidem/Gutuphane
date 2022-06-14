@@ -129,7 +129,7 @@
             // 
             this.groupBox2.Enabled = false;
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(22, 21);
+            this.groupBox2.Location = new System.Drawing.Point(22, 22);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(146, 158);
             this.groupBox2.TabIndex = 52;
@@ -152,7 +152,7 @@
             // 
             this.groupBox4.Enabled = false;
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(22, 21);
+            this.groupBox4.Location = new System.Drawing.Point(22, 22);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(146, 158);
             this.groupBox4.TabIndex = 52;
@@ -169,13 +169,13 @@
             this.groupBox5.Size = new System.Drawing.Size(893, 210);
             this.groupBox5.TabIndex = 54;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Haftanın En Çok Okunanları";
+            this.groupBox5.Text = "En Çok Okunanlar";
             // 
             // groupBox6
             // 
             this.groupBox6.Enabled = false;
             this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(22, 21);
+            this.groupBox6.Location = new System.Drawing.Point(22, 22);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(146, 158);
             this.groupBox6.TabIndex = 52;

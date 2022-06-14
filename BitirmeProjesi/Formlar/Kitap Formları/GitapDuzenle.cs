@@ -31,7 +31,7 @@ namespace BitirmeProjesi
             #endregion
             timer1.Enabled = true;
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
-            di.DuzenleBilgileri(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket);
+            di.DuzenleBilgileri(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat);
             KitapIslemleri ki = new KitapIslemleri();
             ListBox lb = new ListBox();
             ki.ChapterAdlari(yazarAdi, kitapAdi, lb);
@@ -44,7 +44,7 @@ namespace BitirmeProjesi
         private void button1_Click(object sender, EventArgs e)
         {
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
-            switch (di.DuzenlemeleriKaydet(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket))
+            switch (di.DuzenlemeleriKaydet(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat))
             {
                 case 1:
                     MessageBox.Show("Kitap başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);

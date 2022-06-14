@@ -45,7 +45,7 @@ namespace BitirmeProjesi
             KitapIslemleri ki = new KitapIslemleri();
             if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && cbKitapTuru.Text != "")
             {
-                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text,cbKitapTuru.Text,txtKitapKonusu.Text, txtEtiket.Text))
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text,cbKitapTuru.Text,txtKitapKonusu.Text, txtEtiket.Text, Convert.ToDouble(txtFiyat.Text)))
                 {
                     case 1:
                         MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -107,7 +107,7 @@ namespace BitirmeProjesi
             KitapIslemleri ki = new KitapIslemleri();
             if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && cbKitapTuru.Text != "")
             {
-                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text, cbKitapTuru.Text, txtKitapKonusu.Text, txtEtiket.Text))
+                switch (ki.TaslagiKaydet(kullaniciAdi, txtKitapAdi.Text, cbKitapTuru.Text, txtKitapKonusu.Text, txtEtiket.Text, Convert.ToDouble(txtFiyat.Text)))
                 {
                     case 1:
                         MessageBox.Show("Kitap başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);

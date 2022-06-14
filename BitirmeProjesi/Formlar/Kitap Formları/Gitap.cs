@@ -34,7 +34,7 @@ namespace BitirmeProjesi
             maxSize = lblKitapTuru.Size.Width;
             timer1.Enabled = true;
             KitapIslemleri ki = new KitapIslemleri();
-            ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu, lblEtiketler);
+            ki.KitabiGoruntule(kitapAdi, yazarKullaniciAdi, lblKitap, lblYazar, lblKitapTuru, lblKitapKonusu, lblEtiketler, lblOkunma);
             lblbolumsayisi.Text = (ki.ChapterSayisi(yazarKullaniciAdi, kitapAdi) - 1).ToString();
             lblDurum.Text = ki.KitapDurum(yazarKullaniciAdi, kitapAdi);
             ki.ChapterAdlari(yazarKullaniciAdi, kitapAdi, lbChapterAdlari);
@@ -42,6 +42,7 @@ namespace BitirmeProjesi
             {
                 comboBox1.Items.Add(lbChapterAdlari.Items[i].ToString());
             }
+            ki.FiyatKontrol(kullaniciAdi, yazarKullaniciAdi, kitapAdi, lblFiyat, btnOku);
         }
 
         private void btnOku_Click(object sender, EventArgs e)
