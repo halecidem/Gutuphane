@@ -18,7 +18,7 @@ namespace BitirmeProjesi
 
         ListBox lbKitapAdi = new ListBox();
         ListBox lbYazarAdi = new ListBox();
-        int aralikX = 45;
+        int aralikX = 40;
         int aralikY = 35;
         int[] konumX = new int[50];
         int konumXYedek = 0;
@@ -51,6 +51,9 @@ namespace BitirmeProjesi
             #endregion
             
             AramaIslemleri ai = new AramaIslemleri();
+
+
+
             if (aramaTuru == 1)
             {
                 ai.KitapAra(arama, lbKitapAdi, lbYazarAdi);
@@ -58,6 +61,10 @@ namespace BitirmeProjesi
             else if (aramaTuru == 2)
             {
                 ai.YazarAra(arama, lbKitapAdi, lbYazarAdi);
+            }
+            else if (aramaTuru == 3)
+            {
+                ai.TureGoreAra(arama, lbKitapAdi, lbYazarAdi);
             }
             #region Kutular
             if (lbKitapAdi.Items.Count > 0)

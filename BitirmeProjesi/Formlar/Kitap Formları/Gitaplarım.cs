@@ -14,7 +14,7 @@ namespace BitirmeProjesi
     {
         string kullaniciAdi = "";
         ListBox liste = new ListBox();
-        int aralikX = 45;
+        int aralikX = 40;
         int aralikY = 35;
         int[] konumX = new int[50];
         int konumXYedek = 0;
@@ -104,12 +104,15 @@ namespace BitirmeProjesi
                         }
                         void btn_Click(object sendr, EventArgs a)
                         {
-                            KitapIslemleri kt = new KitapIslemleri();
-                            kt.KitabiSil(kullaniciAdi, kitap);
-                            Gitaplarım gt = new Gitaplarım(kullaniciAdi);
-                            gt.MdiParent = this.MdiParent;
-                            this.Close();
-                            gt.Show();
+                            if (MessageBox.Show("Gitabı silmek istediğinize emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                KitapIslemleri kt = new KitapIslemleri();
+                                kt.KitabiSil(kullaniciAdi, kitap);
+                                Gitaplarım gt = new Gitaplarım(kullaniciAdi);
+                                gt.MdiParent = this.MdiParent;
+                                this.Close();
+                                gt.Show();
+                            }
                         }
                         void btn2_Click(object sendr, EventArgs a)
                         {

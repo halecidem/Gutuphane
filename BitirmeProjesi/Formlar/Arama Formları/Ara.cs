@@ -62,5 +62,61 @@ namespace BitirmeProjesi
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button1.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button2.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button4.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button5.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button6.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button7.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button8.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AramaSonuc ara = new AramaSonuc(kullaniciAdi, 3, button9.Text);
+            ara.MdiParent = this.MdiParent;
+            ara.Show();
+        }
     }
 }

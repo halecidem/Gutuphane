@@ -100,8 +100,8 @@ namespace BitirmeProjesi
         {
             string kontrolStr = "";
 
-            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], No, [Kayit Tarihi], Yetki)" +
-                "values (@ka, @si, @ep, @a, @so, @dt, @no, @kt, @yt)", baglanti);
+            SqlCommand cmd = new SqlCommand("insert into Kullanicilar (KullaniciAdi, Sifre, [E-Posta], Adi, Soyadi, [Dogum Tarihi], No, [Kayit Tarihi], Yetki, Para)" +
+                "values (@ka, @si, @ep, @a, @so, @dt, @no, @kt, @yt, 0)", baglanti);
             cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
             cmd.Parameters.AddWithValue("@si", sifre);
             cmd.Parameters.AddWithValue("@ep", eposta);
@@ -224,6 +224,80 @@ namespace BitirmeProjesi
         {
             SpVoice oku = new SpVoice();
             oku.Speak(OkunacakTextBox.Text, SpeechVoiceSpeakFlags.SVSFDefault);
+        }
+
+        public void CuzdanBilgileri(string KullaniciAdi, Label lblPara)
+        {
+            SqlCommand cmd = new SqlCommand("select Para from Kullanicilar where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    lblPara.Text = reader.GetInt64(0).ToString() + " TL";
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+            }
+        }
+
+        public void ParaYukle(string KullaniciAdi, int YuklenecekMiktar)
+        {
+            SqlCommand cmd = new SqlCommand("update Kullanicilar set Para = Para + @ym where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            cmd.Parameters.AddWithValue("@ym", YuklenecekMiktar);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+            }
+        }
+
+        public void ParayiSifirla(string KullaniciAdi)
+        {
+            SqlCommand cmd = new SqlCommand("update Kullanicilar set Para = 0 where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+            }
+        }
+
+        public void SadeceSayi(TextBox textBox)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, @"[^0-9^\,^]"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
         }
     }
 }

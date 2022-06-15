@@ -36,13 +36,11 @@ namespace BitirmeProjesi
             }
         }
 
-        public void DuzenleBilgileri(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler)
+        public void DuzenleBilgileri(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
             cmd.Parameters.AddWithValue("@ya", YazarAdi);
-
-            string Etiketler = "";
 
             try
             {
@@ -53,10 +51,9 @@ namespace BitirmeProjesi
                     txtKitapAdi.Text = reader.GetString(2);
                     txtKitapTuru.Text = reader.GetString(3);
                     txtKitapKonusu.Text = reader.GetString(4);
-                    Etiketler = reader.GetString(6);
+                    txtEtiketler.Text = reader.GetString(6);
+                    txtFiyat.Text = reader.GetSqlMoney(9).ToString();
                 }
-
-                txtEtiketler.Text = Etiketler;
 
                 cmd.Dispose();
                 reader.Close();
@@ -69,15 +66,16 @@ namespace BitirmeProjesi
             }
         }
 
-        public int DuzenlemeleriKaydet(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler)
+        public int DuzenlemeleriKaydet(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat)
         {
-            SqlCommand cmd = new SqlCommand("update Kitaplar set KitapAdi = @txtKitapAdi, KitapTuru = @kt, KitapKonusu = @kk, Etiketler = @et where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
+            SqlCommand cmd = new SqlCommand("update Kitaplar set KitapAdi = @txtKitapAdi, KitapTuru = @kt, KitapKonusu = @kk, Etiketler = @et, Fiyat = @fi where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
             cmd.Parameters.AddWithValue("@ya", YazarAdi);
             cmd.Parameters.AddWithValue("@txtKitapAdi", txtKitapAdi.Text);
             cmd.Parameters.AddWithValue("@kt", txtKitapTuru.Text);
             cmd.Parameters.AddWithValue("@kk", txtKitapKonusu.Text);
             cmd.Parameters.AddWithValue("@et", txtEtiketler.Text);
+            cmd.Parameters.AddWithValue("@fi", Convert.ToDouble(txtFiyat.Text));
 
             SqlCommand cmd2 = new SqlCommand("update Chapterlar set KitapAdi = @yenika where KitapAdi = @ka and Yazar = @ya", baglanti);
             cmd2.Parameters.AddWithValue("@yenika", txtKitapAdi.Text);
