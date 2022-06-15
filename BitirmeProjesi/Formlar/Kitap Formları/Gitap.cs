@@ -83,11 +83,11 @@ namespace BitirmeProjesi
                                 break;
 
                             case -1:
-                                MessageBox.Show("Gitap satın alınırken bir sorun oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Yetersiz bakiye.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 break;
 
                             case -2:
-                                MessageBox.Show("Yetersiz bakiye.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Gitap satın alınırken bir sorun oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 break;
                         }
                     }
@@ -105,9 +105,16 @@ namespace BitirmeProjesi
             {
                 if (comboBox1.Text == lbChapterAdlari.Items[i].ToString())
                 {
-                    Oku o = new Oku(kullaniciAdi, kitapAdi, yazarKullaniciAdi, i);
-                    o.MdiParent = this.MdiParent;
-                    o.Show();
+                    if (btnOku.Text == "Oku")
+                    {
+                        Oku o = new Oku(kullaniciAdi, kitapAdi, yazarKullaniciAdi, i);
+                        o.MdiParent = this.MdiParent;
+                        o.Show();
+                    }
+                    else if (btnOku.Text == "Satın Al")
+                    {
+                        MessageBox.Show("Kitabı satın almadan bölümler görüntülenemez.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
 
             }

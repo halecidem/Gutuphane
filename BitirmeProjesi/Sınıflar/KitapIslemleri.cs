@@ -567,18 +567,19 @@ namespace BitirmeProjesi
             }
 
             SqlCommand cmdPara = new SqlCommand("select Para from Kullanicilar where KullaniciAdi = @ka", baglanti);
-            cmdPara.Parameters.AddWithValue("@ka", KullaniciAdi);
+            cmdPara.Parameters.AddWithValue("@ka", KullaniciAdi); //Kullanıcı adı atanamıyor.
 
             try
             {
                 baglanti.Open();
-                SqlDataReader reader = cmdPara.ExecuteReader();
+                SqlDataReader reader2 = cmdPara.ExecuteReader();
 
-                while (reader.Read())
+                while (reader2.Read())
                 {
-                    Para = reader.GetSqlMoney(0).ToDouble();
+                    Fiyat = reader2.GetSqlMoney(0).ToDouble();
                 }
 
+                reader2.Close();
                 cmdPara.Dispose();
                 baglanti.Close();
             }
@@ -588,6 +589,7 @@ namespace BitirmeProjesi
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
             }
+
 
             if (Para >= Fiyat)
             {
