@@ -126,5 +126,11 @@ namespace BitirmeProjesi
                 MessageBox.Show("Alanlar boş bırakılamaz.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtFiyat_TextChanged(object sender, EventArgs e)
+        {
+            GenelIslemler gi = new GenelIslemler();
+            gi.SadeceSayi(txtFiyat);
+        }
     }
 }

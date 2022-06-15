@@ -43,6 +43,17 @@ namespace BitirmeProjesi
                 comboBox1.Items.Add(lbChapterAdlari.Items[i].ToString());
             }
             ki.FiyatKontrol(kullaniciAdi, yazarKullaniciAdi, kitapAdi, lblFiyat, btnOku);
+            if (lblFiyat.Text.Length > 1)
+            {
+                lblFiyat.Location = new Point(lblFiyat.Location.X - (lblFiyat.Size.Width / 4), lblFiyat.Location.Y);
+            }
+            if (ki.BegeniKontrol(kullaniciAdi,yazarKullaniciAdi,kitapAdi))
+            {
+                btnBegen.Text = "Beğenildi";
+                btnBegen.BackColor = Color.White;
+                btnBegen.ForeColor = Color.Black;
+            }
+            lblBeğeni.Text = ki.KacBegeni(yazarKullaniciAdi, kitapAdi).ToString();
         }
 
         private void btnOku_Click(object sender, EventArgs e)
@@ -50,10 +61,37 @@ namespace BitirmeProjesi
             KitapIslemleri ki = new KitapIslemleri();
             if (ki.ChapterSayisi(yazarKullaniciAdi, kitapAdi) > 1)
             {
-                ki.EtiketleriKaydet(kullaniciAdi, yazarKullaniciAdi, lblKitapTuru.Text, lblEtiketler.Text);
-                Oku o = new Oku(kullaniciAdi, kitapAdi, yazarKullaniciAdi, 0);
-                o.MdiParent = this.MdiParent;
-                o.Show();
+                if (btnOku.Text == "Oku")
+                {
+                    ki.EtiketleriKaydet(kullaniciAdi, yazarKullaniciAdi, lblKitapTuru.Text, lblEtiketler.Text);
+                    Oku o = new Oku(kullaniciAdi, kitapAdi, yazarKullaniciAdi, 0);
+                    o.MdiParent = this.MdiParent;
+                    o.Show();
+                }
+                else if (btnOku.Text == "Satın Al")
+                {
+                    if (MessageBox.Show("Gitabı satın almak istediğinize emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        switch (ki.SatinAl(kullaniciAdi, yazarKullaniciAdi, kitapAdi))
+                        {
+                            case 1:
+                                MessageBox.Show("Gitap başarı ile satın alındı.", "Tebrikler", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Gitap gt = new Gitap(kullaniciAdi, yazarKullaniciAdi, kitapAdi);
+                                gt.MdiParent = this.MdiParent;
+                                this.Close();
+                                gt.Show();
+                                break;
+
+                            case -1:
+                                MessageBox.Show("Gitap satın alınırken bir sorun oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                break;
+
+                            case -2:
+                                MessageBox.Show("Yetersiz bakiye.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                break;
+                        }
+                    }
+                }
             }
             else
             {
@@ -72,6 +110,27 @@ namespace BitirmeProjesi
                     o.Show();
                 }
 
+            }
+        }
+
+        private void btnBegen_Click(object sender, EventArgs e)
+        {
+            KitapIslemleri ki = new KitapIslemleri();
+            if (btnBegen.Text == "Beğen")
+            {
+                ki.Begen(kullaniciAdi, yazarKullaniciAdi, kitapAdi);
+                Gitap gt = new Gitap(kullaniciAdi, yazarKullaniciAdi, kitapAdi);
+                gt.MdiParent = this.MdiParent;
+                this.Close();
+                gt.Show();
+            }
+            else if (btnBegen.Text == "Beğenildi")
+            {
+                ki.Begenmeme(kullaniciAdi, yazarKullaniciAdi, kitapAdi);
+                Gitap gt = new Gitap(kullaniciAdi, yazarKullaniciAdi, kitapAdi);
+                gt.MdiParent = this.MdiParent;
+                this.Close();
+                gt.Show();
             }
         }
 

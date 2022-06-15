@@ -289,6 +289,7 @@
             this.txtFiyat.Size = new System.Drawing.Size(223, 26);
             this.txtFiyat.TabIndex = 52;
             this.txtFiyat.Text = "0,00";
+            this.txtFiyat.TextChanged += new System.EventHandler(this.txtFiyat_TextChanged);
             // 
             // GitapDuzenle
             // 

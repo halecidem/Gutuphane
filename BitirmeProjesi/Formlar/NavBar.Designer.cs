@@ -35,6 +35,7 @@
             this.btnKitapligim = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.btnCikis = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -109,6 +110,20 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnCikis
+            // 
+            this.btnCikis.BackColor = System.Drawing.Color.Black;
+            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCikis.ForeColor = System.Drawing.Color.White;
+            this.btnCikis.Location = new System.Drawing.Point(30, 766);
+            this.btnCikis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCikis.Name = "btnCikis";
+            this.btnCikis.Size = new System.Drawing.Size(210, 35);
+            this.btnCikis.TabIndex = 11;
+            this.btnCikis.Text = "Çıkış";
+            this.btnCikis.UseVisualStyleBackColor = false;
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
+            // 
             // NavBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -116,6 +131,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(270, 815);
+            this.Controls.Add(this.btnCikis);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnKitapligim);
             this.Controls.Add(this.btnAra);
@@ -140,5 +156,6 @@
         private System.Windows.Forms.Button btnKitapligim;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCikis;
     }
 }

@@ -67,6 +67,12 @@ namespace BitirmeProjesi
             cd.Show();
         }
 
+        private void txtFiyat_TextChanged(object sender, EventArgs e)
+        {
+            GenelIslemler gi = new GenelIslemler();
+            gi.SadeceSayi(txtFiyat);
+        }
+
         private void btnGeri_Click(object sender, EventArgs e)
         {
             this.Close();

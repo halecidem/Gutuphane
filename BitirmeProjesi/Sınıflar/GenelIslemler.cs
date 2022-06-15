@@ -291,5 +291,13 @@ namespace BitirmeProjesi
                 baglanti.Close();
             }
         }
+
+        public void SadeceSayi(TextBox textBox)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, @"[^0-9^\,^]"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
     }
 }

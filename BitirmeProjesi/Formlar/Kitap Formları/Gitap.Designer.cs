@@ -39,27 +39,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblYazar = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnOku = new System.Windows.Forms.Button();
             this.lblbolumsayisi = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblDurum = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblEtiketler = new System.Windows.Forms.Label();
+            this.lblFiyat = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.lblYorum = new System.Windows.Forms.Label();
             this.lblBeğeni = new System.Windows.Forms.Label();
             this.lblOkunma = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblFiyat = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDurum = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblEtiketler = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnBegen = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -69,7 +70,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(346, 82);
+            this.label1.Location = new System.Drawing.Point(354, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
@@ -79,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 176);
+            this.label2.Location = new System.Drawing.Point(346, 176);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 20);
@@ -90,7 +91,7 @@
             // 
             this.lblKitap.AutoSize = true;
             this.lblKitap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblKitap.Location = new System.Drawing.Point(445, 82);
+            this.lblKitap.Location = new System.Drawing.Point(453, 82);
             this.lblKitap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKitap.Name = "lblKitap";
             this.lblKitap.Size = new System.Drawing.Size(19, 20);
@@ -101,7 +102,7 @@
             // 
             this.lblKitapTuru.AutoSize = true;
             this.lblKitapTuru.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblKitapTuru.Location = new System.Drawing.Point(447, 176);
+            this.lblKitapTuru.Location = new System.Drawing.Point(455, 176);
             this.lblKitapTuru.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKitapTuru.Name = "lblKitapTuru";
             this.lblKitapTuru.Size = new System.Drawing.Size(19, 20);
@@ -146,7 +147,7 @@
             // 
             this.lblYazar.AutoSize = true;
             this.lblYazar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblYazar.Location = new System.Drawing.Point(446, 128);
+            this.lblYazar.Location = new System.Drawing.Point(454, 128);
             this.lblYazar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblYazar.Name = "lblYazar";
             this.lblYazar.Size = new System.Drawing.Size(19, 20);
@@ -156,21 +157,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 128);
+            this.label6.Location = new System.Drawing.Point(351, 128);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 20);
             this.label6.TabIndex = 30;
             this.label6.Text = "Yazar Adı:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(98, 59);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(218, 241);
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
             // 
             // btnOku
             // 
@@ -190,7 +182,7 @@
             // 
             this.lblbolumsayisi.AutoSize = true;
             this.lblbolumsayisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblbolumsayisi.Location = new System.Drawing.Point(446, 221);
+            this.lblbolumsayisi.Location = new System.Drawing.Point(454, 221);
             this.lblbolumsayisi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblbolumsayisi.Name = "lblbolumsayisi";
             this.lblbolumsayisi.Size = new System.Drawing.Size(19, 20);
@@ -200,7 +192,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(323, 221);
+            this.label5.Location = new System.Drawing.Point(331, 221);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 20);
@@ -236,49 +228,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Etkileşimler";
             // 
-            // groupBox2
+            // lblFiyat
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(98, 450);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(709, 100);
-            this.groupBox2.TabIndex = 45;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Bölümler";
+            this.lblFiyat.AutoSize = true;
+            this.lblFiyat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblFiyat.ForeColor = System.Drawing.Color.White;
+            this.lblFiyat.Location = new System.Drawing.Point(578, 69);
+            this.lblFiyat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFiyat.Name = "lblFiyat";
+            this.lblFiyat.Size = new System.Drawing.Size(33, 36);
+            this.lblFiyat.TabIndex = 41;
+            this.lblFiyat.Text = "0";
             // 
-            // lblDurum
+            // label11
             // 
-            this.lblDurum.AutoSize = true;
-            this.lblDurum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDurum.Location = new System.Drawing.Point(446, 268);
-            this.lblDurum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDurum.Name = "lblDurum";
-            this.lblDurum.Size = new System.Drawing.Size(19, 20);
-            this.lblDurum.TabIndex = 47;
-            this.lblDurum.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(364, 268);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 20);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Durum:";
-            // 
-            // lblEtiketler
-            // 
-            this.lblEtiketler.AutoSize = true;
-            this.lblEtiketler.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEtiketler.Location = new System.Drawing.Point(323, 298);
-            this.lblEtiketler.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEtiketler.Name = "lblEtiketler";
-            this.lblEtiketler.Size = new System.Drawing.Size(19, 20);
-            this.lblEtiketler.TabIndex = 48;
-            this.lblEtiketler.Text = "0";
-            this.lblEtiketler.Visible = false;
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(568, 32);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 20);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "Fiyat";
             // 
             // lblYorum
             // 
@@ -349,28 +320,72 @@
             this.label9.TabIndex = 34;
             this.label9.Text = "Okunma";
             // 
-            // lblFiyat
+            // groupBox2
             // 
-            this.lblFiyat.AutoSize = true;
-            this.lblFiyat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblFiyat.ForeColor = System.Drawing.Color.White;
-            this.lblFiyat.Location = new System.Drawing.Point(578, 69);
-            this.lblFiyat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFiyat.Name = "lblFiyat";
-            this.lblFiyat.Size = new System.Drawing.Size(33, 36);
-            this.lblFiyat.TabIndex = 41;
-            this.lblFiyat.Text = "0";
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(98, 450);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(709, 100);
+            this.groupBox2.TabIndex = 45;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bölümler";
             // 
-            // label11
+            // lblDurum
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(568, 32);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 20);
-            this.label11.TabIndex = 40;
-            this.label11.Text = "Fiyat";
+            this.lblDurum.AutoSize = true;
+            this.lblDurum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblDurum.Location = new System.Drawing.Point(454, 268);
+            this.lblDurum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDurum.Name = "lblDurum";
+            this.lblDurum.Size = new System.Drawing.Size(19, 20);
+            this.lblDurum.TabIndex = 47;
+            this.lblDurum.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(372, 268);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 20);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Durum:";
+            // 
+            // lblEtiketler
+            // 
+            this.lblEtiketler.AutoSize = true;
+            this.lblEtiketler.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblEtiketler.Location = new System.Drawing.Point(323, 298);
+            this.lblEtiketler.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEtiketler.Name = "lblEtiketler";
+            this.lblEtiketler.Size = new System.Drawing.Size(19, 20);
+            this.lblEtiketler.TabIndex = 48;
+            this.lblEtiketler.Text = "0";
+            this.lblEtiketler.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(98, 59);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(218, 241);
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnBegen
+            // 
+            this.btnBegen.BackColor = System.Drawing.Color.Black;
+            this.btnBegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBegen.ForeColor = System.Drawing.Color.White;
+            this.btnBegen.Location = new System.Drawing.Point(803, 161);
+            this.btnBegen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBegen.Name = "btnBegen";
+            this.btnBegen.Size = new System.Drawing.Size(96, 35);
+            this.btnBegen.TabIndex = 49;
+            this.btnBegen.Text = "Beğen";
+            this.btnBegen.UseVisualStyleBackColor = false;
+            this.btnBegen.Click += new System.EventHandler(this.btnBegen_Click);
             // 
             // Gitap
             // 
@@ -380,6 +395,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(930, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBegen);
             this.Controls.Add(this.lblEtiketler);
             this.Controls.Add(this.lblDurum);
             this.Controls.Add(this.label7);
@@ -405,10 +421,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gütüphane";
             this.Load += new System.EventHandler(this.Gitap_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,5 +460,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnBegen;
     }
 }
