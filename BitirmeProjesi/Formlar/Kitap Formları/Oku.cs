@@ -13,24 +13,32 @@ namespace BitirmeProjesi
     public partial class Oku : Form
     {
         string kullaniciAdi = "", kitapAdi = "", yazar = "";
-        int chapter = 0;
+        int chapter = 0, formYKonumu = 0;
         ListBox lbChapterAdi = new ListBox();
         ListBox lbBolum = new ListBox();
 
-        public Oku(string KullaniciAdi, string KitapAdi, string Yazar, int Chapter)
+        public Oku(int FormYKonumu, string KullaniciAdi, string KitapAdi, string Yazar, int Chapter)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
             this.kitapAdi = KitapAdi;
             this.yazar = Yazar;
             this.chapter = Chapter;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             #region Otomatik Boyutlandırma
             NavBar navBar = new NavBar(kullaniciAdi);
-            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
+            if (lblBolum.Location.Y + lblBolum.Size.Height + 20 > this.Size.Height)
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, lblBolum.Location.Y + lblBolum.Size.Height + 20);
+            }
+            else
+            {
+                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
+            }
             #endregion
         }
 
@@ -116,10 +124,11 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width, formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             #endregion
             int chapterSayisi = chapter;
+            timer1.Enabled = true;
             KitapIslemleri ki = new KitapIslemleri();
             ki.OkuSayfasi(yazar, kitapAdi, lbChapterAdi, lbBolum);
             lblBaslik.Text = lbChapterAdi.Items[chapterSayisi].ToString();

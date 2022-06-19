@@ -76,3 +76,5 @@ C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjes
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapDuzenle.resources
 C:\Users\Halenur\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Cuzdan.resources
 C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Cuzdan.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.GitapYorumlari.resources
+C:\Users\berka\Documents\GitHub\Gutuphane\BitirmeProjesi\obj\Debug\BitirmeProjesi.Gitapligim.resources

@@ -12,11 +12,9 @@ namespace BitirmeProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Server=.\SQLEXPRESS;Database=Gutuphane;Trusted_Connection=true;Timeout=2;");
 
-        public void SonEklenenler(ListBox LbKitapAdi, ListBox LbYazarAdi)
+        public void SonEklenenler(ref ListBox LbKitapAdi, ref ListBox LbYazarAdi, ref ListBox LbResim)
         {
-            SqlCommand cmd = new SqlCommand("select TOP 10 ID, Yazar, KitapAdi from Chapterlar order by ID desc", baglanti);
-            ListBox lbKitapAdi = new ListBox();
-            ListBox lbYazarAdi = new ListBox();
+            SqlCommand cmd = new SqlCommand("select TOP 10 c.ID, c.Yazar, c.KitapAdi, k.KapakFotografi from Chapterlar c inner join Kitaplar k on c.KitapAdi = k.KitapAdi order by c.ID desc", baglanti);
 
             try
             {
@@ -25,9 +23,9 @@ namespace BitirmeProjesi
 
                 while (reader.Read())
                 {
-                    lbKitapAdi.Items.Add(reader.GetString(2));
-                    lbYazarAdi.Items.Add(reader.GetString(1));
-
+                    LbKitapAdi.Items.Add(reader.GetString(2));
+                    LbYazarAdi.Items.Add(reader.GetString(1));
+                    LbResim.Items.Add(reader.GetString(3));
                 }
 
                 cmd.Dispose();
@@ -42,22 +40,12 @@ namespace BitirmeProjesi
                 baglanti.Close();
                 MessageBox.Show(ex.Message);
 
-            }
-            for (int i = 0; i < lbKitapAdi.Items.Count; i++)
-            {
-                LbKitapAdi.Items.Add(lbKitapAdi.Items[i].ToString());
-            }
-            for (int i = 0; i < lbYazarAdi.Items.Count; i++)
-            {
-                LbYazarAdi.Items.Add(lbYazarAdi.Items[i].ToString());
             }
         }
 
-        public void EnCokOkunanlar (ListBox LbKitapAdi, ListBox LbYazarAdi)
+        public void EnCokOkunanlar (ref ListBox LbKitapAdi, ref ListBox LbYazarAdi, ref ListBox LbResim)
         {
-            SqlCommand cmd = new SqlCommand("select TOP 10 OkunmaSayisi, KullaniciAdi, KitapAdi from Kitaplar order by OkunmaSayisi desc", baglanti);
-            ListBox lbKitapAdi = new ListBox();
-            ListBox lbYazarAdi = new ListBox();
+            SqlCommand cmd = new SqlCommand("select TOP 10 OkunmaSayisi, KullaniciAdi, KitapAdi, KapakFotografi from Kitaplar order by OkunmaSayisi desc", baglanti);
 
             try
             {
@@ -66,9 +54,9 @@ namespace BitirmeProjesi
 
                 while (reader.Read())
                 {
-                    lbKitapAdi.Items.Add(reader.GetString(2));
-                    lbYazarAdi.Items.Add(reader.GetString(1));
-
+                    LbKitapAdi.Items.Add(reader.GetString(2));
+                    LbYazarAdi.Items.Add(reader.GetString(1));
+                    LbResim.Items.Add(reader.GetString(3));
                 }
 
                 cmd.Dispose();
@@ -84,13 +72,34 @@ namespace BitirmeProjesi
                 MessageBox.Show(ex.Message);
 
             }
-            for (int i = 0; i < lbKitapAdi.Items.Count; i++)
+        }
+
+        public void TakipEdilenlerdenKitaplar(string KullaniciAdi, ref ListBox YazarAdlari, ref ListBox KitapAdlari, ref ListBox LbResim)
+        {
+            SqlCommand cmd = new SqlCommand("select c.KullaniciAdi, c.KitapAdi, c.KapakFotografi from Kitaplar c inner join Takip t on c.KullaniciAdi = t.YazarAdi where t.KullaniciAdi = @kul order by c.ID desc", baglanti);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+
+            try
             {
-                LbKitapAdi.Items.Add(lbKitapAdi.Items[i].ToString());
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    YazarAdlari.Items.Add(reader.GetString(0));
+                    KitapAdlari.Items.Add(reader.GetString(1));
+                    LbResim?.Items.Add(reader.GetString(2));
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
             }
-            for (int i = 0; i < lbYazarAdi.Items.Count; i++)
+            catch (Exception ex)
             {
-                LbYazarAdi.Items.Add(lbYazarAdi.Items[i].ToString());
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
             }
         }
     }

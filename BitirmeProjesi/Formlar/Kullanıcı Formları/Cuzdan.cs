@@ -13,10 +13,12 @@ namespace BitirmeProjesi
     public partial class Cuzdan : Form
     {
         string kullaniciAdi = "";
-        public Cuzdan(string KullaniciAdi)
+        int formYKonumu = 0;
+        public Cuzdan(int FormYKonumu, string KullaniciAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void Cuzdan_Load(object sender, EventArgs e)
@@ -24,7 +26,7 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width,formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;
@@ -49,7 +51,7 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.ParaYukle(kullaniciAdi, 5);
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             this.Close();
             cd.Show();
@@ -59,7 +61,7 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.ParaYukle(kullaniciAdi, 10);
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             this.Close();
             cd.Show();
@@ -69,7 +71,7 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.ParaYukle(kullaniciAdi, 15);
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             this.Close();
             cd.Show();
@@ -79,7 +81,7 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.ParaYukle(kullaniciAdi, 20);
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             this.Close();
             cd.Show();
@@ -89,7 +91,7 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.ParayiSifirla(kullaniciAdi);
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             this.Close();
             cd.Show();

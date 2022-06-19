@@ -13,32 +13,45 @@ namespace BitirmeProjesi
     public partial class AnaSayfa : Form
     {
         string kullaniciAdi = "";
-        int durum = 0;
+        int durum = 0, formYKonumu = 0;
 
         int aralikX = 20;
-        int aralikY = 35;
         int konumXYedek = 0;
         int konumYYedek = 0;
 
         ListBox lbSonYazilanKitapAdi = new ListBox();
         ListBox lbSonYazilanYazarAdi = new ListBox();
+        ListBox lbSonYazilanResim = new ListBox();
         int[] SonYazilanKonumX = new int[10];
         int[] SonYazilanKonumY = new int[10];
         GroupBox[] gbSonYazilan = new GroupBox[10];
         Label[] lblSonYazilanYazar = new Label[10];
+        PictureBox[] pbSonYazilanResim = new PictureBox[10];
 
         ListBox lbEnCokOkunanKitapAdi = new ListBox();
         ListBox lbEnCokOkunanYazarAdi = new ListBox();
+        ListBox lbEnCokOkunanResim = new ListBox();
         int[] EnCokOkunanKonumX = new int[10];
         int[] EnCokOkunanKonumY = new int[10];
         GroupBox[] gbEnCokOkunan = new GroupBox[10];
         Label[] lblEnCokOkunanYazar = new Label[10];
+        PictureBox[] pbEnCokOkunannResim = new PictureBox[10];
 
-        public AnaSayfa(string KullaniciAdi, int Durum) //İlk açılan sayfa 0, sonradan açılanlar 1 ile başlatılacak
+        ListBox lbTakipEdilenKitapAdi = new ListBox();
+        ListBox lbTakipEdilenYazarAdi = new ListBox();
+        ListBox lbTakipEdilenResim = new ListBox();
+        int[] TakipEdilenKonumX = new int[10];
+        int[] TakipEdilenKonumY = new int[10];
+        GroupBox[] gbTakipEdilen = new GroupBox[10];
+        Label[] lblTakipEdilenYazar = new Label[10];
+        PictureBox[] pbTakipEdilenResim = new PictureBox[10];
+
+        public AnaSayfa(int FormYKonumu, string KullaniciAdi, int Durum) //İlk açılan sayfa 0, sonradan açılanlar 1 ile başlatılacak
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
             this.durum = Durum;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void AnaSayfa_Load(object sender, EventArgs e)
@@ -46,12 +59,13 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width, formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             AlgoritmikIslemler ai = new AlgoritmikIslemler();
-            ai.SonEklenenler(lbSonYazilanKitapAdi, lbSonYazilanYazarAdi);
-            ai.EnCokOkunanlar(lbEnCokOkunanKitapAdi, lbEnCokOkunanYazarAdi);
+            ai.SonEklenenler(ref lbSonYazilanKitapAdi, ref lbSonYazilanYazarAdi, ref lbSonYazilanResim);
+            ai.EnCokOkunanlar(ref lbEnCokOkunanKitapAdi, ref lbEnCokOkunanYazarAdi, ref lbEnCokOkunanResim);
+            ai.TakipEdilenlerdenKitaplar(kullaniciAdi, ref lbTakipEdilenYazarAdi, ref lbTakipEdilenKitapAdi, ref lbTakipEdilenResim);
 
             #region Son Yazılanlar Kutuları
             if (lbSonYazilanKitapAdi.Items.Count > 0)
@@ -62,28 +76,101 @@ namespace BitirmeProjesi
                     {
                         string kitap = lbSonYazilanKitapAdi.Items[i].ToString();
                         string yazar = lbSonYazilanYazarAdi.Items[i].ToString();
+                        string resim = lbSonYazilanResim.Items[i].ToString();
 
                         gbSonYazilan[i] = new GroupBox();
                         gbSonYazilan[i].ForeColor = Color.White;
                         gbSonYazilan[i].Text = kitap;
                         gbSonYazilan[i].Size = new Size(groupBox2.Size.Width, groupBox2.Size.Height);
+                        gbSonYazilan[i].BackColor = Color.Transparent;
                         this.Controls.Add(gbSonYazilan[i]);
                         gbSonYazilan[i].BringToFront();
 
+                        pbSonYazilanResim[i] = new PictureBox();
+                        pbSonYazilanResim[i].Size = gbSonYazilan[i].Size;
+                        pbSonYazilanResim[i].ImageLocation = resim;
+                        pbSonYazilanResim[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbSonYazilanResim[i].Cursor = Cursors.Hand;
+                        this.Controls.Add(pbSonYazilanResim[i]);
+                        pbSonYazilanResim[i].BringToFront();
+
                         lblSonYazilanYazar[i] = new Label();
-                        lblSonYazilanYazar[i].Text = yazar;
+                        lblSonYazilanYazar[i].Text = kitap;
                         lblSonYazilanYazar[i].ForeColor = Color.White;
                         this.Controls.Add(lblSonYazilanYazar[i]);
                         lblSonYazilanYazar[i].BringToFront();
 
                         void gb_Click(object sendr, EventArgs a)
                         {
-                            Gitap gt = new Gitap(kullaniciAdi, yazar, kitap);
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
                             gt.MdiParent = this.MdiParent;
                             gt.Show();
                         }
 
                         gbSonYazilan[i].Click += new EventHandler(gb_Click);
+
+                        void pb_Click(object sendr, EventArgs a)
+                        {
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
+                            gt.MdiParent = this.MdiParent;
+                            gt.Show();
+                        }
+
+                        pbSonYazilanResim[i].Click += new EventHandler(pb_Click);
+                    }
+                }
+            }
+            #endregion
+
+            #region Takip Edilenlerden Kutuları
+            if (lbTakipEdilenKitapAdi.Items.Count > 0)
+            {
+                for (int i = 0; i < lbTakipEdilenKitapAdi.Items.Count; i++)
+                {
+                    if (lbTakipEdilenKitapAdi.Items[i] != null)
+                    {
+                        string kitap = lbTakipEdilenKitapAdi.Items[i].ToString();
+                        string yazar = lbTakipEdilenYazarAdi.Items[i].ToString();
+                        string resim = lbTakipEdilenResim.Items[i].ToString();
+
+                        gbTakipEdilen[i] = new GroupBox();
+                        gbTakipEdilen[i].ForeColor = Color.White;
+                        gbTakipEdilen[i].Text = kitap;
+                        gbTakipEdilen[i].Size = new Size(groupBox4.Size.Width, groupBox4.Size.Height);
+                        this.Controls.Add(gbTakipEdilen[i]);
+                        gbTakipEdilen[i].BringToFront();
+
+                        pbTakipEdilenResim[i] = new PictureBox();
+                        pbTakipEdilenResim[i].Size = gbTakipEdilen[i].Size;
+                        pbTakipEdilenResim[i].ImageLocation = resim;
+                        pbTakipEdilenResim[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbTakipEdilenResim[i].Cursor = Cursors.Hand;
+                        this.Controls.Add(pbTakipEdilenResim[i]);
+                        pbTakipEdilenResim[i].BringToFront();
+
+                        lblTakipEdilenYazar[i] = new Label();
+                        lblTakipEdilenYazar[i].Text = kitap;
+                        lblTakipEdilenYazar[i].ForeColor = Color.White;
+                        this.Controls.Add(lblTakipEdilenYazar[i]);
+                        lblTakipEdilenYazar[i].BringToFront();
+
+                        void gb_Click(object sendr, EventArgs a)
+                        {
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
+                            gt.MdiParent = this.MdiParent;
+                            gt.Show();
+                        }
+
+                        gbTakipEdilen[i].Click += new EventHandler(gb_Click);
+
+                        void pb_Click(object sendr, EventArgs a)
+                        {
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
+                            gt.MdiParent = this.MdiParent;
+                            gt.Show();
+                        }
+
+                        pbTakipEdilenResim[i].Click += new EventHandler(pb_Click);
                     }
                 }
             }
@@ -98,6 +185,7 @@ namespace BitirmeProjesi
                     {
                         string kitap = lbEnCokOkunanKitapAdi.Items[i].ToString();
                         string yazar = lbEnCokOkunanYazarAdi.Items[i].ToString();
+                        string resim = lbEnCokOkunanResim.Items[i].ToString();
 
                         gbEnCokOkunan[i] = new GroupBox();
                         gbEnCokOkunan[i].ForeColor = Color.White;
@@ -106,20 +194,37 @@ namespace BitirmeProjesi
                         this.Controls.Add(gbEnCokOkunan[i]);
                         gbEnCokOkunan[i].BringToFront();
 
+                        pbEnCokOkunannResim[i] = new PictureBox();
+                        pbEnCokOkunannResim[i].Size = gbEnCokOkunan[i].Size;
+                        pbEnCokOkunannResim[i].ImageLocation = resim;
+                        pbEnCokOkunannResim[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbEnCokOkunannResim[i].Cursor = Cursors.Hand;
+                        this.Controls.Add(pbEnCokOkunannResim[i]);
+                        pbEnCokOkunannResim[i].BringToFront();
+
                         lblEnCokOkunanYazar[i] = new Label();
-                        lblEnCokOkunanYazar[i].Text = yazar;
+                        lblEnCokOkunanYazar[i].Text = kitap;
                         lblEnCokOkunanYazar[i].ForeColor = Color.White;
                         this.Controls.Add(lblEnCokOkunanYazar[i]);
                         lblEnCokOkunanYazar[i].BringToFront();
 
                         void gb_Click(object sendr, EventArgs a)
                         {
-                            Gitap gt = new Gitap(kullaniciAdi, yazar, kitap);
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
                             gt.MdiParent = this.MdiParent;
                             gt.Show();
                         }
 
                         gbEnCokOkunan[i].Click += new EventHandler(gb_Click);
+
+                        void pb_Click(object sendr, EventArgs a)
+                        {
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, yazar, kitap);
+                            gt.MdiParent = this.MdiParent;
+                            gt.Show();
+                        }
+
+                        pbEnCokOkunannResim[i].Click += new EventHandler(pb_Click);
                     }
                 }
             }
@@ -128,10 +233,6 @@ namespace BitirmeProjesi
             timer1.Enabled = true;
             GenelIslemler gi = new GenelIslemler();
             btnProfil.Text = gi.AdiNe(kullaniciAdi);
-            if (durum == 0)
-            {
-                btnGeri.Visible = false;
-            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -153,12 +254,34 @@ namespace BitirmeProjesi
                     gbSonYazilan[i].Location = new Point(SonYazilanKonumX[i] + groupBox1.Location.X, SonYazilanKonumY[i] + groupBox1.Location.Y);
                     lblSonYazilanYazar[i].Size = new Size(lblSonYazilanYazar[i].Text.Length * 10, lblSonYazilanYazar[i].Size.Height);
                     lblSonYazilanYazar[i].Location = new Point(gbSonYazilan[i].Location.X + (gbSonYazilan[i].Size.Width / 2) - (lblSonYazilanYazar[i].Size.Width / 2), gbSonYazilan[i].Location.Y + gbSonYazilan[i].Size.Height - (lblSonYazilanYazar[i].Size.Height / 2));
+                    pbSonYazilanResim[i].Location = gbSonYazilan[i].Location;
+
                     konumXYedek += groupBox2.Size.Width + aralikX;
                 }
             }
 
-            konumXYedek = groupBox6.Location.X;
-            konumYYedek = groupBox6.Location.Y;
+            konumXYedek = groupBox4.Location.X;
+            konumYYedek = groupBox4.Location.Y;
+
+            for (int i = 0; i < gbTakipEdilen.Length; i++)
+            {
+                if (gbTakipEdilen[i] != null)
+                {
+                    TakipEdilenKonumX[i] = konumXYedek;
+                    TakipEdilenKonumY[i] = konumYYedek;
+
+                    gbTakipEdilen[i].Location = new Point(TakipEdilenKonumX[i] + groupBox3.Location.X, TakipEdilenKonumY[i] + groupBox3.Location.Y);
+                    lblTakipEdilenYazar[i].Size = new Size(lblTakipEdilenYazar[i].Text.Length * 10, lblTakipEdilenYazar[i].Size.Height);
+                    lblTakipEdilenYazar[i].Location = new Point(gbTakipEdilen[i].Location.X + (gbTakipEdilen[i].Size.Width / 2) - (lblTakipEdilenYazar[i].Size.Width / 2), gbTakipEdilen[i].Location.Y + gbTakipEdilen[i].Size.Height - (lblTakipEdilenYazar[i].Size.Height / 2));
+
+                    pbTakipEdilenResim[i].Location = gbTakipEdilen[i].Location;
+
+                    konumXYedek += groupBox4.Size.Width + aralikX;
+                }
+            }
+
+            konumXYedek = groupBox4.Location.X;
+            konumYYedek = groupBox4.Location.Y;
 
             for (int i = 0; i < gbEnCokOkunan.Length; i++)
             {
@@ -170,27 +293,21 @@ namespace BitirmeProjesi
                     gbEnCokOkunan[i].Location = new Point(EnCokOkunanKonumX[i] + groupBox5.Location.X, EnCokOkunanKonumY[i] + groupBox5.Location.Y);
                     lblEnCokOkunanYazar[i].Size = new Size(lblEnCokOkunanYazar[i].Text.Length * 10, lblEnCokOkunanYazar[i].Size.Height);
                     lblEnCokOkunanYazar[i].Location = new Point(gbEnCokOkunan[i].Location.X + (gbEnCokOkunan[i].Size.Width / 2) - (lblEnCokOkunanYazar[i].Size.Width / 2), gbEnCokOkunan[i].Location.Y + gbEnCokOkunan[i].Size.Height - (lblEnCokOkunanYazar[i].Size.Height / 2));
+
+                    pbEnCokOkunannResim[i].Location = gbEnCokOkunan[i].Location;
+
                     konumXYedek += groupBox6.Size.Width + aralikX;
                 }
             }
 
             NavBar navBar = new NavBar(kullaniciAdi);
-            if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
-            {
-                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
-
-            }
-            else
-            {
-                this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
-            }
+            this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, this.MdiParent.Size.Height - 45);
             #endregion
         }
 
         private void btnProfil_Click(object sender, EventArgs e)
         {
-            Profil pr = new Profil(kullaniciAdi, kullaniciAdi);
+            Profil pr = new Profil(this.Location.Y, kullaniciAdi, kullaniciAdi);
             pr.MdiParent = this.MdiParent;
             pr.Show();
         }
@@ -202,12 +319,22 @@ namespace BitirmeProjesi
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            if (btnGeri.Text == "Yenile")
+            {
+                AnaSayfa ana = new AnaSayfa(this.Location.Y, kullaniciAdi, 0);
+                ana.MdiParent = this.MdiParent;
+                this.Close();
+                ana.Show();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Cuzdan cd = new Cuzdan(kullaniciAdi);
+            Cuzdan cd = new Cuzdan(this.Location.Y, kullaniciAdi);
             cd.MdiParent = this.MdiParent;
             cd.Show();
         }

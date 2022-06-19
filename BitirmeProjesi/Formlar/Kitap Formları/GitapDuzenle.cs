@@ -13,12 +13,14 @@ namespace BitirmeProjesi
     public partial class GitapDuzenle : Form
     {
         string kullaniciAdi = "", kitapAdi = "", yazarAdi = "";
-        public GitapDuzenle(string KullaniciAdi, string KitapAdi, string YazarAdi)
+        int formYKonumu = 0;
+        public GitapDuzenle(int FormYKonumu, string KullaniciAdi, string KitapAdi, string YazarAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
             this.kitapAdi = KitapAdi;
             this.yazarAdi = YazarAdi;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void GitapDuzenle_Load(object sender, EventArgs e)
@@ -26,12 +28,12 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width, formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
-            di.DuzenleBilgileri(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat);
+            di.DuzenleBilgileri(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat, txtFotograf);
             KitapIslemleri ki = new KitapIslemleri();
             ListBox lb = new ListBox();
             ki.ChapterAdlari(yazarAdi, kitapAdi, lb);
@@ -44,25 +46,28 @@ namespace BitirmeProjesi
         private void button1_Click(object sender, EventArgs e)
         {
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
-            switch (di.DuzenlemeleriKaydet(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat))
+            if (txtKitapAdi.Text != "" && txtKitapKonusu.Text != "" && cbKitapTuru.Text != "" && txtFotograf.Text != "")
             {
-                case 1:
-                    MessageBox.Show("Kitap başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Gitaplarım git = new Gitaplarım(kullaniciAdi);
-                    git.MdiParent = this.MdiParent;
-                    this.Close();
-                    git.Show();
-                    break;
-                case -1:
-                    MessageBox.Show("Kitap güncellenemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                switch (di.DuzenlemeleriKaydet(kitapAdi, yazarAdi, pictureBox1, txtKitapAdi, cbKitapTuru, txtKitapKonusu, txtEtiket, txtFiyat, txtFotograf))
+                {
+                    case 1:
+                        MessageBox.Show("Kitap başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Gitaplarım git = new Gitaplarım(this.Location.Y, kullaniciAdi);
+                        git.MdiParent = this.MdiParent;
+                        this.Close();
+                        git.Show();
+                        break;
+                    case -1:
+                        MessageBox.Show("Kitap güncellenemedi.", "Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
 
         }
 
         private void cbBolumler_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChapterDuzenle cd = new ChapterDuzenle(yazarAdi, kitapAdi, cbBolumler.Text);
+            ChapterDuzenle cd = new ChapterDuzenle(this.Location.Y, yazarAdi, kitapAdi, cbBolumler.Text);
             cd.MdiParent = this.MdiParent;
             cd.Show();
         }
@@ -71,6 +76,21 @@ namespace BitirmeProjesi
         {
             GenelIslemler gi = new GenelIslemler();
             gi.SadeceSayi(txtFiyat);
+        }
+
+        private void txtFotograf_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFotograf.Text != "")
+            {
+                try
+                {
+                    pictureBox1.ImageLocation = txtFotograf.Text;
+                }
+                catch
+                {
+
+                }
+            }
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
