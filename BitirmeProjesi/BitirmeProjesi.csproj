@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>3.ico</ApplicationIcon>
+    <ApplicationIcon>Görseller\3.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,11 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formlar\Cuzdan.cs">
+    <Compile Include="Formlar\Kullanıcı Formları\Cuzdan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\Cuzdan.Designer.cs">
+    <Compile Include="Formlar\Kullanıcı Formları\Cuzdan.Designer.cs">
       <DependentUpon>Cuzdan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Kitap Formları\GitapYorumlari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Kitap Formları\GitapYorumlari.Designer.cs">
+      <DependentUpon>GitapYorumlari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Kitap Formları\Gitapligim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Kitap Formları\Gitapligim.Designer.cs">
+      <DependentUpon>Gitapligim.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -125,10 +137,10 @@
     <Compile Include="Formlar\NavBar.Designer.cs">
       <DependentUpon>NavBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formlar\Profil.cs">
+    <Compile Include="Formlar\Kullanıcı Formları\Profil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formlar\Profil.Designer.cs">
+    <Compile Include="Formlar\Kullanıcı Formları\Profil.Designer.cs">
       <DependentUpon>Profil.cs</DependentUpon>
     </Compile>
     <Compile Include="Formlar\Kitap Formları\GitapYaz.cs">
@@ -165,7 +177,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sınıflar\GenelIslemler.cs" />
     <Compile Include="Sınıflar\KitapIslemleri.cs" />
-    <EmbeddedResource Include="Formlar\Cuzdan.resx">
+    <EmbeddedResource Include="Formlar\Kullanıcı Formları\Cuzdan.resx">
       <DependentUpon>Cuzdan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\Arama Formları\AramaSonuc.resx">
@@ -198,7 +210,7 @@
     <EmbeddedResource Include="Formlar\NavBar.resx">
       <DependentUpon>NavBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formlar\Profil.resx">
+    <EmbeddedResource Include="Formlar\Kullanıcı Formları\Profil.resx">
       <DependentUpon>Profil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\Kitap Formları\GitapYaz.resx">
@@ -215,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\Kitap Formları\GitapDuzenle.resx">
       <DependentUpon>GitapDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Kitap Formları\GitapYorumlari.resx">
+      <DependentUpon>GitapYorumlari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Kitap Formları\Gitapligim.resx">
+      <DependentUpon>Gitapligim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -246,7 +264,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="3.ico" />
+    <Content Include="Görseller\3.ico" />
     <Content Include="Görseller\1.png" />
     <Content Include="Görseller\2.png" />
     <Content Include="Görseller\3.png" />

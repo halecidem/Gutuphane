@@ -51,10 +51,9 @@
             this.lblBaslik.AutoSize = true;
             this.lblBaslik.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblBaslik.ForeColor = System.Drawing.Color.White;
-            this.lblBaslik.Location = new System.Drawing.Point(324, 29);
-            this.lblBaslik.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBaslik.Location = new System.Drawing.Point(216, 19);
             this.lblBaslik.Name = "lblBaslik";
-            this.lblBaslik.Size = new System.Drawing.Size(244, 54);
+            this.lblBaslik.Size = new System.Drawing.Size(169, 37);
             this.lblBaslik.TabIndex = 1;
             this.lblBaslik.Text = "Hoşgeldiniz";
             // 
@@ -62,10 +61,9 @@
             // 
             this.lblSayfaAciklama.AutoSize = true;
             this.lblSayfaAciklama.ForeColor = System.Drawing.Color.White;
-            this.lblSayfaAciklama.Location = new System.Drawing.Point(220, 103);
-            this.lblSayfaAciklama.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSayfaAciklama.Location = new System.Drawing.Point(147, 67);
             this.lblSayfaAciklama.Name = "lblSayfaAciklama";
-            this.lblSayfaAciklama.Size = new System.Drawing.Size(476, 20);
+            this.lblSayfaAciklama.Size = new System.Drawing.Size(321, 13);
             this.lblSayfaAciklama.TabIndex = 9;
             this.lblSayfaAciklama.Text = "Sizin hazırladığınız ve sizin için hazırlanan liste ve kitaplara göz atın.";
             // 
@@ -78,10 +76,9 @@
             this.btnProfil.BackColor = System.Drawing.Color.Black;
             this.btnProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfil.ForeColor = System.Drawing.Color.White;
-            this.btnProfil.Location = new System.Drawing.Point(793, 12);
-            this.btnProfil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnProfil.Location = new System.Drawing.Point(529, 8);
             this.btnProfil.Name = "btnProfil";
-            this.btnProfil.Size = new System.Drawing.Size(112, 35);
+            this.btnProfil.Size = new System.Drawing.Size(75, 23);
             this.btnProfil.TabIndex = 10;
             this.btnProfil.Text = "Profil";
             this.btnProfil.UseVisualStyleBackColor = false;
@@ -92,9 +89,10 @@
             this.btnGeri.BackColor = System.Drawing.Color.Black;
             this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeri.ForeColor = System.Drawing.Color.White;
-            this.btnGeri.Location = new System.Drawing.Point(12, 12);
+            this.btnGeri.Location = new System.Drawing.Point(8, 8);
+            this.btnGeri.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeri.Name = "btnGeri";
-            this.btnGeri.Size = new System.Drawing.Size(40, 35);
+            this.btnGeri.Size = new System.Drawing.Size(27, 23);
             this.btnGeri.TabIndex = 27;
             this.btnGeri.Text = "<-";
             this.btnGeri.UseVisualStyleBackColor = false;
@@ -105,10 +103,9 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(793, 57);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(529, 37);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 35);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 28;
             this.button1.Text = "Cüzdan";
             this.button1.UseVisualStyleBackColor = false;
@@ -117,10 +114,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 150);
+            this.groupBox1.Location = new System.Drawing.Point(8, 98);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(893, 210);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(595, 136);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yeni Eklenenler";
@@ -128,10 +128,13 @@
             // groupBox2
             // 
             this.groupBox2.Enabled = false;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(22, 22);
+            this.groupBox2.Location = new System.Drawing.Point(15, 14);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(146, 158);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(97, 103);
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sonuç";
@@ -140,21 +143,27 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(12, 383);
+            this.groupBox3.Location = new System.Drawing.Point(8, 249);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(893, 210);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(595, 136);
             this.groupBox3.TabIndex = 53;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sana Özel";
+            this.groupBox3.Text = "Takip Ettiklerinizden";
             // 
             // groupBox4
             // 
             this.groupBox4.Enabled = false;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(22, 22);
+            this.groupBox4.Location = new System.Drawing.Point(15, 14);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(146, 158);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(97, 103);
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sonuç";
@@ -163,10 +172,13 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(12, 619);
+            this.groupBox5.Location = new System.Drawing.Point(8, 402);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(893, 210);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Size = new System.Drawing.Size(595, 136);
             this.groupBox5.TabIndex = 54;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "En Çok Okunanlar";
@@ -174,10 +186,13 @@
             // groupBox6
             // 
             this.groupBox6.Enabled = false;
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(22, 22);
+            this.groupBox6.Location = new System.Drawing.Point(15, 14);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(146, 158);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Size = new System.Drawing.Size(97, 103);
             this.groupBox6.TabIndex = 52;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sonuç";
@@ -185,11 +200,11 @@
             // 
             // AnaSayfa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(930, 853);
+            this.ClientSize = new System.Drawing.Size(620, 545);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
@@ -200,7 +215,6 @@
             this.Controls.Add(this.lblSayfaAciklama);
             this.Controls.Add(this.lblBaslik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AnaSayfa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Gütüphane";

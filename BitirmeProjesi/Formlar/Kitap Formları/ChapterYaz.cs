@@ -13,13 +13,14 @@ namespace BitirmeProjesi
     public partial class ChapterYaz : Form
     {
         string kullaniciAdi = "", kitapAdi = "", yazarAdi = "";
-        int ChapterSayisi = 0;
-        public ChapterYaz(string KullaniciAdi, string KitapAdi, string YazarAdi)
+        int ChapterSayisi = 0, formYKonumu = 0;
+        public ChapterYaz(int FormYKonumu, string KullaniciAdi, string KitapAdi, string YazarAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
             this.kitapAdi = KitapAdi;
             this.yazarAdi = YazarAdi;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void txtChapter_TextChanged(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace BitirmeProjesi
                 {
                     case 1:
                         MessageBox.Show("Chapter başarıyla kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Gitaplarım git = new Gitaplarım(kullaniciAdi);
+                        Gitaplarım git = new Gitaplarım(this.Location.Y, kullaniciAdi);
                         git.MdiParent = this.MdiParent;
                         this.Close();
                         git.Show();
@@ -65,7 +66,7 @@ namespace BitirmeProjesi
                         {
                             case 1:
                                 MessageBox.Show("Gitap başarıyla tamamlandı.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Gitaplarım git = new Gitaplarım(kullaniciAdi);
+                                Gitaplarım git = new Gitaplarım(this.Location.Y, kullaniciAdi);
                                 git.MdiParent = this.MdiParent;
                                 this.Close();
                                 git.Show();
@@ -96,7 +97,7 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, this.Location.Y);
+            this.Location = new Point(navBar.Size.Width, formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
             timer1.Enabled = true;

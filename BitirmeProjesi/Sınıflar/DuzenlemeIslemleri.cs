@@ -36,7 +36,31 @@ namespace BitirmeProjesi
             }
         }
 
-        public void DuzenleBilgileri(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat)
+        public int ProfilFotografiKaydet(string KullaniciAdi, string Fotograf)
+        {
+            SqlCommand cmd = new SqlCommand("update Kullanicilar set Fotograf = @ft where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            cmd.Parameters.AddWithValue("@ft", Fotograf);
+
+            try
+            {
+                baglanti.Open();
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
+
+        public void DuzenleBilgileri(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat, TextBox txtFotograf)
         {
             SqlCommand cmd = new SqlCommand("select * from Kitaplar where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
@@ -53,6 +77,7 @@ namespace BitirmeProjesi
                     txtKitapKonusu.Text = reader.GetString(4);
                     txtEtiketler.Text = reader.GetString(6);
                     txtFiyat.Text = reader.GetSqlMoney(9).ToString();
+                    txtFotograf.Text = reader.GetString(5);
                 }
 
                 cmd.Dispose();
@@ -66,9 +91,9 @@ namespace BitirmeProjesi
             }
         }
 
-        public int DuzenlemeleriKaydet(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat)
+        public int DuzenlemeleriKaydet(string KitapAdi, string YazarAdi, PictureBox resimKutusu, TextBox txtKitapAdi, ComboBox txtKitapTuru, TextBox txtKitapKonusu, TextBox txtEtiketler, TextBox txtFiyat, TextBox txtFotograf)
         {
-            SqlCommand cmd = new SqlCommand("update Kitaplar set KitapAdi = @txtKitapAdi, KitapTuru = @kt, KitapKonusu = @kk, Etiketler = @et, Fiyat = @fi where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
+            SqlCommand cmd = new SqlCommand("update Kitaplar set KitapAdi = @txtKitapAdi, KitapTuru = @kt, KitapKonusu = @kk, Etiketler = @et, Fiyat = @fi, KapakFotografi = @kf where KitapAdi = @ka and KullaniciAdi = @ya", baglanti);
             cmd.Parameters.AddWithValue("@ka", KitapAdi);
             cmd.Parameters.AddWithValue("@ya", YazarAdi);
             cmd.Parameters.AddWithValue("@txtKitapAdi", txtKitapAdi.Text);
@@ -76,6 +101,7 @@ namespace BitirmeProjesi
             cmd.Parameters.AddWithValue("@kk", txtKitapKonusu.Text);
             cmd.Parameters.AddWithValue("@et", txtEtiketler.Text);
             cmd.Parameters.AddWithValue("@fi", Convert.ToDouble(txtFiyat.Text));
+            cmd.Parameters.AddWithValue("@kf", txtFotograf.Text);
 
             SqlCommand cmd2 = new SqlCommand("update Chapterlar set KitapAdi = @yenika where KitapAdi = @ka and Yazar = @ya", baglanti);
             cmd2.Parameters.AddWithValue("@yenika", txtKitapAdi.Text);

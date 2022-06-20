@@ -14,26 +14,28 @@ namespace BitirmeProjesi
     {
         string kullaniciAdi = "";
         ListBox liste = new ListBox();
-        int aralikX = 40;
-        int aralikY = 35;
-        int[] konumX = new int[50];
+        ListBox resim = new ListBox();
+        int aralikX = 40, aralikY = 35, formYKonumu = 0;
+        int[] konumX;
         int konumXYedek = 0;
         int konumYYedek = 0;
-        int[] konumY = new int[50];
-        GroupBox[] gb = new GroupBox[50];
-        Button[] btn = new Button[50];
-        Button[] btn2 = new Button[50];
-        Button[] btn3 = new Button[50];
+        int[] konumY;
+        GroupBox[] gb;
+        Button[] btn;
+        Button[] btn2;
+        Button[] btn3;
+        PictureBox[] pbResim;
 
-        public Gitaplarım(string KullaniciAdi)
+        public Gitaplarım(int FormYKonumu, string KullaniciAdi)
         {
             InitializeComponent();
             this.kullaniciAdi = KullaniciAdi;
+            this.formYKonumu = FormYKonumu;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-            GitapYaz ky = new GitapYaz(kullaniciAdi);
+            GitapYaz ky = new GitapYaz(this.Location.Y, kullaniciAdi);
             ky.MdiParent = this.MdiParent;
             this.Close();
             ky.Show();
@@ -44,12 +46,20 @@ namespace BitirmeProjesi
             #region NavBar'a Yanaştırma
             NavBar navBar = new NavBar(kullaniciAdi);
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Location = new Point(navBar.Size.Width, navBar.Location.Y);
+            this.Location = new Point(navBar.Size.Width, formYKonumu);
             this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 20, this.MdiParent.Size.Height - 45);
             #endregion
 
             KitapIslemleri ki = new KitapIslemleri();
-            liste = ki.Kitaplarim(kullaniciAdi);
+            ki.Kitaplarim(kullaniciAdi, ref liste, ref resim);
+            int elemanSayisi = liste.Items.Count;
+            gb = new GroupBox[elemanSayisi];
+            btn = new Button[elemanSayisi];
+            btn2 = new Button[elemanSayisi];
+            btn3 = new Button[elemanSayisi];
+            konumX = new int[elemanSayisi];
+            konumY = new int[elemanSayisi];
+            pbResim = new PictureBox[elemanSayisi];
 
             #region Kutular
             if (liste.Items.Count > 0)
@@ -59,12 +69,21 @@ namespace BitirmeProjesi
                     if (liste.Items[i] != null)
                     {
                         string kitap = liste.Items[i].ToString();
+                        string resimLink = resim.Items[i].ToString();
 
                         gb[i] = new GroupBox();
                         gb[i].ForeColor = Color.White;
                         gb[i].Text = liste.Items[i].ToString();
                         gb[i].Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height);
                         this.Controls.Add(gb[i]);
+
+                        pbResim[i] = new PictureBox();
+                        pbResim[i].Size = new Size(groupBox1.Size.Width, groupBox1.Size.Height - 20);
+                        pbResim[i].ImageLocation = resimLink;
+                        pbResim[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbResim[i].Cursor = Cursors.Hand;
+                        this.Controls.Add(pbResim[i]);
+                        pbResim[i].BringToFront();
 
                         btn[i] = new Button();
                         btn[i].FlatStyle = FlatStyle.Flat;
@@ -96,9 +115,9 @@ namespace BitirmeProjesi
                             btn3[i].BringToFront();
                         }
 
-                        void gb_Click(object sendr, EventArgs a)
+                        void pb_Click(object sendr, EventArgs a)
                         {
-                            Gitap gt = new Gitap(kullaniciAdi, kullaniciAdi, kitap);
+                            Gitap gt = new Gitap(this.Location.Y, kullaniciAdi, kullaniciAdi, kitap);
                             gt.MdiParent = this.MdiParent;
                             gt.Show();
                         }
@@ -108,7 +127,7 @@ namespace BitirmeProjesi
                             {
                                 KitapIslemleri kt = new KitapIslemleri();
                                 kt.KitabiSil(kullaniciAdi, kitap);
-                                Gitaplarım gt = new Gitaplarım(kullaniciAdi);
+                                Gitaplarım gt = new Gitaplarım(this.Location.Y, kullaniciAdi);
                                 gt.MdiParent = this.MdiParent;
                                 this.Close();
                                 gt.Show();
@@ -116,18 +135,18 @@ namespace BitirmeProjesi
                         }
                         void btn2_Click(object sendr, EventArgs a)
                         {
-                            GitapDuzenle gd = new GitapDuzenle(kullaniciAdi, kitap, kullaniciAdi);
+                            GitapDuzenle gd = new GitapDuzenle(this.Location.Y, kullaniciAdi, kitap, kullaniciAdi);
                             gd.MdiParent = this.MdiParent;
                             gd.Show();
                         }
                         void btn3_Click(object sendr, EventArgs a)
                         {
-                            ChapterYaz cy = new ChapterYaz(kullaniciAdi, kitap, kullaniciAdi);
+                            ChapterYaz cy = new ChapterYaz(this.Location.Y, kullaniciAdi, kitap, kullaniciAdi);
                             cy.MdiParent = this.MdiParent;
                             cy.Show();
                         }
 
-                        gb[i].Click += new EventHandler(gb_Click);
+                        pbResim[i].Click += new EventHandler(pb_Click);
                         btn[i].Click += new EventHandler(btn_Click);
                         btn2[i].Click += new EventHandler(btn2_Click);
                         btn3[i].Click += new EventHandler(btn3_Click);
@@ -163,6 +182,7 @@ namespace BitirmeProjesi
                     konumY[i] = konumYYedek;
 
                     gb[i].Location = new Point(konumX[i], konumY[i]);
+                    pbResim[i].Location = new Point(gb[i].Location.X, gb[i].Location.Y + 20);
                     btn[i].Location = new Point(konumX[i] + gb[i].Size.Width - btn[i].Size.Width, konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
                     btn2[i].Location = new Point(konumX[i] + (gb[i].Size.Width / 2) - (btn2[i].Size.Width / 2), konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
                     btn3[i].Location = new Point(konumX[i], konumY[i] + gb[i].Size.Height - btn[i].Size.Height);
@@ -172,7 +192,6 @@ namespace BitirmeProjesi
             NavBar navBar = new NavBar(kullaniciAdi);
             if (konumYYedek + groupBox1.Size.Height + aralikY > this.MdiParent.Size.Height - 20)
             {
-                this.MaximumSize = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
                 this.Size = new Size(this.MdiParent.Size.Width - navBar.Size.Width - 40, konumYYedek + groupBox1.Size.Height + aralikY);
                 
             }
@@ -190,7 +209,7 @@ namespace BitirmeProjesi
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            GitapYaz ky = new GitapYaz(kullaniciAdi);
+            GitapYaz ky = new GitapYaz(this.Location.Y, kullaniciAdi);
             ky.MdiParent = this.MdiParent;
             this.Close();
             ky.Show();
@@ -198,7 +217,7 @@ namespace BitirmeProjesi
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            GitapYaz ky = new GitapYaz(kullaniciAdi);
+            GitapYaz ky = new GitapYaz(this.Location.Y, kullaniciAdi);
             ky.MdiParent = this.MdiParent;
             this.Close();
             ky.Show();

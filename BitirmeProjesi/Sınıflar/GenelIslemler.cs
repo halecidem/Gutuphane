@@ -192,7 +192,7 @@ namespace BitirmeProjesi
             }
         }
 
-        public void ProfilBilgileri(string kullaniciAdi, Label lblAdi, Label lblSoyadi, Label lblEposta, Label lblKayitTarihi)
+        public void ProfilBilgileri(string kullaniciAdi, Label lblAdi, Label lblSoyadi, Label lblEposta, Label lblKayitTarihi, PictureBox pbFotograf)
         {
             SqlCommand cmd = new SqlCommand("select * from Kullanicilar where KullaniciAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", kullaniciAdi);
@@ -207,6 +207,7 @@ namespace BitirmeProjesi
                     lblSoyadi.Text = reader.GetString(5);
                     lblEposta.Text = reader.GetString(3);
                     lblKayitTarihi.Text = reader.GetDateTime(8).ToString();
+                    pbFotograf.ImageLocation = reader.GetString(11);
                 }
                 cmd.Dispose();
                 reader.Close();
@@ -214,7 +215,7 @@ namespace BitirmeProjesi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 cmd.Dispose();
                 baglanti.Close();
             }
@@ -237,7 +238,7 @@ namespace BitirmeProjesi
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    lblPara.Text = reader.GetInt64(0).ToString() + " TL";
+                    lblPara.Text = reader.GetSqlMoney(0).ToString() + " TL";
                 }
                 cmd.Dispose();
                 reader.Close();
@@ -251,7 +252,7 @@ namespace BitirmeProjesi
             }
         }
 
-        public void ParaYukle(string KullaniciAdi, int YuklenecekMiktar)
+        public void ParaYukle(string KullaniciAdi, double YuklenecekMiktar)
         {
             SqlCommand cmd = new SqlCommand("update Kullanicilar set Para = Para + @ym where KullaniciAdi = @ka", baglanti);
             cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
@@ -297,6 +298,179 @@ namespace BitirmeProjesi
             if (System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, @"[^0-9^\,^]"))
             {
                 textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
+
+        public long ToplamOkunma(string KullaniciAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select sum(OkunmaSayisi) from Kitaplar where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            long ToplamOkunma = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ToplamOkunma = reader.GetInt64(0);
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return ToplamOkunma;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return -1;
+            }
+        }
+
+        public int TakipciSayisi(string KullaniciAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select count(YazarAdi) from Takip where YazarAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            int Takipciler = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Takipciler = reader.GetInt32(0);
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return Takipciler;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return Takipciler;
+            }
+        }
+
+        public int TakipEdilenSayisi(string KullaniciAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select count(YazarAdi) from Takip where KullaniciAdi = @ka", baglanti);
+            cmd.Parameters.AddWithValue("@ka", KullaniciAdi);
+            int TakipEdilen = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    TakipEdilen = reader.GetInt32(0);
+                }
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return TakipEdilen;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cmd.Dispose();
+                baglanti.Close();
+                return TakipEdilen;
+            }
+        }
+
+        public bool TakipKontrol(string KullaniciAdi, string YazarAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select * from Takip where KullaniciAdi = @kul and YazarAdi = @ya", baglanti);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            int ID = 0;
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ID = reader.GetInt32(0);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+            if (ID > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int TakipEt(string KullaniciAdi, string YazarAdi)
+        {
+            SqlCommand cmd = new SqlCommand("insert into Takip (KullaniciAdi, YazarAdi) values (@kul, @ya)", baglanti);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            try
+            {
+                baglanti.Open();
+
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public int TakibiGeriAl(string KullaniciAdi, string YazarAdi)
+        {
+            SqlCommand cmd = new SqlCommand("delete from Takip where KullaniciAdi = @kul and YazarAdi = @ya", baglanti);
+            cmd.Parameters.AddWithValue("@kul", KullaniciAdi);
+            cmd.Parameters.AddWithValue("@ya", YazarAdi);
+
+            try
+            {
+                baglanti.Open();
+
+                cmd.ExecuteNonQuery();
+
+                cmd.Dispose();
+                baglanti.Close();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return -1;
             }
         }
     }
