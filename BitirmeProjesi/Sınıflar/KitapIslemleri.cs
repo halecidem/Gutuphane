@@ -1026,5 +1026,36 @@ namespace BitirmeProjesi
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public string KitapKapakFotografi(string YazarAdi, string KitapAdi)
+        {
+            SqlCommand cmd = new SqlCommand("select KapakFotografi from Kitaplar where KullaniciAdi = @kul and KitapAdi = @ka order by ID desc", baglanti);
+            cmd.Parameters.AddWithValue("@kul", YazarAdi);
+            cmd.Parameters.AddWithValue("@ka", KitapAdi);
+            string fotograf = "";
+
+            try
+            {
+                baglanti.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    fotograf = reader.GetString(0);
+                }
+
+                cmd.Dispose();
+                reader.Close();
+                baglanti.Close();
+                return fotograf;
+            }
+            catch (Exception ex)
+            {
+                cmd.Dispose();
+                baglanti.Close();
+                MessageBox.Show(ex.Message);
+                return "";
+            }
+        }
     }
 }

@@ -322,10 +322,10 @@ namespace BitirmeProjesi
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 cmd.Dispose();
                 baglanti.Close();
-                return -1;
+                return 0;
             }
         }
 

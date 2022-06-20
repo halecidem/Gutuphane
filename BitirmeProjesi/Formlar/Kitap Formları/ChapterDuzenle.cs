@@ -90,6 +90,7 @@ namespace BitirmeProjesi
             lblHarf.Text = txtChapter.TextLength.ToString();
             DuzenlemeIslemleri di = new DuzenlemeIslemleri();
             di.BolumDuzenleBilgileri(kitapAdi, kullaniciAdi, chapterAdi, txtChapterAdi, txtChapter, lblKitap, lblChapter);
+            pictureBox1.ImageLocation = ki.KitapKapakFotografi(kullaniciAdi, kitapAdi);
         }
     }
 }

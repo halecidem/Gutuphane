@@ -105,6 +105,7 @@ namespace BitirmeProjesi
             ChapterSayisi = ki.ChapterSayisi(yazarAdi, kitapAdi);
             lblChapter.Text = ChapterSayisi.ToString();
             lblKitap.Text = kitapAdi;
+            pictureBox1.ImageLocation = ki.KitapKapakFotografi(yazarAdi, kitapAdi);
         }
     }
 }
